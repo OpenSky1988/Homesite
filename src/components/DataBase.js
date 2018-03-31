@@ -16,6 +16,7 @@ const DataBase = {
             description: 'HTML, CSS, ES2017, AJAX, React.js, GIT, etc.'
         }
     ],
+
     projects: [
         {
             name: "Project 1",
@@ -60,6 +61,28 @@ const DataBase = {
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
     ],
+
+    articles: [
+        {
+            header: "What caused my career change?",
+            text: "Most people are told what to do and where to go, for example, by the loved ones. But even the closest people cannot fully understand our own way. Nobody can, but us. Therefore, it is our mission to find and persuade it.",
+            img: "/img/blog/img-1-4000-(2000).jpg",
+            date: "12 April, 2017"
+        },
+        {
+            header: "Basic steps in building a web presence",
+            text: "Web presence building requires good design, and technical skills. But one should not forget about purpose and planning as a fundament of the whole process. Owner and his audience have their own needs and you are to meet them.",
+            img: "/img/blog/img-2-4000-(2000).jpg",
+            date: "01 May, 2017"
+        },
+        {
+            header: "Should work bring joy?",
+            text: "It is a tough philosophical question. Is it possible to be happy working on a job which you feel isn't yours? How to define that so-called 'your' job? Is hobby still joyful when you make it a job? Let's take a closer look, friends!",
+            img: "/img/blog/img-3-4000-(2000).jpg",
+            date: "06 May, 2017"
+        },
+    ],
+
     links: [
         {
             href: "https://www.linkedin.com/in/alexander-prisazhny-93b749b3/",

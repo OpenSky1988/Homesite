@@ -15,9 +15,6 @@ class Contacts extends Component {
                         <ContactLinks addLinks={ this.props.addLinks } />
                         <ContactForm addLinks={ this.props.addLinks } />
                     </div>
-                    <div className="copy">
-                        <p>Copyright Alexander Prisazhny 2017</p>
-                    </div>
                 </div>
             </section>
         )

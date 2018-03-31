@@ -4,9 +4,11 @@ import './Footer.css';
 class Footer extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <footer className="container">
+                <div className="copy">
+                    <p>Copyright Alexander Prisazhny 2018</p>
+                </div>
+            </footer>
         )
     }
 }

@@ -3,6 +3,7 @@ import './App.css';
 
 import NavBar from './components/NavBar/NavBar';
 import Main from './components/Main/Main';
+import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
 import DataBase from './components/DataBase';
 
@@ -66,16 +67,43 @@ class App extends Component {
         return links;
     }
 
+    addArticles() {
+        const articles = DataBase.articles.map(article => {
+            return (
+                <div className="article-prev" id="a1">
+                    <div 
+                        className="ap-image" 
+                        id="img-1" 
+                        style={{ backgroundImage: "src(" + article.img + ")" }}>
+                    </div>
+                    <div className="content">
+                        <h2>{ article.header }</h2>
+                        <div className="post-date">
+                            <h4>{ article.date }</h4>
+                        </div>
+                        <p className="description">{ article.text }</p>
+                        <div className="view-button">View more</div>
+                    </div>
+                </div>
+            );
+        });
+
+        return articles;
+    }
+
     render() {
         return (
             <div className="App">
                 <header>
                     <NavBar />
                 </header>
-                <Main
+                {/*<Main
                     skillsList={ this.addServices.bind(this) }
                     addProjects={ this.addProjects.bind(this) }
                     addLinks={ this.addLinks.bind(this) }
+                />*/}
+                <Blog
+                    addArticles={ this.addArticles.bind(this) }
                 />
                 <Footer />
             </div>
