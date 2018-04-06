@@ -8,6 +8,39 @@ import Footer from './components/Footer/Footer';
 import DataBase from './components/DataBase';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+           content: "main"
+        };
+    }
+
+    changePage(pageName) {
+        this.setState({
+            content:pageName
+        });
+    }
+
+    addContent() {
+        if (this.state.content === "main") {
+            return(
+                <Main
+                    skillsList={ this.addServices.bind(this) }
+                    addProjects={ this.addProjects.bind(this) }
+                    addLinks={ this.addLinks.bind(this) }
+                />
+            );
+        } else if (this.state.content === "blog") {
+            return (
+                <Blog
+                    addArticles={ this.addArticles.bind(this) }
+                />
+            );
+        } else {
+            console.log("Reference error: Invalid page.");
+        };
+    }
+
     addServices() {
         const servicesList = DataBase.skills.map(skill => {
             return (
@@ -95,16 +128,9 @@ class App extends Component {
         return (
             <div className="App">
                 <header>
-                    <NavBar />
+                    <NavBar changePage={ this.changePage.bind(this) } />
                 </header>
-                {/*<Main
-                    skillsList={ this.addServices.bind(this) }
-                    addProjects={ this.addProjects.bind(this) }
-                    addLinks={ this.addLinks.bind(this) }
-                />*/}
-                <Blog
-                    addArticles={ this.addArticles.bind(this) }
-                />
+                { this.addContent() /*returns Main or Blog component*/ }
                 <Footer />
             </div>
         )
