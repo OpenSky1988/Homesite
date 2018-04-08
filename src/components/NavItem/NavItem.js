@@ -15,13 +15,13 @@ class NavItem extends Component {
     render() {
         return (
         <li isActive={ this.props.isActive /*Apply certain styles on active button*/}>
-                <button
-                    className={ this.props.buttonType /*bn or blog*/} 
-                    value={ this.props.page /*main or blog*/} 
-                    href={ this.props.area /*optional - anchor to section on Main page*/ }
-                    onClick={ this.props.handlePageChange /*For all buttons - handles change of page*/}>
-                { this.props.itemName /*Name of button for User*/}</button>
-            </li>
+            <button
+                className={ this.props.buttonType /*bn or blog*/} 
+                value={ this.props.page /*main or blog*/} 
+                href={ this.props.area /*optional - anchor to section on Main page*/ }
+                onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+            { this.props.itemName /*Name of button for User*/}</button>
+        </li>
         );
     }
 }

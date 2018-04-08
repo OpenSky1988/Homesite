@@ -1,9 +1,10 @@
-import React, {Component} from React;
+import React, {Component} from 'react';
 import './Header.css';
 
-import NavBar from '../Navbar/Navbar';
-import NavTrigger from '../NavTrigger/NavTrigger';
 import BackArrow from '../BackArrow/BackArrow';
+import NavLogo from '../NavLogo/NavLogo';
+import NavBar from '../NavBar/NavBar';
+import NavTrigger from '../NavTrigger/NavTrigger';
 
 class Header extends Component {
     render() {
@@ -11,10 +12,8 @@ class Header extends Component {
             <header id="moving-header">
                 <div className="container">
                     <BackArrow />
-                    <a href="/index.html">
-                        <div id="logom"></div>
-                    </a>
-                    <NavBar />
+                    <NavLogo changePage={ this.props.changePage } />
+                    <NavBar changePage={ this.props.changePage } />
                     <NavTrigger />
                 </div>
             </header>

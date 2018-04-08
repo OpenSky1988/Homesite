@@ -1,23 +1,13 @@
 import React, {Component} from 'react';
 import './NavBar.css';
 
-/*import NavItem from '../NavItem/NavItem';*/
+import NavItem from '../NavItem/NavItem';
 
 class NavBar extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handlePageChange = this.handlePageChange.bind(this);
-    }
-
-    handlePageChange(e) {
-        this.props.changePage(e.target.value);
-    }
-
     render() {
         return (
             <ul className="nav">
-                {/*<NavItem 
+                <NavItem 
                     isActive = {true}
                     buttonType = "bt"
                     page = "main"
@@ -30,7 +20,7 @@ class NavBar extends Component {
                     buttonType = "bt"
                     page = "main"
                     area = "#services"
-                    changePage = {this.props.changePage} 
+                    changePage = {this.props.changePage}
                     itemName="services" 
                 />
                 <NavItem 
@@ -55,46 +45,7 @@ class NavBar extends Component {
                     page = "blog"
                     changePage = {this.props.changePage}
                     itemName="blog" 
-                />*/}
-                <li className="active">
-                    <button
-                        className="bt" 
-                        value="main" 
-                        href="#home"
-                        onClick={this.handlePageChange}>
-                    home</button>
-                </li>
-                <li className="inactive">
-                    <button
-                        className="bt" 
-                        value="main" 
-                        href="#services"
-                        onClick={this.handlePageChange}>
-                    services</button>
-                </li>
-                <li>
-                    <button
-                        className="bt" 
-                        value="main" 
-                        href="#gallery"
-                        onClick={this.handlePageChange}>
-                    projects</button>
-                </li>
-                <li>
-                    <button
-                        className="bt" 
-                        value="main" 
-                        href="#footer"
-                        onClick={this.handlePageChange}>
-                    contacts</button>
-                </li>
-                <li id="blog-btn">
-                    <button 
-                        className="blog"
-                        value="blog"
-                        onClick={this.handlePageChange}>
-                    blog</button>
-                </li>
+                />
             </ul>
         );
     }

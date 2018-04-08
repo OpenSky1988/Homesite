@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Blog.css';
 
 class Blog extends Component {
     render() {
@@ -16,7 +17,7 @@ class Blog extends Component {
                     </div>
                 </header>
 
-                <section className="blog">
+                <section id="blog">
                     <div className="container" id="cont">
                         { this.props.addArticles() }
                     </div>

@@ -289,7 +289,7 @@
 }
 
 body,
-thml {
+html {
     cursor: default;
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 15px;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import NavBar from './components/NavBar/NavBar';
+import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
@@ -17,7 +17,7 @@ class App extends Component {
 
     changePage(pageName) {
         this.setState({
-            content:pageName
+            content: pageName
         });
     }
 
@@ -127,10 +127,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <header>
-                    <NavBar changePage={ this.changePage.bind(this) } />
-                </header>
-                { this.addContent() /*returns Main or Blog component*/ }
+                <Header changePage={ this.changePage.bind(this) } />
+                { this.addContent() /* Returns Main or Blog component */ }
                 <Footer />
             </div>
         )

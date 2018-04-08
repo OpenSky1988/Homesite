@@ -1,0 +1,19 @@
+#moving-header .header-wrap .container #back-arrow {
+    display: none;
+    padding: 11px 20px;
+    -webkit-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    transform: translateY(2px)
+}
+
+#moving-header .header-wrap .container #back-arrow .arrow {
+    background: url("/img/vector/arrow-left.svg") no-repeat center center;
+    background-size: contain;
+    display: block;
+    height: 25px;
+    width: 25px
+}
+
+#moving-header .header-wrap .container .back-open {
+    display: inline-block !important
+}
