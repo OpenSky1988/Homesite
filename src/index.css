@@ -1,5 +1,8 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+body,
+html {
+    cursor: default;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 15px;
+    margin: 0;
+    padding: 0
 }

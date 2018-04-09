@@ -5,19 +5,25 @@
     height: 700px;
     margin-bottom: 0;
     position: relative;
+    margin-top: 0px;
 }
 
 #home .container header {
     letter-spacing: 1px;
     padding-left: 7vw;
     padding-right: 7vw;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8)
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 #home .container header h1 {
     font-family: 'Questrial', sans-serif;
-    margin: 146px 0 10px;
-    letter-spacing: 1px
+    font-size: 53px;
+    padding: 143px 0 10px;
+    letter-spacing: 1px;
+}
+
+#home .container header p {
+    font-size: 21px;
 }
 
 #view-gallery-btn {
@@ -31,20 +37,26 @@
     text-decoration: none;
     -webkit-transition: all .3s;
     -o-transition: all .3s;
-    transition: all .3s
+    transition: all .3s;
 }
 
 #view-gallery-btn:hover {
     background-color: #117bff;
     border-color: transparent;
     color: #FFF;
-    outline: none
+    outline: none;
 }
 
 #viewbtn-1 {
-    display: inline-block
+    display: inline-block;
 }
 
 #viewbtn-2 {
-    display: none
+    display: none;
+}
+
+@media screen and (max-width:767px) {
+    #home .container header h1 {
+        font-size: 53px;
+    }
 }

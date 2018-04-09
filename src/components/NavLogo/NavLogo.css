@@ -1,4 +1,4 @@
-#logom {
+.logom {
     background: url("../../img/logo.png") no-repeat center center;
     background-size: contain;
     display: inline-block;
@@ -8,6 +8,6 @@
     width: 42px
 }
 
-#logom:hover {
+.logom:hover {
     cursor: pointer
 }

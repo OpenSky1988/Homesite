@@ -58,7 +58,7 @@ class App extends Component {
     addProjects() {
         var projects = DataBase.projects.map(project => {
             return (
-                <div className="project">
+                <div className="project col-md-4">
                     <div className="thumbnail" id="p1">
                         <div className="tb">
                             <h3>{ project.name }</h3>
