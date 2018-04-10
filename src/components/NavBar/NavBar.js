@@ -41,7 +41,7 @@ class NavBar extends Component {
                 />
                 <NavItem 
                     isActive = {false}
-                    buttonType = "blog"
+                    buttonType = "blog-button"
                     page = "blog"
                     changePage = {this.props.changePage}
                     itemName="blog" 

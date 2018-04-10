@@ -4,7 +4,7 @@ import './Blog.css';
 class Blog extends Component {
     render() {
         return(
-            <main>
+            <main class="blog">
                 <header id="blog-title">
                     <div className="container">
                         <div className="h1">
