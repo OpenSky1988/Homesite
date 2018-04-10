@@ -10,9 +10,6 @@ class NavItem extends Component {
 
     handlePageChange(e) {
         this.props.changePage(e.target.value);
-        console.log(e.target);
-        console.log(e.target.value);
-        console.log(this.props.changePage);
     }
     
     render() {
