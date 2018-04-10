@@ -9,17 +9,15 @@ class NavLogo extends Component {
     }
 
     handlePageChange(e) {
-        this.props.changePage(e.target.value);
+        this.props.changePage(e.target.getAttribute('dataValue'));
         console.log(this.props.changePage);
         console.log(e.target);
-        console.log(e.target.value);
+        console.log(e.target.getAttribute('dataValue'));
     }
 
     render() {
         return (
-            <button className="logo-button">
-                <div className="logom" value="main" onClick={ this.handlePageChange } ></div>
-            </button> 
+            <button className="logo-button logom" dataValue="main" onClick={ this.handlePageChange }></button> 
         );
     }
 }
