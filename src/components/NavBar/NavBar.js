@@ -1,51 +1,71 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 import NavItem from '../NavItem/NavItem';
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handlePageChange = this.handlePageChange.bind(this);
+    }
+
+    handlePageChange(e) {
+        let page = e.target.getAttribute('page');
+        let area = e.target.getAttribute('href');
+
+        this.props.changePage(page, area);
+    }
+
     render() {
         return (
             <ul className="nav">
-                <NavItem 
-                    isActive = {true}
-                    buttonType = "bt"
-                    page = "main"
-                    area = "#home"
-                    changePage = {this.props.changePage}
-                    itemName="home" 
-                />
-                <NavItem 
-                    isActive = {false}
-                    buttonType = "bt"
-                    page = "main"
-                    area = "#services"
-                    changePage = {this.props.changePage}
-                    itemName="services" 
-                />
-                <NavItem 
-                    isActive = {false}
-                    buttonType = "bt"
-                    page = "main"
-                    area = "#gallery" 
-                    changePage = {this.props.changePage}
-                    itemName="projects" 
-                />
-                <NavItem 
-                    isActive = {false}
-                    buttonType = "bt"
-                    page = "main"
-                    area = "#footer" 
-                    changePage = {this.props.changePage}
-                    itemName="contacts" 
-                />
-                <NavItem 
-                    isActive = {false}
-                    buttonType = "blog-button"
-                    page = "blog"
-                    changePage = {this.props.changePage}
-                    itemName="blog" 
-                />
+                <li isActive={ true /*Apply certain styles on active button*/}>
+                    <Link
+                        to="/home"
+                        className="bt" 
+                        page="main"
+                        href="#home"
+                        onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+                    home</Link>
+                </li>
+                <li isActive={ false /*Apply certain styles on active button*/}>
+                    <Link
+                        to="/home"
+                        className="bt" 
+                        page="main"
+                        href="#services"
+                        onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+                    services</Link>
+                </li>
+                <li isActive={ false /*Apply certain styles on active button*/}>
+                    <Link
+                        to="/home"
+                        className="bt" 
+                        page="main"
+                        href="#projects"
+                        onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+                    projects</Link>
+                </li>
+                <li isActive={ false /*Apply certain styles on active button*/}>
+                    <Link
+                        to="/home"
+                        className="bt" 
+                        page="main"
+                        href="#footer"
+                        onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+                    footer</Link>
+                </li>
+                <li isActive={ false /*Apply certain styles on active button*/}>
+                    <Link
+                        to="/blog"
+                        className="blog-button" 
+                        page="blog"
+                        href="#blog"
+                        onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+                    blog</Link>
+                </li>
             </ul>
         );
     }

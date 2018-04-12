@@ -6,7 +6,7 @@ li {
     position: relative;
 }
 
-li button {
+li link {
     background-color: transparent;
     border: white;
     border-bottom: 3px solid transparent;
@@ -23,20 +23,20 @@ li button {
     text-transform: uppercase
 }
 
-li button:focus,
-li button:hover {
+li link:focus,
+li link:hover {
     border-bottom: 3px solid #117bff;
     color: #1c1919;
     outline: 0;
 }
 
-li.active button {
+li.active link {
     background-color: transparent;
     color: #1c1919
 }
 
-li.active button:focus,
-li.active button:hover {
+li.active link:focus,
+li.active link:hover {
     background-color: transparent;
     border-bottom: 3px solid #117bff;
     color: #1c1919

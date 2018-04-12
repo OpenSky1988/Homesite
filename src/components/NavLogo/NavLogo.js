@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import './NavLogo.css';
 
 class NavLogo extends Component {
@@ -17,7 +18,11 @@ class NavLogo extends Component {
 
     render() {
         return (
-            <button className="logo-button logom" dataValue="main" onClick={ this.handlePageChange }></button> 
+            <Link
+                to="/home"
+                className="logo-button logom" 
+                dataValue="main" 
+                onClick={ this.handlePageChange }></Link> 
         );
     }
 }

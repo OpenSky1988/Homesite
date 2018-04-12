@@ -22,42 +22,42 @@ const DataBase = {
             name: "Project 1",
             shortDescription: "Description of Project 1 will appear later.",
             longDescription: "Coming soon...",
-            img: "",
+            img: "/img/projects/p1-4000-(900).jpg",
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
             name: "Project 2",
             shortDescription: "Description of Project 2 will appear later.",
             longDescription: "Coming soon...",
-            img: "",
+            img: "/img/projects/p2-4000-(900).jpg",
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
             name: "Project 3",
             shortDescription: "Description of Project 3 will appear later.",
             longDescription: "Coming soon...",
-            img: "",
+            img: "/img/projects/p3-4000-(900).jpg",
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
             name: "Project 4",
             shortDescription: "Description of Project 4 will appear later.",
             longDescription: "Coming soon...",
-            img: "",
+            img: "/img/projects/p4-4000-(900).jpg",
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
             name: "Project 5",
             shortDescription: "Description of Project 5 will appear later.",
             longDescription: "Coming soon...",
-            img: "",
+            img: "/img/projects/p5-4000-(900).jpg",
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
             name: "Project 6",
             shortDescription: "Description of Project 6 will appear later.",
             longDescription: "Coming soon...",
-            img: "",
+            img: "/img/projects/p6-4000-(900).jpg",
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
     ],

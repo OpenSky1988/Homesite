@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { 
+    Route, 
+    BrowserRouter as Router 
+} from 'react-router-dom';
+
 import './App.css';
 
 import Header from './components/Header/Header';
@@ -6,6 +11,8 @@ import Main from './components/Main/Main';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
 import DataBase from './components/DataBase';
+
+
 
 class App extends Component {
     constructor(props) {
@@ -15,30 +22,15 @@ class App extends Component {
         };
     }
 
-    changePage(pageName) {
-        this.setState({
-            content: pageName
-        });
-    }
+    handleStateChange(newPage, area) {
+        let currentPage = this.state.content;
+        if (newPage === currentPage) {
+            if (currentPage === "main") {
 
-    addContent() {
-        if (this.state.content === "main") {
-            return(
-                <Main
-                    skillsList={ this.addServices.bind(this) }
-                    addProjects={ this.addProjects.bind(this) }
-                    addLinks={ this.addLinks.bind(this) }
-                />
-            );
-        } else if (this.state.content === "blog") {
-            return (
-                <Blog
-                    addArticles={ this.addArticles.bind(this) }
-                />
-            );
-        } else {
-            console.log("Reference error: Invalid page.");
-        };
+            } else if (currentPage === "blog") {
+
+            }
+        }
     }
 
     addServices() {
@@ -56,10 +48,11 @@ class App extends Component {
     }
 
     addProjects() {
-        var projects = DataBase.projects.map(project => {
+        let projects = DataBase.projects.map(project => {
+
             return (
                 <div className="project col-md-4">
-                    <div className="thumbnail" id="p1">
+                    <div className="thumbnail" style={{ backgroundImage: `url("${project.img}")` }}>
                         <div className="tb">
                             <h3>{ project.name }</h3>
                             <div className="hover-description">{ project.shortDescription }</div>
@@ -107,7 +100,7 @@ class App extends Component {
                     <div 
                         className="ap-image" 
                         id="img-1" 
-                        style={{ backgroundImage: "src(" + article.img + ")" }}>
+                        style={{ backgroundImage: `url("${article.img}")` }}>
                     </div>
                     <div className="content">
                         <h2>{ article.header }</h2>
@@ -127,8 +120,20 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Header changePage={ this.changePage.bind(this) } />
-                { this.addContent() /* Returns Main or Blog component */ }
+                <Router>
+                    <div>
+                        <Header changePage={ this.handleStateChange.bind(this) } />
+                        
+                        <Route path="/home" render={() => <Main 
+                            skillsList={this.addServices.bind(this)}
+                            addProjects={this.addProjects.bind(this)}
+                            addLinks={this.addLinks.bind(this)} 
+                        />} />
+                        <Route path="/blog" render={() => <Blog
+                            addArticles={this.addArticles.bind(this)}
+                        />} />
+                    </div>
+                </Router>
                 <Footer />
             </div>
         )

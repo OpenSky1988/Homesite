@@ -4,7 +4,7 @@ import './Projects.css';
 class Projects extends Component {
     render() {
         return (
-            <section id="gallery">
+            <section id="projects">
                 <div className="container">
                     <h3>Projects</h3>
                     <div className="row">
