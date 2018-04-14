@@ -38,7 +38,7 @@ class App extends Component {
             return (
                 <div className="col-md-4">
                     <div className="icon"></div>
-                    <h2>{ skill.name }</h2>
+                    <h3>{ skill.name }</h3>
                     <h4>{ skill.description }</h4>
                 </div>
             );
@@ -124,7 +124,7 @@ class App extends Component {
                     <div>
                         <Header changePage={ this.handleStateChange.bind(this) } />
                         
-                        <Route path="/home" render={() => <Main 
+                        <Route path="(/|/home)" render={() => <Main 
                             skillsList={this.addServices.bind(this)}
                             addProjects={this.addProjects.bind(this)}
                             addLinks={this.addLinks.bind(this)} 

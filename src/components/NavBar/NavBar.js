@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 
-import NavItem from '../NavItem/NavItem';
-
 class NavBar extends Component {
     constructor(props) {
         super(props);

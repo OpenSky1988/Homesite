@@ -1,3 +1,17 @@
+#my_img-1 {
+    border: 5px solid #fff;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.37), 0 1px 4px 0px rgba(0, 0, 0, 0.37);
+    box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.37), 0 1px 4px 0px rgba(0, 0, 0, 0.37);
+    display: block;
+    bottom: -94px;
+    height: 180px;
+    left: 50%;
+    margin-left: -90px;
+    position: absolute;
+    z-index: 50
+}
+
 #home {
     background: #493D3B url("/img/home/andyone-4096.jpg") no-repeat top center;
     background-size: cover;
@@ -15,7 +29,7 @@
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
-#home .container header h1 {
+.container header h1 {
     font-family: 'Questrial', sans-serif;
     font-size: 53px;
     padding: 143px 0 10px;

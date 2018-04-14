@@ -6,7 +6,7 @@ class Projects extends Component {
         return (
             <section id="projects">
                 <div className="container">
-                    <h3>Projects</h3>
+                    <h2>Projects</h2>
                     <div className="row">
                         { this.props.addProjects() }
                     </div>

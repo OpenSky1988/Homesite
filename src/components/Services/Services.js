@@ -7,7 +7,7 @@ class Services extends Component {
         return (
             <section id="services">
                 <div className="container">
-                    <h3>Services</h3>
+                    <h2>Services</h2>
                     <div className="row">
                         { this.props.skillsList() }
                     </div>

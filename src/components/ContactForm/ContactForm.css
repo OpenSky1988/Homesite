@@ -1,0 +1,99 @@
+.forms {
+    display: inline-block;
+    outline: none;
+    padding: 6px 12px;
+    width: 28.4%;
+    background-color: #191616;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    color: #999;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s
+}
+
+.forms:active,
+.forms:focus,
+.forms:hover {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.03);
+    border-left: 2px solid rgba(255, 255, 255, 0.03);
+    border-right: 2px solid rgba(255, 255, 255, 0.03);
+    border-top: 2px solid rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none
+}
+
+.forms:first-child,
+.forms:nth-child(2) {
+    margin-right: 2.45%;
+}
+
+.error-notification {
+    color: #2687ff;
+    display: inline-block;
+    margin: 6px 10px
+}
+
+input:focus:-moz-placeholder,
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+textarea:focus:-moz-placeholder,
+textarea:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+#text {
+    background-color: #191616;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: #999;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    font-size: 15px;
+    height: 90px;
+    line-height: 1.42857143;
+    margin: 12px 0 6px;
+    padding: 6px 12px;
+    resize: none;
+    width: 97%
+}
+
+#text:active,
+#text:focus,
+#text:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-left: 1px solid rgba(255, 255, 255, 0.03);
+    border-right: 1px solid rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none
+}
+
+#submit-btn {
+    background-color: #161414;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    color: #6D6C6C;
+    float: right;
+    font-weight: 500;
+    margin-right: .7%;
+    outline: none;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    width: 25%
+}
+
+#submit-btn:hover {
+    background-color: #117bff;
+    border: 1px solid transparent;
+    color: #FFF;
+    outline: none
+}

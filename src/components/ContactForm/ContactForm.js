@@ -27,7 +27,7 @@ class ContactForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        alert(`${this.state.email} ${this.state.name} ${this.state.phone} ${this.state.text}`);
+        alert(`${this.state.email} <br/> ${this.state.name} <br/> ${this.state.phone} <br/> ${this.state.text}`);
         this.setState = {
             email: "",
             name: "",
