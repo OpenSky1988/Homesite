@@ -3,20 +3,24 @@
     padding-top: 70px
 }
 
-#services .row {
+#services #skill-container {
+    display: grid;
+    grid-template: repeat(1, 235px) / repeat(3, 33.33%);
     padding: 0 0 40px
 }
 
-#services .col-md-4 {
+#services .skill {
     padding-bottom: 50px;
-    width: 33.33%;
+    text-align: center;
 }
 
-#services .col-md-4:hover h4 {
+#services .skill:hover h4 {
     color: #353535
 }
 
-#services .col-md-4 .icon {
+#services .skill .skill-icon {
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: contain;
     height: 60px;
     margin: auto;
@@ -48,15 +52,8 @@ h4 {
     transition: color .3s
 }
 
-#services .col-md-4:first-child .icon {
-    background: url("/img/home/responsive.png") no-repeat center center;
-    background-size: contain
-}
-
-#services .col-md-4:nth-child(2) .icon {
-    background: url("/img/home/ux_ui.svg") no-repeat center center
-}
-
-#services .col-md-4:nth-child(3) .icon {
-    background: url("/img/home/code.svg") no-repeat center center
+@media screen and (max-width: 992px) {
+    #services #skill-container {
+        grid-template-columns: repeat(1, auto);
+    }
 }

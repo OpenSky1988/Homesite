@@ -1,17 +1,17 @@
 const DataBase = {
     skills: [
         {
-            icon: '',
+            img: '/img/home/responsive.png',
             name: 'Web Design',
             description: 'Structure, interface, functionality.'
         },
         {
-            icon: '',
+            img: '/img/home/ux_ui.svg',
             name: 'UX',
             description: 'Semantic elements, ARIA, responsiveness.'
         },
         {
-            icon: '',
+            img: '/img/home/code.svg',
             name: 'Code',
             description: 'HTML, CSS, ES2017, AJAX, React.js, GIT, etc.'
         }

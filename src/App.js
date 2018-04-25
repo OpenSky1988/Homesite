@@ -36,8 +36,10 @@ class App extends Component {
     addServices() {
         const servicesList = DataBase.skills.map(skill => {
             return (
-                <div className="col-md-4">
-                    <div className="icon"></div>
+                <div className="skill">
+                    <div 
+                        className="skill-icon"
+                        style={{ backgroundImage: `url("${skill.img}")` }}></div>
                     <h3>{ skill.name }</h3>
                     <h4>{ skill.description }</h4>
                 </div>
@@ -51,7 +53,7 @@ class App extends Component {
         let projects = DataBase.projects.map(project => {
 
             return (
-                <div className="project col-md-4">
+                <div className="project">
                     <div className="thumbnail" style={{ backgroundImage: `url("${project.img}")` }}>
                         <div className="tb">
                             <h3>{ project.name }</h3>
