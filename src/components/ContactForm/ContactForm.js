@@ -27,7 +27,6 @@ class ContactForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        alert(`${this.state.email} <br/> ${this.state.name} <br/> ${this.state.phone} <br/> ${this.state.text}`);
         this.setState = {
             email: "",
             name: "",
@@ -38,7 +37,7 @@ class ContactForm extends Component {
     
     render() {
         return (
-            <div className="col-md-6">
+            <div id="contact-form">
                 <form 
                     onSubmit={ this.handleSubmit }
                     className="form-inline">
@@ -66,7 +65,7 @@ class ContactForm extends Component {
                         className="forms" 
                         id="phone"
                         name="phone"
-                        type="text" 
+                        type="phone" 
                         placeholder="Phone"
                     />
                     <textarea
@@ -74,8 +73,9 @@ class ContactForm extends Component {
                         value={ this.state.text }
                         id="text" 
                         name="text" 
-                        placeholder="Text"
+                        placeholder="Your message here"
                     ></textarea>
+                    <div id="error-notification">Error note here.</div>
                     <button
                         className="btn" 
                         id="submit-btn" 

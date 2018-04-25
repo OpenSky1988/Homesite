@@ -1,13 +1,15 @@
-#footer {
+#contacts {
     background-color: #1f1c1c;
     font-family: 'Open Sans', sans-serif
 }
 
-#footer .container {
-    padding-top: 60px
+#contacts .container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 60px;
+    max-width: 720px;
 }
 
-#footer h3 {
+#contacts #contacts-header {
     color: #B5B5B5;
     font-size: 24px;
     font-weight: 500;
@@ -15,23 +17,26 @@
     margin-bottom: 40px
 }
 
-#footer .col-md-2,
-#footer .col-md-6 {
+#contacts #contacts-row {
+    display: grid;
+    grid-template: auto / 148.5px auto;
+    grid-column-gap: 40px; 
+    grid-template-areas: 
+        "contact-links contact-form";
+}
+
+#contacts #contact-links,
+#contacts #contact-form {
     padding: 0
 }
 
-#footer .col-md-2 {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    margin-left: 8.33%;
-}
-
-#footer .col-md-6 {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    padding-right: 8.33%;
-    padding-bottom: 40px;
-    width: 50%
-}
-
-#footer .col-md-2 {
+#contacts #contact-links {
+    grid-area: contact-links;
     padding-bottom: 45px
+}
+
+#contacts #contact-form {
+    box-sizing: border-box;
+    grid-area: contact-form;
+    padding-bottom: 40px;
 }

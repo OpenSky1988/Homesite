@@ -8,12 +8,12 @@ class Contacts extends Component {
 
     render() {
         return (
-            <section id="footer">
+            <section id="contacts">
                 <div className="container">
-                    <h3 id="contacts">Want to make something together?</h3>
-                    <div className="row">
-                        <ContactLinks addLinks={ this.props.addLinks } />
+                    <h3 id="contacts-header">Want to make something together?</h3>
+                    <div id="contacts-row">
                         <ContactForm addLinks={ this.props.addLinks } />
+                        <ContactLinks addLinks={ this.props.addLinks } />
                     </div>
                 </div>
             </section>

@@ -1,8 +1,26 @@
+form {
+    box-sizing: border-box;
+    display: grid;
+    grid-template: 37px auto 32px / auto auto auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+    grid-template-areas: 
+        "email name phone"
+        "text text text"
+        "error-notification error-notification submit-btn";
+}
+
+#email { grid-area: email }
+#name { grid-area: name }
+#phone { grid-area: phone }
+#text { grid-area: text }
+#error-notification { grid-area: error-notification }
+#submit-btn { grid-area: submit-btn }
+
+
 .forms {
-    display: inline-block;
     outline: none;
     padding: 6px 12px;
-    width: 28.4%;
     background-color: #191616;
     border: 2px solid transparent;
     border-radius: 6px;
@@ -24,15 +42,9 @@
     outline: none
 }
 
-.forms:first-child,
-.forms:nth-child(2) {
-    margin-right: 2.45%;
-}
-
 .error-notification {
     color: #2687ff;
     display: inline-block;
-    margin: 6px 10px
 }
 
 input:focus:-moz-placeholder,
@@ -50,16 +62,11 @@ textarea:focus::-webkit-input-placeholder {
     border: 1px solid transparent;
     border-radius: 6px;
     color: #999;
-    -webkit-transition: all .3s;
-    -o-transition: all .3s;
     transition: all .3s;
     font-size: 15px;
-    height: 90px;
     line-height: 1.42857143;
-    margin: 12px 0 6px;
     padding: 6px 12px;
     resize: none;
-    width: 97%
 }
 
 #text:active,
@@ -79,16 +86,11 @@ textarea:focus::-webkit-input-placeholder {
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 3px;
     color: #6D6C6C;
-    float: right;
     font-weight: 500;
-    margin-right: .7%;
     outline: none;
     padding-bottom: 5px;
     padding-top: 5px;
-    -webkit-transition: all .3s;
-    -o-transition: all .3s;
     transition: all .3s;
-    width: 25%
 }
 
 #submit-btn:hover {

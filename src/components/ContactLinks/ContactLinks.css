@@ -7,7 +7,7 @@
     width: 136.5px
 }
 
-ul {
+#social {
     padding-left: 0
 }
 
@@ -42,7 +42,7 @@ li a>img:hover {
     transform: scale(1.15, 1.15)
 }
 
-#social-1 {
+#social {
     margin-bottom: 1px;
     margin-left: 5px
 }
