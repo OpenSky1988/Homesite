@@ -127,7 +127,7 @@
     margin-right: 20px
 }
 
-.blog .container .article-prev {
+.blog .container .article-preview {
     background-color: #FFF;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -141,7 +141,7 @@
     text-align: center
 }
 
-.blog .container .article-prev .ap-image {
+.blog .container .article-preview .ap-image {
 
     background-repeat: no-repeat;
     background-position: center center;
@@ -151,13 +151,13 @@
     max-width: 2000px
 }
 
-.blog .container .article-prev .content {
+.blog .container .article-preview .content {
     font-size: 24px;
     padding: 0;
     text-align: left
 }
 
-.blog .container .article-prev .content h2 {
+.blog .container .article-preview .content h2 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -165,15 +165,15 @@
     text-transform: uppercase
 }
 
-.blog .container .article-prev .content h2:hover {
+.blog .container .article-preview .content h2:hover {
     text-decoration: underline
 }
 
-.blog .container .article-prev .content .post-date {
+.blog .container .article-preview .content .post-date {
     text-align: center
 }
 
-.blog .container .article-prev .content .post-date h4 {
+.blog .container .article-preview .content .post-date h4 {
     color: #888;
     font-size: 22px;
     font-weight: 500;
@@ -181,11 +181,11 @@
     margin-top: 0 !important
 }
 
-.blog .container .article-prev .content p {
+.blog .container .article-preview .content p {
     font-weight: 400
 }
 
-.blog .container .article-prev .content:nth-child(2) {
+.blog .container .article-preview .content:nth-child(2) {
     margin-bottom: 30px
 }
 

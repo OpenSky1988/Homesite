@@ -10,7 +10,7 @@ class Greetings extends Component {
                         feel free to take a virtual armchair and have a virtual tea. I am Frontend Developer, UI/UX Designer. I strive
                         to make every page intuitive and beautiful to give great aesthetic pleasure from interaction with it. I know
                         my strengths and I am result-oriented. I do not leave my job undone. If you are seeking for a web-presence
-                        or looking for a staff web-developer, you can contact me <a href="#footer">here</a>.</p>
+                        or looking for a staff web-developer, you can contact me <a href="#contacts">here</a>.</p>
                 </div>
             </section>
         )

@@ -71,13 +71,13 @@ const DataBase = {
         },
         {
             header: "Basic steps in building a web presence",
-            text: "Web presence building requires good design, and technical skills. But one should not forget about purpose and planning as a fundament of the whole process. Owner and his audience have their own needs and you are to meet them.",
+            text: "Web presence building requires good design and technical skills. But one should not forget about purpose and planning as a fundament of the whole process. Owner and his audience have their own needs and you are to meet them.",
             img: "/img/blog/img-2-4000-(2000).jpg",
             date: "01 May, 2017"
         },
         {
             header: "Should work bring joy?",
-            text: "It is a tough philosophical question. Is it possible to be happy working on a job which you feel isn't yours? How to define that so-called 'your' job? Is hobby still joyful when you make it a job? Let's take a closer look, friends!",
+            text: "It is a tough philosophical question. Is it possible to be happy working on a job which you feel isn't yours? How to define that mythical so-called 'you'll-know-it's-your' job? Is hobby still joyful when you make it more routine...ish? Let's take a closer look, friends! How to distinguish between loss of passion and temporary fatigue?",
             img: "/img/blog/img-3-4000-(2000).jpg",
             date: "06 May, 2017"
         },
@@ -85,24 +85,34 @@ const DataBase = {
 
     links: [
         {
+            id: "linkedin",
             href: "https://www.linkedin.com/in/alexander-prisazhny-93b749b3/",
             img: "/img/flat-minimalistic-circles/32x32-PNG/linkedin.png",
             alt: "Link to LinkedIn page"
         },
         {
+            id: "behance",
             href: "https://www.behance.net/sasha_prisazhny",
             img: "/img/flat-minimalistic-circles/32x32-PNG/behance.png",
             alt: "Link to Behance page"
         },
         {
+            id: "blogspot",
             href: "http://alexwebcorner.blogspot.ru/",
             img: "/img/flat-minimalistic-circles/32x32-PNG/blogger.png",
             alt: "Link to Blogspot page"
         },
         {
+            id: "skype",
             href: "skype:mutilatorap?chat",
             img: "/img/flat-minimalistic-circles/32x32-PNG/skype.png",
             alt: "Link to Skype chat"
+        },
+        {
+            id: "whatsapp",
+            href: "whatsapp://send?text=Hello!&amp;phone=+79964283366",
+            img: "/img/flat-minimalistic-circles/32x32-PNG/whatsapp.png",
+            alt: "Send message or call me via WhatsApp"
         }
     ]
 }

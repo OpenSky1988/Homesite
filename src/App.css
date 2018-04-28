@@ -114,23 +114,8 @@ body {
         margin-bottom: 0
     }
 
-    #services .col-md-4 {
-        border-bottom: 1px solid #dedede;
-        height: auto;
-        padding: 60px 10px 5px
-    }
-
-    #services .col-md-4:nth-child(3) {
-        border-bottom: none
-    }
-
-    #contact-img,
-    #social-1 {
+    #contact-img {
         display: none
-    }
-
-    #social-2 {
-        display: inline-block
     }
 
     .row {

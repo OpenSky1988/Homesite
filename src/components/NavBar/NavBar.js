@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+
 import './NavBar.css';
 
 class NavBar extends Component {
@@ -21,46 +22,36 @@ class NavBar extends Component {
       <ul className="nav">
         <li isActive={ true /*Apply certain styles on active button*/}>
           <Link
-            to="/home"
+            to="/home#home"
             className="bt" 
-            page="main"
-            href="#home"
             onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
           home</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
-            to="/home"
+            to="/home#services"
             className="bt" 
-            page="main"
-            href="#services"
             onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
           services</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
-            to="/home"
+            to="/home#projects"
             className="bt" 
-            page="main"
-            href="#projects"
             onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
           projects</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
-            to="/home"
+            to="/home#contacts"
             className="bt" 
-            page="main"
-            href="#footer"
             onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
           footer</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
-            to="/blog"
+            to="/blog#blog-title"
             className="blog-button" 
-            page="blog"
-            href="#blog"
             onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
           blog</Link>
         </li>

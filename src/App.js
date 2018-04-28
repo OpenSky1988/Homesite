@@ -78,7 +78,7 @@ class App extends Component {
     addLinks() {
         const links = DataBase.links.map(link => {
             return (
-                <li>
+                <li id={ link.id }>
                     <a  href={ link.href }
                         target="_blank"
                         rel="noopener noreferrer">
@@ -98,7 +98,7 @@ class App extends Component {
     addArticles() {
         const articles = DataBase.articles.map(article => {
             return (
-                <div className="article-prev" id="a1">
+                <div className="article-preview">
                     <div 
                         className="ap-image" 
                         id="img-1" 

@@ -1,13 +1,34 @@
+/*-------------------------------------------*\
+   Contacts.css
+ 
+   Contents
+    - General 
+    - Header
+    - Row
+    - Row Children
+
+\*-------------------------------------------*/
+
+/*-------------------------------------------*\
+    General
+\*-------------------------------------------*/
+
 #contacts {
     background-color: #1f1c1c;
+    box-sizing: border-box;
     font-family: 'Open Sans', sans-serif
 }
 
 #contacts .container {
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    box-sizing: border-box;
     padding-top: 60px;
     max-width: 720px;
 }
+
+/*-------------------------------------------*\
+    Header
+\*-------------------------------------------*/
 
 #contacts #contacts-header {
     color: #B5B5B5;
@@ -17,13 +38,21 @@
     margin-bottom: 40px
 }
 
+/*-------------------------------------------*\
+    Row
+\*-------------------------------------------*/
+
 #contacts #contacts-row {
     display: grid;
-    grid-template: auto / 148.5px auto;
+    grid-template: 1fr / 148.5px 1fr;
     grid-column-gap: 40px; 
     grid-template-areas: 
         "contact-links contact-form";
 }
+
+/*-------------------------------------------*\
+    Row Children
+\*-------------------------------------------*/
 
 #contacts #contact-links,
 #contacts #contact-form {
@@ -39,4 +68,31 @@
     box-sizing: border-box;
     grid-area: contact-form;
     padding-bottom: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+    #contacts #contacts-row {
+        grid-column-gap: 15px; 
+    }
+
+    #contacts .container {
+        max-width: 750px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #contacts #contacts-row {
+        grid-template: 1fr / 1fr;
+        grid-template-areas: 
+            "contact-form"
+            "contact-links";
+    }
+}
+
+@media screen and (max-width: 888px) {
+    #contacts .container {
+        margin-left: 60px;
+        margin-right: 60px;
+        width: calc(100% - 120px);
+    }
 }

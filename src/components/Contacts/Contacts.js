@@ -12,7 +12,7 @@ class Contacts extends Component {
                 <div className="container">
                     <h3 id="contacts-header">Want to make something together?</h3>
                     <div id="contacts-row">
-                        <ContactForm addLinks={ this.props.addLinks } />
+                        <ContactForm />
                         <ContactLinks addLinks={ this.props.addLinks } />
                     </div>
                 </div>

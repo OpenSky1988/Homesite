@@ -1,13 +1,30 @@
+/*-------------------------------------------*\
+   ContactForm.css
+ 
+   Contents
+    - General 
+    - Forms
+    - Error Notification
+    - Text Field
+    - Submit Button
+
+\*-------------------------------------------*/
+
+/*-------------------------------------------*\
+   General
+\*-------------------------------------------*/
+
 form {
-    box-sizing: border-box;
     display: grid;
-    grid-template: 37px auto 32px / auto auto auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 37px 1fr 32px 35px;
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
     grid-template-areas: 
         "email name phone"
         "text text text"
-        "error-notification error-notification submit-btn";
+        "error-notification error-notification submit-btn"
+        ". . .";
 }
 
 #email { grid-area: email }
@@ -17,6 +34,9 @@ form {
 #error-notification { grid-area: error-notification }
 #submit-btn { grid-area: submit-btn }
 
+/*-------------------------------------------*\
+   Forms
+\*-------------------------------------------*/
 
 .forms {
     outline: none;
@@ -24,9 +44,9 @@ form {
     background-color: #191616;
     border: 2px solid transparent;
     border-radius: 6px;
+    box-sizing: border-box;
     color: #999;
-    -webkit-transition: all .3s;
-    -o-transition: all .3s;
+    min-width: 0;
     transition: all .3s
 }
 
@@ -42,20 +62,24 @@ form {
     outline: none
 }
 
-.error-notification {
+.forms:focus:-moz-placeholder,
+.forms:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+/*-------------------------------------------*\
+   Error Notification
+\*-------------------------------------------*/
+
+#error-notification {
     color: #2687ff;
     display: inline-block;
+    padding: 5px 10px;
 }
 
-input:focus:-moz-placeholder,
-input:focus::-webkit-input-placeholder {
-    color: transparent
-}
-
-textarea:focus:-moz-placeholder,
-textarea:focus::-webkit-input-placeholder {
-    color: transparent
-}
+/*-------------------------------------------*\
+   Text Field
+\*-------------------------------------------*/
 
 #text {
     background-color: #191616;
@@ -81,15 +105,19 @@ textarea:focus::-webkit-input-placeholder {
     outline: none
 }
 
+/*-------------------------------------------*\
+   Submit Button
+\*-------------------------------------------*/
+
 #submit-btn {
     background-color: #161414;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 3px;
     color: #6D6C6C;
+    cursor: pointer;
     font-weight: 500;
     outline: none;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding: 6px 6px;
     transition: all .3s;
 }
 
@@ -98,4 +126,38 @@ textarea:focus::-webkit-input-placeholder {
     border: 1px solid transparent;
     color: #FFF;
     outline: none
+}
+
+@media screen and (max-width: 991px) {
+    form {
+        grid-template-rows: 37px 1fr 32px;
+        grid-template-areas: 
+            "email name phone"
+            "text text text"
+            "error-notification error-notification submit-btn";
+    }
+}
+
+@media screen and (max-width: 585px) {
+    form {
+        grid-template: 2fr / auto !important;
+        grid-template-rows: 37px 1fr 32px 35px;
+        grid-template-areas: 
+            "email"
+            "name"
+            "phone"
+            "text"
+            "submit-btn"
+            "error-notification"
+            "." !important;
+    }
+
+    #text {
+        height: 140px;
+    }
+
+    #submit-btn {
+        margin-top: 20px;
+        padding: 12px 12px;
+    }
 }
