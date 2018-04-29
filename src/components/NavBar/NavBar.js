@@ -23,36 +23,31 @@ class NavBar extends Component {
         <li isActive={ true /*Apply certain styles on active button*/}>
           <Link
             to="/home#home"
-            className="bt" 
-            onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+            className="bt">
           home</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
             to="/home#services"
-            className="bt" 
-            onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+            className="bt">
           services</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
             to="/home#projects"
-            className="bt" 
-            onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+            className="bt">
           projects</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
             to="/home#contacts"
-            className="bt" 
-            onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+            className="bt">
           footer</Link>
         </li>
         <li isActive={ false /*Apply certain styles on active button*/}>
           <Link
             to="/blog#blog-title"
-            className="blog-button" 
-            onClick={ this.handlePageChange /*For all buttons - handles change of page*/}>
+            className="blog-button">
           blog</Link>
         </li>
       </ul>

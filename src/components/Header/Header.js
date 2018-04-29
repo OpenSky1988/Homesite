@@ -5,6 +5,7 @@ import BackArrow from '../BackArrow/BackArrow';
 import NavLogo from '../NavLogo/NavLogo';
 import NavBar from '../NavBar/NavBar';
 import NavTrigger from '../NavTrigger/NavTrigger';
+import NavMobileMenu from '../NavMobileMenu/NavMobileMenu';
 
 class Header extends Component {
     render() {
@@ -16,6 +17,8 @@ class Header extends Component {
                     <NavBar changePage={ this.props.changePage } />
                     <NavTrigger />
                 </div>
+                <NavMobileMenu />
+                <div class="body-shadow"></div>
             </header>
         )
     }

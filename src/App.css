@@ -10,36 +10,6 @@
     justify-content: space-around;
 }
 
-.mobile-nav {
-    background-color: #fff;
-    display: none;
-    display-position: relative;
-    display-padding-top: 20px;
-    display-transition: all 0.3s ease-in-out
-}
-
-.mobile-nav ul {
-    padding: 0;
-    text-align: center
-}
-
-.mobile-nav li {
-    list-style: none;
-    margin: 0;
-    padding: 10px 0;
-    text-transform: uppercase
-}
-
-.mobile-nav li>a {
-    color: #1c1919;
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    height: 100%;
-    letter-spacing: 1.2px;
-    text-decoration: none
-}
-
 img {
     user-drag: none;
     user-select: none;
@@ -85,18 +55,6 @@ body {
     top: 0;
     width: 100vw;
     z-index: 950
-}
-
-.mobile-nav li .page-img {
-    background: url("/img/vector/iconmonstr-log-out-17.svg") no-repeat top center;
-    background-size: cover;
-    display: inline-block;
-    height: 20px;
-    margin-left: 6px;
-    -webkit-transform: translateY(4px);
-    -ms-transform: translateY(4px);
-    transform: translateY(4px);
-    width: 20px
 }
 
 @media screen and (max-width: 1200px) {
@@ -153,52 +111,6 @@ body {
     }
 }
 
-/*@media screen and (max-width:585px) {
-    #footer {
-        padding: 4rem
-    }
-    #footer .col-md-6 .form-inline .forms {
-        display: block;
-        width: 99.5%;
-        margin-top: 10px
-    }
-    #footer li a {
-        width: 8%
-    }
-    #footer li a>img {
-        height: 20.5%;
-        margin: 0 3%;
-        width: 20.5%
-    }
-    #footer li:first-child a>img {
-        margin-left: 0 !important
-    }
-    #footer li:last-child a>img,
-    #footer li:nth-child(4) a>img {
-        margin-right: 0 !important
-    }
-    #social-2 {
-        display: table;
-        margin: auto;
-        padding-left: 0;
-        width: 50%
-    }
-    #submit-btn {
-        float: left;
-        margin: 3vw auto 15px;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        width: 100%
-    }
-    #subject {
-        height: 140px;
-        width: 99.5%
-    }
-    .copy p {
-        padding-bottom: 10px
-    }
-}*/
-
 @media screen and (max-width:539px) {
     .col-md-4 {
         height: auto;
@@ -222,27 +134,12 @@ body {
     }
 }
 
-@media screen and (min-width:481px) {
-    #social-2 li:nth-child(5) {
-        display: none
-    }
-}
-
-@media screen and (max-width:480px) {
-    #social-2 li:nth-child(4) {
-        display: none
-    }
-}
-
 @media screen and (max-width:450px) {
     body {
         border: none
     }
     #footer {
         padding: 3rem
-    }
-    #social-2 {
-        width: 55%
     }
 }
 
@@ -264,26 +161,8 @@ body {
     }
 }
 
-@media screen and (max-width:365px) {
-    #social-2 {
-        width: 60%
-    }
-}
-
 @media screen and (max-width:335px) {
     .inform p {
         font-size: 16px
-    }
-}
-
-@media screen and (max-width:335px) {
-    #social-2 {
-        width: 75%
-    }
-}
-
-@media screen and (max-width:265px) {
-    #social-2 {
-        width: 85%
     }
 }
