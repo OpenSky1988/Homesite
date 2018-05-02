@@ -5,38 +5,43 @@ import './NavMobileMenu.css';
 class NavMobileMenu extends Component {
   render() {
     return (
-      <div className="mobile-nav">
+      <div id="mobile-nav">
         <div className="container">
           <ul>
-            <li isActive={ true /*Apply certain styles on active button*/}>
+            <li isactive={ "true" /*Apply certain styles on active button*/}>
               <Link
                 to="/home#home"
-                className="bt">
+                className="bt"
+                onClick={ this.props.toggleMobileMenu }>
               home</Link>
             </li>
-            <li isActive={ false /*Apply certain styles on active button*/}>
+            <li isactive={ "false" /*Apply certain styles on active button*/}>
               <Link
                 to="/home#services"
-                className="bt">
+                className="bt"
+                onClick={ this.props.toggleMobileMenu }>
               services</Link>
             </li>
-            <li isActive={ false /*Apply certain styles on active button*/}>
+            <li isactive={ "false" /*Apply certain styles on active button*/}>
               <Link
                 to="/home#projects"
-                className="bt">
+                className="bt"
+                onClick={ this.props.toggleMobileMenu }>
               projects</Link>
             </li>
-            <li isActive={ false /*Apply certain styles on active button*/}>
+            <li isactive={ "false" /*Apply certain styles on active button*/}>
               <Link
                 to="/home#contacts"
-                className="bt">
+                className="bt"
+                onClick={ this.props.toggleMobileMenu }>
               footer</Link>
             </li>
             <li id="mobile-blog-btn"
-                isActive={ false /*Apply certain styles on active button*/}>
+                isactive={ "false" /*Apply certain styles on active button*/}>
               <Link
-                to="/blog#blog-title">
-              blog<div className="page-img"></div></Link>
+                to="/blog#blog-title"
+                onClick={ this.props.toggleMobileMenu }>
+              blog</Link>
             </li>
           </ul>
         </div>

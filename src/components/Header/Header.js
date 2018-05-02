@@ -8,20 +8,19 @@ import NavTrigger from '../NavTrigger/NavTrigger';
 import NavMobileMenu from '../NavMobileMenu/NavMobileMenu';
 
 class Header extends Component {
-    render() {
-        return (
-            <header id="moving-header">
-                <div className="container">
-                    <BackArrow />
-                    <NavLogo changePage={ this.props.changePage } />
-                    <NavBar changePage={ this.props.changePage } />
-                    <NavTrigger />
-                </div>
-                <NavMobileMenu />
-                <div class="body-shadow"></div>
-            </header>
-        )
-    }
+  render() {
+    return (
+      <header id="moving-header">
+        <div className="container">
+          <BackArrow />
+          <NavLogo toggleMobileMenu={ this.props.toggleMobileMenu } />
+          <NavBar />
+          <NavTrigger toggleMobileMenu={ this.props.toggleMobileMenu } />
+        </div>
+        <NavMobileMenu toggleMobileMenu={ this.props.toggleMobileMenu } />
+      </header>
+    )
+  }
 }
 
 export default Header;

@@ -404,7 +404,7 @@
     #projects .container {
         margin: 25px;
         padding: 0;
-        width: auto;
+        width: auto !important;
     }
 
     .popup-project {

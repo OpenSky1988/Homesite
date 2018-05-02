@@ -1,168 +1,168 @@
 .container {
-    margin: auto;
-    max-width: 1170px
+  margin: auto;
+  max-width: 1170px
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 img {
-    user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none
 }
 
 :-moz-placeholder,
 :-ms-input-placeholder,
 ::-moz-placeholder,
 ::-webkit-input-placeholder {
-    color: #5E5E5E
+  color: #5E5E5E
 }
 
 button {
-    background: none;
-    border: white;
-    outline: none;
+  background: none;
+  border: white;
+  outline: none;
 }
 
 body {
-    border: 10px solid #1f1c1c;
-    overflow: auto;
-    position: static
+  border: 10px solid #1f1c1c;
+  overflow: auto;
+  position: static
 }
 
 .body-overflow {
-    overflow: hidden !important;
-    overflow-y: scroll
+  overflow: hidden !important;
+  overflow-y: scroll
 }
 
-.body-shadow {
-    background: #000;
-    background-size: fill;
-    content: "";
-    display: none;
-    height: 100vh;
-    left: 0;
-    opacity: 0.6;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 950
+#body-shadow {
+  background: #000;
+  background-size: fill;
+  content: "";
+  display: none;
+  height: 100vh;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 950
 }
 
 @media screen and (max-width: 1200px) {
-    .container {
-        max-width: 970px;
-    }
+  .container {
+    max-width: 970px;
+  }
 }
 
 @media screen and (max-width:991px) {
-    .container {
-        width: 750px;
-    }
+  .container {
+    width: 750px;
+  }
 
-    #services h3 {
-        margin-bottom: 0
-    }
+  #services h3 {
+    margin-bottom: 0
+  }
 
-    #contact-img {
-        display: none
-    }
+  #contact-img {
+    display: none
+  }
 
-    .row {
-        margin: 0
-    }
+  .row {
+    margin: 0
+  }
 }
 
 @media screen and (max-width:812px) {
-    .container {
-        width: 100%;
-    }
+  .container {
+    width: 100%;
+  }
 
-    .inform {
-        padding-left: 5%;
-        padding-right: 5%
-    }
+  .inform {
+    padding-left: 5%;
+    padding-right: 5%
+  }
 
-    .inform .container {
-        max-width: 100%
-    }
+  .inform .container {
+    max-width: 100%
+  }
 }
 
 @media screen and (max-width:767px) {
-    .jumbotron h1 {
-        font-size: 52px
-    }
+  .jumbotron h1 {
+    font-size: 52px
+  }
 }
 
 @media screen and (max-width:675px) {
-    .mobile-text h2 {
-        font-size: 18px
-    }
-    .mobile-text p {
-        font-size: 16px
-    }
+  .mobile-text h2 {
+    font-size: 18px
+  }
+  .mobile-text p {
+    font-size: 16px
+  }
 }
 
 @media screen and (max-width:539px) {
-    .col-md-4 {
-        height: auto;
-        padding: 20px 0 50px 15px
-    }
-    
-    #viewbtn-1 {
-        display: none
-    }
+  .col-md-4 {
+    height: auto;
+    padding: 20px 0 50px 15px
+  }
+  
+  #viewbtn-1 {
+    display: none
+  }
 
-    #viewbtn-2 {
-        display: block;
-        left: 50%;
-        margin-left: -82px;
-        position: absolute
-    }
+  #viewbtn-2 {
+    display: block;
+    left: 50%;
+    margin-left: -82px;
+    position: absolute
+  }
 
-    #footer {
-        padding-left: 0 !important;
-        padding-right: 0 !important
-    }
+  #footer {
+    padding-left: 0 !important;
+    padding-right: 0 !important
+  }
 }
 
 @media screen and (max-width:450px) {
-    body {
-        border: none
-    }
-    #footer {
-        padding: 3rem
-    }
+  body {
+    border: none
+  }
+  #footer {
+    padding: 3rem
+  }
 }
 
 @media screen and (max-width:430px) {
-    #my_img-1 {
-        bottom: -79px;
-        margin-left: -75px;
-        height: 150px
-    }
-    .inform p {
-        font-size: 20px;
-        letter-spacing: .3px
-    }
+  #my_img-1 {
+    bottom: -79px;
+    margin-left: -75px;
+    height: 150px
+  }
+  .inform p {
+    font-size: 20px;
+    letter-spacing: .3px
+  }
 }
 
 @media screen and (max-width:396px) {
-    body {
-        border: none
-    }
+  body {
+    border: none
+  }
 }
 
 @media screen and (max-width:335px) {
-    .inform p {
-        font-size: 16px
-    }
+  .inform p {
+    font-size: 16px
+  }
 }
