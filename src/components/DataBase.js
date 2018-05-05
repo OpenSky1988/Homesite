@@ -19,6 +19,7 @@ const DataBase = {
 
     projects: [
         {
+            id: "1",
             name: "Project 1",
             shortDescription: "Description of Project 1 will appear later.",
             longDescription: "Coming soon...",
@@ -26,6 +27,7 @@ const DataBase = {
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
+            id: "2",
             name: "Project 2",
             shortDescription: "Description of Project 2 will appear later.",
             longDescription: "Coming soon...",
@@ -33,6 +35,7 @@ const DataBase = {
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
+            id: "3",
             name: "Project 3",
             shortDescription: "Description of Project 3 will appear later.",
             longDescription: "Coming soon...",
@@ -40,6 +43,7 @@ const DataBase = {
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
+            id: "4",
             name: "Project 4",
             shortDescription: "Description of Project 4 will appear later.",
             longDescription: "Coming soon...",
@@ -47,6 +51,7 @@ const DataBase = {
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
+            id: "5",
             name: "Project 5",
             shortDescription: "Description of Project 5 will appear later.",
             longDescription: "Coming soon...",
@@ -54,6 +59,7 @@ const DataBase = {
             skills: "HTML, CSS, WordPress, AJAX, ES2017, React.js"
         },
         {
+            id: "6",
             name: "Project 6",
             shortDescription: "Description of Project 6 will appear later.",
             longDescription: "Coming soon...",

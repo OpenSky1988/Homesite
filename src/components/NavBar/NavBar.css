@@ -76,6 +76,7 @@
 
 /*.blog-button::focus,*/
 .nav .blog-button:active,
+.nav .blog-button:focus,
 .nav .blog-button:hover {
     background-color: #117bff !important;
     border: 1px solid #117bff !important;

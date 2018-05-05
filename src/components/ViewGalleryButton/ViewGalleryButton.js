@@ -6,7 +6,7 @@ class ViewGalleryButton extends Component {
         return (
             <a  className="btn" 
                 id="view-gallery-btn"
-                href="#gallery">
+                href="#projects">
                 View gallery
             </a>
         )

@@ -8,7 +8,6 @@ class NavLogo extends Component {
             <Link
                 to="/home#home"
                 className="logo-button logom" 
-                dataValue="main" 
                 onClick={ this.props.toggleMobileMenu }></Link> 
         );
     }

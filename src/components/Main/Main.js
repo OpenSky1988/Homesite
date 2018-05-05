@@ -13,7 +13,7 @@ class Main extends Component {
                 <Banner />
                 <Greetings />
                 <Services skillsList={ this.props.skillsList } />
-                <Projects addProjects={ this.props.addProjects }/>
+                <Projects addProjects={ this.props.addProjects } />
                 <Contacts addLinks={ this.props.addLinks } />
             </main>
         );

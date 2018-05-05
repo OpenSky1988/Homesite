@@ -6,11 +6,17 @@ import {
 
 import './App.css';
 
+/** Static Components **/
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
 
+/** Dynamic Components **/
+import OpenProject from './components/OpenProject/OpenProject';
+import OpenArticle from './components/OpenArticle/OpenArticle';
+
+/** DataBase Supplement **/
 import DataBase from './components/DataBase';
 
 
@@ -19,10 +25,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuOpen: false,
-      initMenuHeight: 215,
+      menuOpen: false,      // Mobile menu state
+      initMenuHeight: 215,  // Mobile menu height
       projectOpen: false,
-      articleOpen: false
+      projectKey: null,
+      articleOpen: false,
+      articleKey: null
     };
 
     this.addServices = this.addServices.bind(this);
@@ -31,6 +39,8 @@ class App extends Component {
     this.addArticles = this.addArticles.bind(this);
 
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+    this.setProjectState = this.setProjectState.bind(this);
+    this.setArticleState = this.setArticleState.bind(this);
   }
 
   addServices() {
@@ -51,9 +61,9 @@ class App extends Component {
 
   addProjects() {
     let projects = DataBase.projects.map(project => {
-
       return (
-        <div className="project">
+        <div className="project" key={ project.id }
+      onClick={ this.setProjectState } >
           <div className="thumbnail" style={{ backgroundImage: `url("${project.img}")` }}>
             <div className="tb">
               <h3>{ project.name }</h3>
@@ -98,7 +108,9 @@ class App extends Component {
   addArticles() {
     const articles = DataBase.articles.map(article => {
       return (
-        <div className="article-preview">
+        <div 
+          className="article-preview"
+          onClick={ this.setArticleState }>
           <div 
             className="ap-image" 
             id="img-1" 
@@ -119,25 +131,51 @@ class App extends Component {
     return articles;
   }
 
-  toggleMobileMenu() {
+  toggleMobileMenu(e) {
     const mobileNavMenu = document.getElementById("mobile-nav");
     const bodyShadow = document.getElementById("body-shadow");
     const navTrigger = document.getElementById("nav-trigger");
-
-    navTrigger.classList.toggle("is-open");
-
+    
     if(this.state.menuOpen) {
+      navTrigger.classList.remove("is-open");
       this.setState({ menuOpen: false });
 
       mobileNavMenu.style.height = "0px";
       bodyShadow.style.opacity = "0";
       bodyShadow.style.display = "none";
     } else {
-      this.setState({ menuOpen: true });
+      if(!(e.target.className === "logo-button logom")) {
+        navTrigger.classList.add("is-open");
+        this.setState({ menuOpen: true });
 
-      mobileNavMenu.style.height = this.state.initMenuHeight + "px";
-      bodyShadow.style.display = "block";
-      bodyShadow.style.opacity = "0.6";
+        mobileNavMenu.style.height = this.state.initMenuHeight + "px";
+        bodyShadow.style.display = "block";
+        bodyShadow.style.opacity = "0.6";
+      }
+    } 
+  }
+
+  setProjectState() {
+    const body = document.getElementById("body");
+    
+    if (this.state.projectOpen) {
+      this.setState({ projectOpen: false });
+      body.classList.remove("body-overflow");
+    } else {
+      this.setState({ projectOpen: true });
+      body.classList.add("body-overflow");
+    }
+  }
+
+  setArticleState() {
+    const body = document.getElementById("body");
+    
+    if (this.state.articleOpen) {
+      this.setState({ articleOpen: false });
+      body.classList.remove("body-overflow");
+    } else {
+      this.setState({ articleOpen: true });
+      body.classList.add("body-overflow");
     }
   }
 
@@ -148,14 +186,16 @@ class App extends Component {
           <div>
             <Header toggleMobileMenu={ this.toggleMobileMenu } />
             <div id="body-shadow" onClick={ this.toggleMobileMenu }></div>
+            { this.state.projectOpen && <OpenProject setProjectState={ this.setProjectState } /> }
+            { this.state.articleOpen && <OpenArticle /> }
             <Route path="(/|/home)" render={ () => <Main 
               skillsList={ this.addServices }
               addProjects={ this.addProjects }
-              addLinks={ this.addLinks } 
-            /> } />
+              addLinks={ this.addLinks } /> 
+            } />
             <Route path="/blog" render={ () => <Blog
-              addArticles={ this.addArticles }
-            /> } />
+              addArticles={ this.addArticles } />
+            } />
           </div>
         </Router>
         <Footer />
