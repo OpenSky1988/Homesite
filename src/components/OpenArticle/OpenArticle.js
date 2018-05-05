@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
+import DataBase from '../DataBase';
+
 import './OpenArticle.css';
 
 class OpenArticle extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    if (e.target === e.currentTarget) this.props.setArticleState();
+  }
+
   render() {
+    const article = DataBase.articles.find(article => article.id === this.props.article);
+    console.log(article);
     return (
-      <div className="page-wrap">
+      <div className="page-wrap" onClick={ this.handleClick }>
         <div className="popup-article">
           <div className="article-image" 
-            style={{ backgroundImage: `url("/img/blog/img-1-4000-(2000).jpg")` }}></div>
+            style={{ backgroundImage: `url("${article.img}")` }}></div>
           <div className="content">
-            <div className="article-header">What caused my career change?</div>
-            <div className="article-date">12 April, 2017</div>
+            <div className="article-header">{ article.header }</div>
+            <div className="article-date">{ article.date }</div>
             <div className="article-content">
-              Most people are told what to do and where to go, for example, by the loved ones. See you!
+              { article.text }
             </div>
             <div className="article-navigation">
               <div id="back" 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DataBase from '../DataBase';
+
 import './OpenProject.css';
 
 class OpenProject extends Component {
@@ -14,16 +16,18 @@ class OpenProject extends Component {
   }
 
   render() {
+    const project = DataBase.projects.find(project => project.id === this.props.project);
+
     return ( 
       <div className="page-wrap" onClick={ this.handleClick }>
         <div className="popup-project">
           <div className="project-image" 
-            style={{ backgroundImage: `url("/img/projects/p2-4000-(900).jpg")` }}></div>
+            style={{ backgroundImage: `url("${project.img}")` }}></div>
           <div className="project-header">
-            <div className="project-name">Project 2</div>
-            <div className="project-skills"> Responsive Desing, UX, jQuery, HTML / CSS </div>
+            <div className="project-name">{ project.name }</div>
+            <div className="project-skills">{ project.skills }</div>
           </div> 
-          <div className="project-description"> Coming soon... </div>
+          <div className="project-description">{ project.longDescription }</div>
           <div className="project-close-button" onClick={ this.handleClick }>Close</div > 
         </div>
       </div>

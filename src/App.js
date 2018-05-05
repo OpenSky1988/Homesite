@@ -62,8 +62,11 @@ class App extends Component {
   addProjects() {
     let projects = DataBase.projects.map(project => {
       return (
-        <div className="project" key={ project.id }
-      onClick={ this.setProjectState } >
+        <div 
+          className="project" 
+          key={ project.id } 
+          id={ project.id }
+          onClick={ this.setProjectState } >
           <div className="thumbnail" style={{ backgroundImage: `url("${project.img}")` }}>
             <div className="tb">
               <h3>{ project.name }</h3>
@@ -85,31 +88,13 @@ class App extends Component {
     return projects;
   }
 
-  addLinks() {
-    const links = DataBase.links.map(link => {
-      return (
-        <li id={ link.id }>
-          <a  href={ link.href }
-            target="_blank"
-            rel="noopener noreferrer">
-            <img
-              src={ link.img }
-              border="0"
-              alt={ link.alt }
-            />
-          </a>
-        </li>
-      );
-    });
-
-    return links;
-  }
-
   addArticles() {
     const articles = DataBase.articles.map(article => {
       return (
         <div 
           className="article-preview"
+          key={ article.id } 
+          id={ article.id }
           onClick={ this.setArticleState }>
           <div 
             className="ap-image" 
@@ -129,6 +114,26 @@ class App extends Component {
     });
 
     return articles;
+  }
+
+  addLinks() {
+    const links = DataBase.links.map(link => {
+      return (
+        <li id={ link.id }>
+          <a  href={ link.href }
+            target="_blank"
+            rel="noopener noreferrer">
+            <img
+              src={ link.img }
+              border="0"
+              alt={ link.alt }
+            />
+          </a>
+        </li>
+      );
+    });
+
+    return links;
   }
 
   toggleMobileMenu(e) {
@@ -155,26 +160,38 @@ class App extends Component {
     } 
   }
 
-  setProjectState() {
+  setProjectState(e) {
     const body = document.getElementById("body");
     
     if (this.state.projectOpen) {
-      this.setState({ projectOpen: false });
+      this.setState({ 
+        projectOpen: false,
+        projectKey: null 
+      });
       body.classList.remove("body-overflow");
     } else {
-      this.setState({ projectOpen: true });
+      this.setState({ 
+        projectOpen: true,
+        projectKey: e.currentTarget.id 
+      });
       body.classList.add("body-overflow");
     }
   }
 
-  setArticleState() {
+  setArticleState(e) {
     const body = document.getElementById("body");
     
     if (this.state.articleOpen) {
-      this.setState({ articleOpen: false });
+      this.setState({ 
+        articleOpen: false,
+        articleKey: null
+      });
       body.classList.remove("body-overflow");
     } else {
-      this.setState({ articleOpen: true });
+      this.setState({ 
+        articleOpen: true,
+        articleKey: e.currentTarget.id
+      });
       body.classList.add("body-overflow");
     }
   }
@@ -186,8 +203,16 @@ class App extends Component {
           <div>
             <Header toggleMobileMenu={ this.toggleMobileMenu } />
             <div id="body-shadow" onClick={ this.toggleMobileMenu }></div>
-            { this.state.projectOpen && <OpenProject setProjectState={ this.setProjectState } /> }
-            { this.state.articleOpen && <OpenArticle /> }
+            { 
+              this.state.projectOpen && <OpenProject 
+                setProjectState={ this.setProjectState } 
+                project={ this.state.projectKey } /> 
+            }
+            { 
+              this.state.articleOpen && <OpenArticle
+                setArticleState={ this.setArticleState }
+                article={ this.state.articleKey } /> 
+            }
             <Route path="(/|/home)" render={ () => <Main 
               skillsList={ this.addServices }
               addProjects={ this.addProjects }
