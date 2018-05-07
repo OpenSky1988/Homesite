@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ArticleNavigation from '../ArticleNavigation/ArticleNavigation';
 import DataBase from '../DataBase';
 
 import './OpenArticle.css';
@@ -29,11 +30,9 @@ class OpenArticle extends Component {
             <div className="article-content">
               { article.text }
             </div>
-            <div className="article-navigation">
-              <div id="back" 
-                className="view-button button-inactive">← Back</div>
-              <div id="next" className="view-button">Next →</div>
-            </div>
+            <ArticleNavigation
+              navigateArticles={ this.props.navigateArticles }
+              defineInactiveButton={ this.props.defineInactiveButton } />
           </div>
         </div>
       </div>

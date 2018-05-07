@@ -57,7 +57,7 @@
     max-width: 800px
 }
 
-.blog .container .article-preview {
+.blog .container .article {
     background-color: #FFF;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -71,7 +71,7 @@
     text-align: center
 }
 
-.blog .container .article-preview .ap-image {
+.blog .container .article .ap-image {
 
     background-repeat: no-repeat;
     background-position: center center;
@@ -81,13 +81,13 @@
     max-width: 2000px
 }
 
-.blog .container .article-preview .content {
+.blog .container .article .content {
     font-size: 24px;
     padding: 0;
     text-align: left
 }
 
-.blog .container .article-preview .content h2 {
+.blog .container .article .content h2 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -95,15 +95,15 @@
     text-transform: uppercase
 }
 
-.blog .container .article-preview .content h2:hover {
+.blog .container .article .content h2:hover {
     text-decoration: underline
 }
 
-.blog .container .article-preview .content .post-date {
+.blog .container .article .content .post-date {
     text-align: center
 }
 
-.blog .container .article-preview .content .post-date h4 {
+.blog .container .article .content .post-date h4 {
     color: #888;
     font-size: 22px;
     font-weight: 500;
@@ -111,11 +111,11 @@
     margin-top: 0 !important
 }
 
-.blog .container .article-preview .content p {
+.blog .container .article .content p {
     font-weight: 400
 }
 
-.blog .container .article-preview .content:nth-child(2) {
+.blog .container .article .content:nth-child(2) {
     margin-bottom: 30px
 }
 
@@ -147,16 +147,4 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45), 0 3px 6px rgba(0, 0, 0, 0.4);
     outline: none;
     text-decoration: none
-}
-
-.button-inactive {
-    border: 1px solid #b5b5b5;
-    background-color: transparent;
-    color: #b5b5b5
-}
-
-.button-inactive:hover {
-    background-color: transparent;
-    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22)
 }

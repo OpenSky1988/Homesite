@@ -1,0 +1,27 @@
+.article-navigation {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 20px 0
+}
+
+.article-navigation #back {
+    margin-left: 20px
+}
+
+.article-navigation #next {
+    margin-right: 20px
+}
+
+.button-inactive {
+    border: 1px solid #b5b5b5;
+    background-color: transparent;
+    color: #b5b5b5
+}
+
+.button-inactive:hover {
+    background-color: transparent;
+    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22)
+}

@@ -30,17 +30,21 @@ class App extends Component {
       projectOpen: false,
       projectKey: null,
       articleOpen: false,
-      articleKey: null
+      articleKey: null,
+      articles: []
     };
 
     this.addServices = this.addServices.bind(this);
     this.addProjects = this.addProjects.bind(this);
-    this.addLinks = this.addLinks.bind(this);
     this.addArticles = this.addArticles.bind(this);
+    this.addLinks = this.addLinks.bind(this);
 
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.setProjectState = this.setProjectState.bind(this);
     this.setArticleState = this.setArticleState.bind(this);
+
+    this.navigateArticles = this.navigateArticles.bind(this);
+    this.defineInactiveButton = this.defineInactiveButton.bind(this);
   }
 
   addServices() {
@@ -89,10 +93,12 @@ class App extends Component {
   }
 
   addArticles() {
-    const articles = DataBase.articles.map(article => {
+    this.state.articles = DataBase.articles;
+
+    let articles = this.state.articles.map(article => {
       return (
         <div 
-          className="article-preview"
+          className="article"
           key={ article.id } 
           id={ article.id }
           onClick={ this.setArticleState }>
@@ -180,9 +186,9 @@ class App extends Component {
 
   setArticleState(e) {
     const body = document.getElementById("body");
-    
+
     if (this.state.articleOpen) {
-      this.setState({ 
+      this.setState({
         articleOpen: false,
         articleKey: null
       });
@@ -195,6 +201,63 @@ class App extends Component {
       body.classList.add("body-overflow");
     }
   }
+/*
+  setArticleState(e) {
+    const body = document.getElementById("body");
+    let itemType = "";
+
+    if (this.state[`${itemType}Open`]) {
+      itemType = "";
+      console.log(itemType);
+
+      this.setState({
+        articleOpen: false,
+        articleKey: null
+      });
+      body.classList.remove("body-overflow");
+    } else {
+      itemType = e.currentTarget.className;
+      
+      this.setState({ 
+        articleOpen: true,
+        articleKey: e.currentTarget.id
+      });
+      body.classList.add("body-overflow");
+    }
+  }
+*/
+  navigateArticles(e) {
+    const button = e.currentTarget.id;
+    const currentArticle = parseInt(this.state.articleKey);
+    const maxArticle = this.state.articles.length - 1;
+
+    if (button === "back" && currentArticle > 1) {
+      this.setState({ 
+        articleKey: (currentArticle - 1).toString() 
+      });
+    } else if (button === "next" && currentArticle <= maxArticle) {
+      this.setState({ 
+        articleKey: (currentArticle + 1).toString() 
+      });
+    }
+  }
+
+  defineInactiveButton() {
+    let currentArticle = parseInt(this.state.articleKey);
+    const maxArticle = this.state.articles.length - 1;
+
+    const next = document.getElementById("next");
+    const back = document.getElementById("back");
+
+    if (currentArticle <= 1 && currentArticle > maxArticle) {
+      back.classList.add("button-inactive");
+      next.classList.add("button-inactive");
+    } else if (currentArticle <= 1) {
+      back.classList.add("button-inactive");
+    } else if (currentArticle > maxArticle) {
+      next.classList.add("button-inactive");
+    }
+  }
 
   render() {
     return (
@@ -204,14 +267,16 @@ class App extends Component {
             <Header toggleMobileMenu={ this.toggleMobileMenu } />
             <div id="body-shadow" onClick={ this.toggleMobileMenu }></div>
             { 
-              this.state.projectOpen && <OpenProject 
-                setProjectState={ this.setProjectState } 
-                project={ this.state.projectKey } /> 
+              this.state.projectOpen && <OpenProject
+                project={ this.state.projectKey }
+                setProjectState={ this.setProjectState } /> 
             }
             { 
               this.state.articleOpen && <OpenArticle
+                article={ this.state.articleKey }
                 setArticleState={ this.setArticleState }
-                article={ this.state.articleKey } /> 
+                navigateArticles={ this.navigateArticles }
+                defineInactiveButton={ this.defineInactiveButton } /> 
             }
             <Route path="(/|/home)" render={ () => <Main 
               skillsList={ this.addServices }
