@@ -32,7 +32,8 @@ class OpenArticle extends Component {
             </div>
             <ArticleNavigation
               navigateArticles={ this.props.navigateArticles }
-              defineInactiveButton={ this.props.defineInactiveButton } />
+              article={ this.props.article }
+              articleArray={ this.props.articleArray } />
           </div>
         </div>
       </div>

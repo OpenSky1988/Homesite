@@ -27,8 +27,10 @@ class App extends Component {
     this.state = {
       menuOpen: false,      // Mobile menu state
       initMenuHeight: 215,  // Mobile menu height
+
       projectOpen: false,
       projectKey: null,
+
       articleOpen: false,
       articleKey: null,
       articles: []
@@ -44,7 +46,6 @@ class App extends Component {
     this.setArticleState = this.setArticleState.bind(this);
 
     this.navigateArticles = this.navigateArticles.bind(this);
-    this.defineInactiveButton = this.defineInactiveButton.bind(this);
   }
 
   addServices() {
@@ -242,23 +243,6 @@ class App extends Component {
     }
   }
 
-  defineInactiveButton() {
-    let currentArticle = parseInt(this.state.articleKey);
-    const maxArticle = this.state.articles.length - 1;
-
-    const next = document.getElementById("next");
-    const back = document.getElementById("back");
-
-    if (currentArticle <= 1 && currentArticle > maxArticle) {
-      back.classList.add("button-inactive");
-      next.classList.add("button-inactive");
-    } else if (currentArticle <= 1) {
-      back.classList.add("button-inactive");
-    } else if (currentArticle > maxArticle) {
-      next.classList.add("button-inactive");
-    }
-  }
-
   render() {
     return (
       <div className="App">
@@ -274,9 +258,9 @@ class App extends Component {
             { 
               this.state.articleOpen && <OpenArticle
                 article={ this.state.articleKey }
+                articleArray={ this.state.articles }
                 setArticleState={ this.setArticleState }
-                navigateArticles={ this.navigateArticles }
-                defineInactiveButton={ this.defineInactiveButton } /> 
+                navigateArticles={ this.navigateArticles } /> 
             }
             <Route path="(/|/home)" render={ () => <Main 
               skillsList={ this.addServices }
