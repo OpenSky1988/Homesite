@@ -1,14 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './BackArrow.css';
 
-class BackArrow extends Component {
-    render() {
-        return (
-            <div id="back-arrow">
-                <div className="arrow"></div>
-            </div>
-        )
-    }
-}
+const BackArrow = () => (
+  <div id="back-arrow">
+    <div className="arrow" />
+  </div>
+);
 
 export default BackArrow;

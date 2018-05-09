@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ArticleNavigation from '../ArticleNavigation/ArticleNavigation';
 import DataBase from '../DataBase';
 
@@ -17,28 +18,40 @@ class OpenArticle extends Component {
   }
 
   render() {
-    const article = DataBase.articles.find(article => article.id === this.props.article);
-    console.log(article);
+    const article = DataBase.articles.find(curentArticle => (
+      curentArticle.id === this.props.article
+    ));
+
     return (
-      <div className="page-wrap" onClick={ this.handleClick }>
+      <div className="page-wrap" onClick={this.handleClick} role="none">
         <div className="popup-article">
-          <div className="article-image" 
-            style={{ backgroundImage: `url("${article.img}")` }}></div>
+          <div
+            className="article-image"
+            style={{ backgroundImage: `url("${article.img}")` }}
+          />
           <div className="content">
-            <div className="article-header">{ article.header }</div>
-            <div className="article-date">{ article.date }</div>
+            <div className="article-header">{article.header}</div>
+            <div className="article-date">{article.date}</div>
             <div className="article-content">
               { article.text }
             </div>
             <ArticleNavigation
-              navigateArticles={ this.props.navigateArticles }
-              article={ this.props.article }
-              articleArray={ this.props.articleArray } />
+              navigateArticles={this.props.navigateArticles}
+              article={this.props.article}
+              articleArray={this.props.articleArray}
+            />
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
+
+OpenArticle.propTypes = {
+  setArticleState: PropTypes.func.isRequired,
+  article: PropTypes.string.isRequired,
+  navigateArticles: PropTypes.func.isRequired,
+  articleArray: PropTypes.arrayOf(PropTypes.shape).isRequired,
+};
 
 export default OpenArticle;

@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Services.css';
 
-class Services extends Component {
+const Services = props => (
+  <section id="services">
+    <div className="container">
+      <h2>Services</h2>
+      <div id="skill-container">
+        {props.addServices()}
+      </div>
+    </div>
+  </section>
+);
 
-    render() {
-        return (
-            <section id="services">
-                <div className="container">
-                    <h2>Services</h2>
-                    <div id="skill-container">
-                        { this.props.skillsList() }
-                    </div>
-                </div>
-            </section>
-        );
-    }
-}
+Services.propTypes = {
+  addServices: PropTypes.func.isRequired,
+};
 
 export default Services;

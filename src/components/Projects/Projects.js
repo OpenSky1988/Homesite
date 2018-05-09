@@ -1,19 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Projects.css';
 
-class Projects extends Component {
-    render() {
-        return (
-            <section id="projects">
-                <div className="container">
-                    <h2>Projects</h2>
-                    <div id="projects-container">
-                        { this.props.addProjects() }
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
+const Projects = props => (
+  <section id="projects">
+    <div className="container">
+      <h2>Projects</h2>
+      <div id="projects-container">
+        {props.addProjects()}
+      </div>
+    </div>
+  </section>
+);
+
+Projects.propTypes = {
+  addProjects: PropTypes.func.isRequired,
+};
 
 export default Projects;

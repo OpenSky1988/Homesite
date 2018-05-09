@@ -1,21 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './ContactLinks.css';
 
-class ContactLinks extends Component {
-    render() {
-        return (
-            <div id="contact-links">
-                <img
-                    id="contact-img" 
-                    src="/img/home/footer_img.jpg" 
-                    alt="Contact me here"
-                />
-                <ul id="social">
-                    { this.props.addLinks() }
-                </ul>
-            </div>
-        );
-    }
-}
+const ContactLinks = props => (
+  <div id="contact-links">
+    <img
+      id="contact-img"
+      src="/img/home/footer_img.jpg"
+      alt="Contact me here"
+    />
+    <ul id="social">
+      { props.addLinks() }
+    </ul>
+  </div>
+);
+
+ContactLinks.propTypes = {
+  addLinks: PropTypes.func.isRequired,
+};
 
 export default ContactLinks;
