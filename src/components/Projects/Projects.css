@@ -166,11 +166,11 @@
     text-transform: uppercase
 }
 
-.project .mobile-text p {
+.project .mobile-text > div {
     font-size: 18px
 }
 
-.project .mobile-text p:first-child {
+.project .mobile-text > div:first-child {
     margin-bottom: 40px
 }
 

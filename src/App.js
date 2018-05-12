@@ -27,11 +27,15 @@ class App extends Component {
       menuOpen: false, // Mobile menu state
       initMenuHeight: 215, // Mobile menu height
 
-      projectOpen: false,
-      projectKey: null,
-
-      articleOpen: false,
-      articleKey: null,
+      project: {
+        open: false,
+        key: null,
+      },
+      article: {
+        open: false,
+        key: null,
+      },
+      
       articles: [],
     };
 
@@ -54,16 +58,20 @@ class App extends Component {
 
   setProjectState = (e) => {
     const body = document.getElementById('body');
-    if (this.state.projectOpen) {
+    if (this.state.project.open) {
       this.setState({
-        projectOpen: false,
-        projectKey: null,
+        project: {
+          open: false,
+          key: null,
+        },
       });
       body.classList.remove('body-overflow');
     } else if (e) {
       this.setState({
-        projectOpen: true,
-        projectKey: e.currentTarget.id,
+        project: {
+          open: true,
+          key: e.currentTarget.id,
+        },
       });
       body.classList.add('body-overflow');
     }
@@ -72,16 +80,20 @@ class App extends Component {
   setArticleState = (e) => {
     const body = document.getElementById('body');
 
-    if (this.state.articleOpen) {
+    if (this.state.article.open) {
       this.setState({
-        articleOpen: false,
-        articleKey: null,
+        article: {
+          open: false,
+          key: null,
+        },
       });
       body.classList.remove('body-overflow');
     } else if (e) {
       this.setState({
-        articleOpen: true,
-        articleKey: e.currentTarget.id,
+        article: {
+          open: true,
+          key: e.currentTarget.id,
+        },
       });
       body.classList.add('body-overflow');
     }
@@ -114,7 +126,9 @@ class App extends Component {
 
   addServices = () => {
     const servicesList = DataBase.skills.map(skill => (
-      <div className="skill">
+      <div 
+        className="skill"
+        key={skill.id}>
         <div
           className="skill-icon"
           style={{ backgroundImage: `url("${skill.img}")` }}
@@ -144,12 +158,12 @@ class App extends Component {
           </div>
         </div>
         <div className="mobile-text">
-          <p>
+          <div>
             <span className="proj-name">{ project.name }</span> - { project.shortDescription }
-          </p>
-          <p>
+          </div>
+          <div>
             <div className="project-button">View more</div>
-          </p>
+          </div>
         </div>
       </div>
     ));
@@ -187,7 +201,9 @@ class App extends Component {
 
   addLinks = () => {
     const links = DataBase.links.map(link => (
-      <li id={link.id}>
+      <li 
+        id={link.id}
+        key={link.id}>
         <a
           href={link.href}
           target="_blank"
@@ -231,16 +247,22 @@ class App extends Component {
 
   navigateArticles = (e) => {
     const button = e.currentTarget.id;
-    const currentArticle = parseInt(this.state.articleKey, 10);
+    const currentArticle = parseInt(this.state.article.key, 10);
     const maxArticle = this.state.articles.length - 1;
 
     if (button === 'back' && currentArticle > 1) {
       this.setState({
-        articleKey: (currentArticle - 1).toString(),
+        article: {
+          ...this.state.article,
+          key: (currentArticle - 1).toString(),
+        }
       });
     } else if (button === 'next' && currentArticle <= maxArticle) {
       this.setState({
-        articleKey: (currentArticle + 1).toString(),
+        article: {
+          ...this.state.article,
+          key: (currentArticle + 1).toString(),
+        }
       });
     }
   }
@@ -248,7 +270,7 @@ class App extends Component {
   displayBackArrow = () => {
     const isSmallWindowSize = window.matchMedia('screen and (max-width: 1024px)').matches;
 
-    if (isSmallWindowSize && (this.state.articleOpen || this.state.projectOpen)) {
+    if (isSmallWindowSize && (this.state.article.open || this.state.project.open)) {
       return true;
     }
     return false;
@@ -266,14 +288,14 @@ class App extends Component {
           />
           <div id="body-shadow" onClick={this.toggleMobileMenu} role="none" />
           {
-            this.state.projectOpen && <OpenProject
-              project={this.state.projectKey}
+            this.state.project.open && <OpenProject
+              project={this.state.project.key}
               setProjectState={this.setProjectState}
             />
           }
           {
-            this.state.articleOpen && <OpenArticle
-              article={this.state.articleKey}
+            this.state.article.open && <OpenArticle
+              article={this.state.article.key}
               articleArray={this.state.articles}
               setArticleState={this.setArticleState}
               navigateArticles={this.navigateArticles}
