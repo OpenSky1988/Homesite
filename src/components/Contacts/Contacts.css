@@ -16,7 +16,7 @@
 #contacts {
   background-color: #1f1c1c;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Open Sans', sans-serif !important
 }
 
 #contacts .container {

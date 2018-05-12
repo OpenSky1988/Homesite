@@ -20,11 +20,11 @@ const DataBase = {
   projects: [
     {
       id: '1',
-      name: 'Project 1',
-      shortDescription: 'Description of Project 1 will appear later.',
-      longDescription: 'Coming soon ... maybe ...',
+      name: 'Restaurant Website',
+      shortDescription: 'Informational site with blog and offers based on WordPress.',
+      longDescription: 'Informational site with blog and offers based on WordPress. Wordpress is picked for backend and client\'s convenience. Design and template itself are implemented from scratch.',
       img: '/img/projects/p1-4000-(900).jpg',
-      skills: 'HTML, CSS, WordPress, AJAX, ES2017, React.js',
+      skills: 'HTML, CSS, jQuery, WordPress, AJAX',
     },
     {
       id: '2',

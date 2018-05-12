@@ -42,7 +42,7 @@ class OpenProject extends Component {
 
 OpenProject.propTypes = {
   setProjectState: PropTypes.func.isRequired,
-  project: PropTypes.number.isRequired,
+  project: PropTypes.string.isRequired,
 };
 
 export default OpenProject;

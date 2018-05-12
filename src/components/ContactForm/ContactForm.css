@@ -46,6 +46,8 @@ form {
     border-radius: 6px;
     box-sizing: border-box;
     color: #999;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 14px;
     min-width: 0;
     transition: all .3s
 }
@@ -68,26 +70,15 @@ form {
 }
 
 /*-------------------------------------------*\
-   Error Notification
-\*-------------------------------------------*/
-
-#error-notification {
-    color: #2687ff;
-    display: inline-block;
-    padding: 5px 10px;
-}
-
-/*-------------------------------------------*\
    Text Field
 \*-------------------------------------------*/
 
 #text {
     background-color: #191616;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     border-radius: 6px;
     color: #999;
     transition: all .3s;
-    font-size: 15px;
     line-height: 1.42857143;
     padding: 6px 12px;
     resize: none;
@@ -96,10 +87,10 @@ form {
 #text:active,
 #text:focus,
 #text:hover {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    border-left: 1px solid rgba(255, 255, 255, 0.03);
-    border-right: 1px solid rgba(255, 255, 255, 0.03);
-    border-top: 1px solid rgba(0, 0, 0, 0.24);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.03);
+    border-left: 2px solid rgba(255, 255, 255, 0.03);
+    border-right: 2px solid rgba(255, 255, 255, 0.03);
+    border-top: 2px solid rgba(0, 0, 0, 0.24);
     -webkit-box-shadow: none;
     box-shadow: none;
     outline: none

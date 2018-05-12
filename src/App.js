@@ -2,10 +2,7 @@
 /* global window */
 
 import React, { Component } from 'react';
-import {
-  Route,
-  BrowserRouter as Router,
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -51,11 +48,11 @@ class App extends Component {
     this.displayBackArrow = this.displayBackArrow.bind(this);
   }
 
-  componentWillMount() {
+  componentWillMount = () => {
     this.setState({ articles: DataBase.articles });
   }
 
-  setProjectState(e) {
+  setProjectState = (e) => {
     const body = document.getElementById('body');
     if (this.state.projectOpen) {
       this.setState({
@@ -72,7 +69,7 @@ class App extends Component {
     }
   }
 
-  setArticleState(e) {
+  setArticleState = (e) => {
     const body = document.getElementById('body');
 
     if (this.state.articleOpen) {
@@ -90,31 +87,32 @@ class App extends Component {
     }
   }
 
-  /* setArticleState(e) {
+  /* -- Returns Error on String 93 --
+    setItemState = (e) => {
     const body = document.getElementById('body');
-    let itemType = '';
-
-    if (this.state[`${itemType}Open`]) {
-      itemType = '';
-      console.log(itemType);
-
+    const name = e.currentTarget.className;
+    const isOpen = this.state[name].open;
+    
+    if (isOpen) {
       this.setState({
-        articleOpen: false,
-        articleKey: null
+        [name]: {
+          open: false,
+          key: null,
+        }
       });
       body.classList.remove('body-overflow');
-    } else {
-      itemType = e.currentTarget.className;
-
+    } else if (e) {
       this.setState({
-        articleOpen: true,
-        articleKey: e.currentTarget.id
+        [name]: {
+          open: true,
+          key: e.currentTarget.id,
+        }
       });
       body.classList.add('body-overflow');
     }
   } */
 
-  addServices() {
+  addServices = () => {
     const servicesList = DataBase.skills.map(skill => (
       <div className="skill">
         <div
@@ -129,14 +127,14 @@ class App extends Component {
     return servicesList;
   }
 
-  addProjects() {
+  addProjects = () => {
     const projects = DataBase.projects.map(project => (
       <div
         className="project"
         key={project.id}
         id={project.id}
         onClick={this.setProjectState}
-        role="button"
+        role="none"
       >
         <div className="thumbnail" style={{ backgroundImage: `url("${project.img}")` }}>
           <div className="tb">
@@ -159,14 +157,14 @@ class App extends Component {
     return projects;
   }
 
-  addArticles() {
+  addArticles = () => {
     const articles = this.state.articles.map(article => (
       <div
         className="article"
         key={article.id}
         id={article.id}
         onClick={this.setArticleState}
-        role="link"
+        role="none"
       >
         <div
           className="ap-image"
@@ -187,7 +185,7 @@ class App extends Component {
     return articles;
   }
 
-  addLinks() {
+  addLinks = () => {
     const links = DataBase.links.map(link => (
       <li id={link.id}>
         <a
@@ -207,7 +205,7 @@ class App extends Component {
     return links;
   }
 
-  toggleMobileMenu(e) {
+  toggleMobileMenu = (e) => {
     const mobileNavMenu = document.getElementById('mobile-nav');
     const bodyShadow = document.getElementById('body-shadow');
     const navTrigger = document.getElementById('nav-trigger');
@@ -231,7 +229,7 @@ class App extends Component {
     }
   }
 
-  navigateArticles(e) {
+  navigateArticles = (e) => {
     const button = e.currentTarget.id;
     const currentArticle = parseInt(this.state.articleKey, 10);
     const maxArticle = this.state.articles.length - 1;
@@ -247,7 +245,7 @@ class App extends Component {
     }
   }
 
-  displayBackArrow() {
+  displayBackArrow = () => {
     const isSmallWindowSize = window.matchMedia('screen and (max-width: 1024px)').matches;
 
     if (isSmallWindowSize && (this.state.articleOpen || this.state.projectOpen)) {
@@ -259,47 +257,45 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
-          <div>
-            <Header
-              toggleMobileMenu={this.toggleMobileMenu}
-              displayBackArrow={this.displayBackArrow}
-              /* setProjectState={ this.setProjectState }
-              setArticleState={ this.setArticleState } */
+        <div>
+          <Header
+            toggleMobileMenu={this.toggleMobileMenu}
+            displayBackArrow={this.displayBackArrow}
+            /* setProjectState={ this.setProjectState }
+            setArticleState={ this.setArticleState } */
+          />
+          <div id="body-shadow" onClick={this.toggleMobileMenu} role="none" />
+          {
+            this.state.projectOpen && <OpenProject
+              project={this.state.projectKey}
+              setProjectState={this.setProjectState}
             />
-            <div id="body-shadow" onClick={this.toggleMobileMenu} role="none" />
-            {
-              this.state.projectOpen && <OpenProject
-                project={this.state.projectKey}
-                setProjectState={this.setProjectState}
-              />
+          }
+          {
+            this.state.articleOpen && <OpenArticle
+              article={this.state.articleKey}
+              articleArray={this.state.articles}
+              setArticleState={this.setArticleState}
+              navigateArticles={this.navigateArticles}
+            />
+          }
+          <Route
+            path="(/|/home)"
+            render={() => (<Main
+              addServices={this.addServices}
+              addProjects={this.addProjects}
+              addLinks={this.addLinks}
+            />)
             }
-            {
-              this.state.articleOpen && <OpenArticle
-                article={this.state.articleKey}
-                articleArray={this.state.articles}
-                setArticleState={this.setArticleState}
-                navigateArticles={this.navigateArticles}
-              />
+          />
+          <Route
+            path="/blog"
+            render={() => (<Blog
+              addArticles={this.addArticles}
+            />)
             }
-            <Route
-              path="(/|/home)"
-              render={() => (<Main
-                addServices={this.addServices}
-                addProjects={this.addProjects}
-                addLinks={this.addLinks}
-              />)
-              }
-            />
-            <Route
-              path="/blog"
-              render={() => (<Blog
-                addArticles={this.addArticles}
-              />)
-              }
-            />
-          </div>
-        </Router>
+          />
+        </div>
         <Footer />
       </div>
     );
