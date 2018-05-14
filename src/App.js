@@ -130,7 +130,7 @@ class App extends Component {
   }
 
   addArticles = () => {
-    const articles = this.state.articles.map(article => (
+    const articles = this.props.articles.map(article => (
       <div
         className="article"
         key={article.id}
@@ -258,9 +258,14 @@ class App extends Component {
   }
 }
 
+/* This is a mess, I know... I moved everything here from Redux just for now 
+for the sake of transition from React state to Redux. 
+Everything will be distributed among corresponding components. */
+
 const mapStateToProps = state => ({
   project: state.project,
   article: state.article,
+  articles: state.articles,
 });
 
 App.propTypes = {
@@ -268,17 +273,25 @@ App.propTypes = {
   setProjectState: PropTypes.func.isRequired,
   navigateArticles: PropTypes.func.isRequired,
   getArticles: PropTypes.func.isRequired,
-  /*  displayBackArrow: PropTypes.func.isRequired, */
+  /* displayBackArrow: PropTypes.func.isRequired, */
   toggleMobileMenu: PropTypes.func.isRequired,
   project: PropTypes.shape({
     open: PropTypes.bool.isRequired, 
-    key: PropTypes.number,
+    key: PropTypes.string,
   }).isRequired,
   article: PropTypes.shape({
     open: PropTypes.bool.isRequired, 
-    key: PropTypes.number,
+    key: PropTypes.string,
   }).isRequired,
-  atricles: PropTypes.array.isRequired,
+  articles: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      header: PropTypes.string,
+      text: PropTypes.string,
+      img: PropTypes.string,
+      date: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default connect(
@@ -288,6 +301,6 @@ export default connect(
     setProjectState,
     setArticleState,
     navigateArticles,
-    getArticles
+    getArticles,
   }
 )(App);
