@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux';
-import menuReducer from './menuReducer';
+import menu from './menuReducer';
+import project from './projectReducer';
+import article from './articleReducer';
+import articles from './articlesReducer';
 
-export default combineReducers({
-  menuOpen: menuReducer,
-  project: projectReducer,
-  article: articleReducer,
-  articles: articlesReducer,
+export default combineReducers ({
+  menu,
+  project,
+  article,
+  articles,
 });

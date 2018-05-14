@@ -2,7 +2,9 @@
 /* global window */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './App.css';
 
@@ -19,6 +21,10 @@ import OpenArticle from './components/OpenArticle/OpenArticle';
 /* DataBase Supplement */
 import DataBase from './components/DataBase';
 
+import toggleMobileMenu from './actions/menuActions';
+import setProjectState from './actions/projectActions';
+import { setArticleState, navigateArticles } from './actions/articleActions';
+import getArticles from './actions/articlesAtions';
 
 class App extends Component {
   constructor(props) {
@@ -44,59 +50,11 @@ class App extends Component {
     this.addArticles = this.addArticles.bind(this);
     this.addLinks = this.addLinks.bind(this);
 
-    this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
-    this.setProjectState = this.setProjectState.bind(this);
-    this.setArticleState = this.setArticleState.bind(this);
-
-    this.navigateArticles = this.navigateArticles.bind(this);
     this.displayBackArrow = this.displayBackArrow.bind(this);
   }
 
   componentWillMount = () => {
-    this.setState({ articles: DataBase.articles });
-  }
-
-  setProjectState = (e) => {
-    const body = document.getElementById('body');
-    if (this.state.project.open) {
-      this.setState({
-        project: {
-          open: false,
-          key: null,
-        },
-      });
-      body.classList.remove('body-overflow');
-    } else if (e) {
-      this.setState({
-        project: {
-          open: true,
-          key: e.currentTarget.id,
-        },
-      });
-      body.classList.add('body-overflow');
-    }
-  }
-
-  setArticleState = (e) => {
-    const body = document.getElementById('body');
-
-    if (this.state.article.open) {
-      this.setState({
-        article: {
-          open: false,
-          key: null,
-        },
-      });
-      body.classList.remove('body-overflow');
-    } else if (e) {
-      this.setState({
-        article: {
-          open: true,
-          key: e.currentTarget.id,
-        },
-      });
-      body.classList.add('body-overflow');
-    }
+    this.props.getArticles();
   }
 
   /* -- Returns Error on String 93 --
@@ -147,7 +105,7 @@ class App extends Component {
         className="project"
         key={project.id}
         id={project.id}
-        onClick={this.setProjectState}
+        onClick={this.props.setProjectState}
         role="none"
       >
         <div className="thumbnail" style={{ backgroundImage: `url("${project.img}")` }}>
@@ -177,7 +135,7 @@ class App extends Component {
         className="article"
         key={article.id}
         id={article.id}
-        onClick={this.setArticleState}
+        onClick={this.props.setArticleState}
         role="none"
       >
         <div
@@ -221,30 +179,6 @@ class App extends Component {
     return links;
   }
 
-  toggleMobileMenu = (e) => {
-    const mobileNavMenu = document.getElementById('mobile-nav');
-    const bodyShadow = document.getElementById('body-shadow');
-    const navTrigger = document.getElementById('nav-trigger');
-
-    if (this.state.menuOpen) {
-      navTrigger.classList.remove('is-open');
-      this.setState({ menuOpen: false });
-      this.setProjectState();
-      this.setArticleState();
-
-      mobileNavMenu.style.height = '0px';
-      bodyShadow.style.opacity = '0';
-      bodyShadow.style.display = 'none';
-    } else if (!(e.target.className === 'logo-button logom')) {
-      navTrigger.classList.add('is-open');
-      this.setState({ menuOpen: true });
-
-      mobileNavMenu.style.height = `${this.state.initMenuHeight}px`;
-      bodyShadow.style.display = 'block';
-      bodyShadow.style.opacity = '0.6';
-    }
-  }
-
   navigateArticles = (e) => {
     const button = e.currentTarget.id;
     const currentArticle = parseInt(this.state.article.key, 10);
@@ -270,7 +204,7 @@ class App extends Component {
   displayBackArrow = () => {
     const isSmallWindowSize = window.matchMedia('screen and (max-width: 1024px)').matches;
 
-    if (isSmallWindowSize && (this.state.article.open || this.state.project.open)) {
+    if (isSmallWindowSize && (this.props.article.open || this.props.project.open)) {
       return true;
     }
     return false;
@@ -281,24 +215,24 @@ class App extends Component {
       <div className="App">
         <div>
           <Header
-            toggleMobileMenu={this.toggleMobileMenu}
+            toggleMobileMenu={this.props.toggleMobileMenu}
             displayBackArrow={this.displayBackArrow}
             /* setProjectState={ this.setProjectState }
             setArticleState={ this.setArticleState } */
           />
           <div id="body-shadow" onClick={this.toggleMobileMenu} role="none" />
           {
-            this.state.project.open && <OpenProject
-              project={this.state.project.key}
-              setProjectState={this.setProjectState}
+            this.props.project.open && <OpenProject
+              project={this.props.project.key}
+              setProjectState={this.props.setProjectState}
             />
           }
           {
-            this.state.article.open && <OpenArticle
-              article={this.state.article.key}
+            this.props.article.open && <OpenArticle
+              article={this.props.article.key}
               articleArray={this.state.articles}
-              setArticleState={this.setArticleState}
-              navigateArticles={this.navigateArticles}
+              setArticleState={this.props.setArticleState}
+              navigateArticles={this.props.navigateArticles}
             />
           }
           <Route
@@ -324,4 +258,36 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  project: state.project,
+  article: state.article,
+});
+
+App.propTypes = {
+  setArticleState: PropTypes.func.isRequired,
+  setProjectState: PropTypes.func.isRequired,
+  navigateArticles: PropTypes.func.isRequired,
+  getArticles: PropTypes.func.isRequired,
+  /*  displayBackArrow: PropTypes.func.isRequired, */
+  toggleMobileMenu: PropTypes.func.isRequired,
+  project: PropTypes.shape({
+    open: PropTypes.bool.isRequired, 
+    key: PropTypes.number,
+  }).isRequired,
+  article: PropTypes.shape({
+    open: PropTypes.bool.isRequired, 
+    key: PropTypes.number,
+  }).isRequired,
+  atricles: PropTypes.array.isRequired,
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    toggleMobileMenu,
+    setProjectState,
+    setArticleState,
+    navigateArticles,
+    getArticles
+  }
+)(App);
