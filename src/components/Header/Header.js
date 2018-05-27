@@ -30,6 +30,7 @@ Header.propTypes = {
   setProjectState: PropTypes.func.isRequired, */
   displayBackArrow: PropTypes.func.isRequired,
   toggleMobileMenu: PropTypes.func.isRequired,
+  
 };
 
 export default Header;

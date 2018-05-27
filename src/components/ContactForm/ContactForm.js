@@ -38,7 +38,7 @@ class ContactForm extends Component {
     this.validateForm();
   }
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
 
     const isError = this.validateForm();
