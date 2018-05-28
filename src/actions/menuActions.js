@@ -1,4 +1,6 @@
 import { TOGGLE_MENU } from './actionTypes';
+import setProjectState from './projectActions';
+import { setArticleState } from './articleActions';
 
 const toggleMobileMenu = (e) => (dispatch, getState) => {
   const mobileNavMenu = document.getElementById('mobile-nav'); // Mobile Menu
@@ -15,8 +17,8 @@ const toggleMobileMenu = (e) => (dispatch, getState) => {
     });
 
     if (e.target.className === 'logo-button logom') { // Only if logo is clicked:
-      this.setProjectState(); // Closes Project if it's open
-      this.setArticleState(); // Closes Article if it's open
+      dispatch(setProjectState()); // Closes Project if it's open
+      dispatch(setArticleState()); // Closes Article if it's open
     }
 
     mobileNavMenu.style.height = '0px'; // Closes Menu

@@ -1,35 +1,113 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './Blog.css';
 
-const Blog = (props) => {
-  const articles = props.addArticles();
+import OpenArticle from '../OpenArticle/OpenArticle';
 
-  return (
-    <main className="blog">
-      <header id="blog-title">
-        <div className="container">
-          <div className="h1">
-            <div className="letter b">B</div>
-            <div className="letter l">l</div>
-            <div className="letter o">o</div>
-            <div className="letter g">g</div>
+import { setArticleState, navigateArticles } from '../../actions/articleActions';
+import getArticles from '../../actions/articlesAtions';
+
+class Blog extends Component {
+  constructor(props) {
+    super(props);
+
+    this.addArticles = this.addArticles.bind(this);
+  }
+
+  componentWillMount = () => {
+    this.props.getArticles();
+  }
+  
+  addArticles = () => {
+    const articles = this.props.articles.map(article => (
+      <div
+        className="article"
+        key={article.id}
+        id={article.id}
+        onClick={this.props.setArticleState}
+        role="none"
+      >
+        <div
+          className="ap-image"
+          id="img-1"
+          style={{ backgroundImage: `url("${article.img}")` }}
+        />
+        <div className="content">
+          <h2>{ article.header }</h2>
+          <div className="post-date">
+            <h4>{ article.date }</h4>
           </div>
-          <h3>Thoughts on work and life.</h3>
+          <p className="description">{ article.text }</p>
+          <div className="view-button">View more</div>
         </div>
-      </header>
+      </div>
+    ));
 
-      <section id="blog">
-        <div className="container" id="cont">
-          { articles }
-        </div>
-      </section>
-    </main>
-  );
+    return articles;
+  }
+
+  render() {
+    const articles = this.addArticles();
+
+    return (
+      <main className="blog">
+        {
+          this.props.article.open && <OpenArticle
+            article={this.props.article.key}
+            articleArray={this.props.articles}
+            setArticleState={this.props.setArticleState}
+            navigateArticles={this.props.navigateArticles}
+          />
+        }
+        <header id="blog-title">
+          <div className="container">
+            <div className="h1">
+              <div className="letter b">B</div>
+              <div className="letter l">l</div>
+              <div className="letter o">o</div>
+              <div className="letter g">g</div>
+            </div>
+            <h3>Thoughts on work and life.</h3>
+          </div>
+        </header>
+
+        <section id="blog">
+          <div className="container" id="cont">
+            { articles }
+          </div>
+        </section>
+      </main>
+    );
+  }
 };
+
+const mapStateToProps = state => ({
+  article: state.article,
+  articles: state.articles,
+});
 
 Blog.propTypes = {
-  addArticles: PropTypes.func.isRequired,
+  getArticles: PropTypes.func.isRequired,
+  setArticleState: PropTypes.func.isRequired,
+  navigateArticles: PropTypes.func.isRequired,
+  article: PropTypes.shape({
+    open: PropTypes.bool.isRequired, 
+    key: PropTypes.string,
+  }).isRequired,
+  articles: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      header: PropTypes.string,
+      text: PropTypes.string,
+      img: PropTypes.string,
+      date: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
-export default Blog;
+export default connect(mapStateToProps, {
+  getArticles,
+  setArticleState,
+  navigateArticles,
+})(Blog);
