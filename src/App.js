@@ -43,24 +43,14 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <Header
-            /* setProjectState={ this.setProjectState }
-            setArticleState={ this.setArticleState } */
-          />
+          <Header />
           <Route
             path="(/|/home)"
-            render={() => (<Main
-              addServices={this.addServices}
-              addProjects={this.addProjects}
-              addLinks={this.addLinks}
-            />)
-            }
+            component={Main}
           />
           <Route
             path="/blog"
-            render={() => (<Blog
-            />)
-            }
+            component={Blog}
           />
         </div>
         <Footer />

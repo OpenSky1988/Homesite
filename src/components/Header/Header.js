@@ -4,18 +4,22 @@ import { connect } from 'react-redux';
 
 import './Header.css';
 
-import toggleMobileMenu from '../../actions/menuActions';
 import BackArrow from '../BackArrow/BackArrow';
 import NavLogo from '../NavLogo/NavLogo';
 import NavBar from '../NavBar/NavBar';
 import NavTrigger from '../NavTrigger/NavTrigger';
 import NavMobileMenu from '../NavMobileMenu/NavMobileMenu';
 
+import toggleMobileMenu from '../../actions/menuActions';
+import setProjectState from '../../actions/projectActions';
+import { setArticleState } from '../../actions/articleActions';
+
 class Header extends Component {
   constructor(props) {
     super(props);
 
     this.displayBackArrow = this.displayBackArrow.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   displayBackArrow = () => {
@@ -27,6 +31,20 @@ class Header extends Component {
     return false;
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    console.log(`${e.target} ${e.currentTarget}`);
+    if (e.target === e.currentTarget) {
+      if (this.props.article.open) {
+        console.log(`Article: ${this.props.article.open}`);
+        this.props.setArticleState();
+      } else if (this.props.project.open) {
+        console.log(`Project: ${this.props.project.open}`);
+        this.props.setProjectState();
+      }
+    }
+  }
+
   render() {
     return (
       <header>
@@ -34,7 +52,7 @@ class Header extends Component {
           <div className="container">
             {
               this.displayBackArrow() && <BackArrow
-                /* onClick={this.handleClick} */
+                onClick={this.handleClick}
               />
             }
             <NavLogo toggleMobileMenu={this.props.toggleMobileMenu} />
@@ -55,8 +73,8 @@ const mapStateToProps = state => ({
 });
 
 Header.propTypes = {
-  /* setArticleState: PropTypes.func.isRequired,
-  setProjectState: PropTypes.func.isRequired, */
+  setArticleState: PropTypes.func.isRequired,
+  setProjectState: PropTypes.func.isRequired, 
   toggleMobileMenu: PropTypes.func.isRequired,
   article: PropTypes.shape({
     open: PropTypes.bool.isRequired, 
@@ -69,5 +87,7 @@ Header.propTypes = {
 };
 
 export default connect(mapStateToProps, {
+  setArticleState,
+  setProjectState,
   toggleMobileMenu,
 })(Header);
