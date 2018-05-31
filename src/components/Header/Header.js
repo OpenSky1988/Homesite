@@ -19,7 +19,6 @@ class Header extends Component {
     super(props);
 
     this.displayBackArrow = this.displayBackArrow.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   displayBackArrow = () => {
@@ -31,20 +30,6 @@ class Header extends Component {
     return false;
   }
 
-  handleClick(e) {
-    e.preventDefault();
-    console.log(`${e.target} ${e.currentTarget}`);
-    if (e.target === e.currentTarget) {
-      if (this.props.article.open) {
-        console.log(`Article: ${this.props.article.open}`);
-        this.props.setArticleState();
-      } else if (this.props.project.open) {
-        console.log(`Project: ${this.props.project.open}`);
-        this.props.setProjectState();
-      }
-    }
-  }
-
   render() {
     return (
       <header>
@@ -52,10 +37,14 @@ class Header extends Component {
           <div className="container">
             {
               this.displayBackArrow() && <BackArrow
-                onClick={this.handleClick}
+                setArticleState={this.props.setArticleState}
+                setProjectState={this.props.setProjectState}
               />
             }
-            <NavLogo toggleMobileMenu={this.props.toggleMobileMenu} />
+            <NavLogo 
+              toggleMobileMenu={this.props.toggleMobileMenu}
+              setArticleState={this.props.setArticleState}
+              setProjectState={this.props.setProjectState} />
             <NavBar />
             <NavTrigger toggleMobileMenu={this.props.toggleMobileMenu} />
           </div>
