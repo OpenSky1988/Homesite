@@ -11,8 +11,6 @@ class NavLogo extends Component {
   }
 
   handleClick(e) {
-    e.preventDefault();
-
     this.props.toggleMobileMenu(e);
 
     /* For cases when Menu is closed but Article or Project are open */
@@ -25,7 +23,7 @@ class NavLogo extends Component {
       <Link
         to="/home#home"
         className="logo-button logom"
-        onClick={this.handleClick} 
+        onClick={this.handleClick}
       />
     );
   }
