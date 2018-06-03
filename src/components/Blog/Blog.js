@@ -9,12 +9,6 @@ import { setArticleState, navigateArticles } from '../../actions/articleActions'
 import getArticles from '../../actions/articlesAtions';
 
 class Blog extends Component {
-  constructor(props) {
-    super(props);
-
-    this.addArticles = this.addArticles.bind(this);
-  }
-
   componentWillMount = () => {
     this.props.getArticles();
   }
@@ -38,13 +32,25 @@ class Blog extends Component {
           <div className="post-date">
             <h4>{ article.date }</h4>
           </div>
-          <p className="description">{ article.text }</p>
+          <p className="description">{ this.cutArticleDescription(article.text) }</p>
           <div className="view-button">View more</div>
         </div>
       </div>
     ));
 
     return articles;
+  }
+
+  cutArticleDescription = (fullDesciption) => {
+    let shortDescription = fullDesciption.substr(0, 200);
+    shortDescription = shortDescription
+      .substr(0, Math.min(
+        shortDescription.length,
+        shortDescription.lastIndexOf(" ")
+      )
+    );
+
+    return (`${shortDescription}...`);
   }
 
   render() {
