@@ -77,17 +77,17 @@ const DataBase = {
       header: 'What caused my career change?',
       text: `Most people are told what to do and where to go, for example, by the loved ones. But even the closest people cannot fully understand our own way. Nobody can, but us. Therefore, it is our mission to find and persuade it.
 
-      So, this is how it happened with me. A few years ago I and my best friend studied programming. We had been doing it for a couple of years if I'm not mistaking, and the language was pure C++. It seemed pretty interesting to me as a process - you plan your idea, write it on your screen, the computer reads it and rewards you with the result. Oh, boy! The result seemed so sweet. It was totally worth the whole struggle. However, my problem was that I didn't see any purpose in front of me.
+So, this is how it happened with me. A few years ago I and my best friend studied programming. We had been doing it for a couple of years if I'm not mistaking, and the language was pure C++. It seemed pretty interesting to me as a process - you plan your idea, write it on your screen, the computer reads it and rewards you with the result. Oh, boy! The result seemed so sweet. It was totally worth the whole struggle. However, my problem was that I didn't see any purpose in front of me.
       
-      As everything was becoming more and more difficult, I was losing my enthusiasm. And at that moment I still wasn't able to build even a basic applications (pure C++, remember?). Finally, I left it, but over time I noticed that I am still somehow attached to the coding. Thoughts about continuing studying the profession came back to me over and over again.
+As everything was becoming more and more difficult, I was losing my enthusiasm. And at that moment I still wasn't able to build even a basic applications (pure C++, remember?). Finally, I left it, but over time I noticed that I am still somehow attached to the coding. Thoughts about continuing studying the profession came back to me over and over again.
       
-      All the other professions didn't have that much sense to me since then. It tried several of jobs which I thought I could like. Appetite comes with eating, you know. It surely did not work for me. I could not forget the feeling that you can create something from scratch. I felt the lack of creativity in each of these jobs which I had when I was programming. And I knew how useful this profession is.
+All the other professions didn't have that much sense to me since then. It tried several of jobs which I thought I could like. Appetite comes with eating, you know. It surely did not work for me. I could not forget the feeling that you can create something from scratch. I felt the lack of creativity in each of these jobs which I had when I was programming. And I knew how useful this profession is.
       
-      So, I obviously didn't leave myself a chance not to become a developer, so one evening after my another day on my OK-job, I decided to claim my life back. I decided to come back to IT-field as a web developer. Those lessons I learned with my friend helped me, even after several years without practice.
+So, I obviously didn't leave myself a chance not to become a developer, so one evening after my another day on my OK-job, I decided to claim my life back. I decided to come back to IT-field as a web developer. Those lessons I learned with my friend helped me, even after several years without practice.
       
-      After several months of every day studying lessons and making projects I became able to get the fruits of my work. Currently, you can observe the result of it - my own website made from scratch. Will see what life is going to bring on the table, but I feel very positive having this results in a relatively short amount of time.
+After several months of every day studying lessons and making projects I became able to get the fruits of my work. Currently, you can observe the result of it - my own website made from scratch. Will see what life is going to bring on the table, but I feel very positive having this results in a relatively short amount of time.
       
-      Thank you so much for your time and attention! I promise to update this article or maybe other ones to keep you in touch with my career progress. See you!`,
+Thank you so much for your time and attention! I promise to update this article or maybe other ones to keep you in touch with my career progress. See you!`,
       img: '/img/blog/img-1-4000-(2000).jpg',
       date: '12 April, 2017',
     },

@@ -64,6 +64,15 @@
     text-align: left
 }
 
+.popup-project .project-description pre {
+    font-family: 'Merriweather Sans', sans-serif;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
 .popup-project .project-close-button {
     background-color: #117bff;
     border-radius: 3px;

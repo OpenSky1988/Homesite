@@ -33,7 +33,9 @@ class OpenArticle extends Component {
             <div className="article-header">{article.header}</div>
             <div className="article-date">{article.date}</div>
             <div className="article-content">
-              { article.text }
+              <pre>
+                { article.text }
+              </pre>
             </div>
             <ArticleNavigation
               navigateArticles={this.props.navigateArticles}

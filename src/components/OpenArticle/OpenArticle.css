@@ -52,3 +52,12 @@
     font-weight: 400;
     text-align: left
 }
+
+.page-wrap .popup-article .article-content pre {
+    font-family: 'Lusitana', serif;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}

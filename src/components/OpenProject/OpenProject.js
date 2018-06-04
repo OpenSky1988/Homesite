@@ -32,7 +32,11 @@ class OpenProject extends Component {
             <div className="project-name">{project.name}</div>
             <div className="project-skills">{project.skills}</div>
           </div>
-          <div className="project-description">{project.longDescription}</div>
+          <div className="project-description">
+            <pre>
+              {project.longDescription}
+            </pre>
+          </div>
           <div className="project-close-button" onClick={this.handleClick} role="button">Close</div>
         </div>
       </div>
