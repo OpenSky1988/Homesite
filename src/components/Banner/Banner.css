@@ -19,7 +19,7 @@
     height: 700px;
     margin-bottom: 0;
     position: relative;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 #home .container header {
@@ -32,6 +32,7 @@
 .container header h1 {
     font-family: 'Questrial', sans-serif;
     font-size: 53px;
+    margin-top: 0;
     padding: 143px 0 10px;
     letter-spacing: 1px;
 }
@@ -61,15 +62,17 @@
     outline: none;
 }
 
-#viewbtn-1 {
-    display: inline-block;
+@media screen and (max-width: 810px) {
+    #view-gallery-btn {
+        left: 50%;
+        margin: 0;
+        padding: 12px 30px;
+        position: absolute;
+        transform: translateX(-50%);
+    }
 }
 
-#viewbtn-2 {
-    display: none;
-}
-
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
     #home .container header h1 {
         font-size: 53px;
     }
