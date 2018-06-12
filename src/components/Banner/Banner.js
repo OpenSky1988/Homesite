@@ -9,7 +9,7 @@ const Banner = () => (
       <header>
         <h1>Hi! I'm Alex.</h1>
         <p>I'm passionate about Web Development, UX,
-          and UI and use it to change the wold for the better!
+          and UI and use it to change the world for the better!
         </p>
       </header>
       <ViewGalleryButton />
