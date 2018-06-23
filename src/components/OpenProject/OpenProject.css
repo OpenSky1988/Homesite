@@ -32,7 +32,6 @@
 .popup-project .project-image {
     background: no-repeat center center;
     background-size: cover;
-    
     padding-top: 64%
 }
 
@@ -57,15 +56,15 @@
     font-weight: 500
 }
 
-
-
 .popup-project .project-description {
-    margin: 0px 10px 101px;
+    margin: 0px 10px;
+    padding-bottom: 25px;
     text-align: left
 }
 
 .popup-project .project-description pre {
     font-family: 'Merriweather Sans', sans-serif;
+    padding-bottom: 25px;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -73,27 +72,25 @@
     word-wrap: break-word;
 }
 
-.popup-project .project-close-button {
+.popup-project .close-button-container {
+    margin: auto;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+.popup-project .close-button-container .project-close-button {
     background-color: #117bff;
     border-radius: 3px;
     bottom: 30px;
     color: #fff;
     cursor: pointer;
-    left: 50%;
+    display: inline-block;
     padding: 10px 25px;
-    position: absolute;
-    transform: translateX(-50%);
     transition: all 0.3s
 }
 
-.popup-project .project-close-button:hover {
+.popup-project .close-button-container .project-close-button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
-}
-
-@media screen and (max-width:991px) {
-    .popup-project {
-        min-height: calc(100vh - 52px) !important
-    }
 }
 
 @media screen and (max-width:800px) {

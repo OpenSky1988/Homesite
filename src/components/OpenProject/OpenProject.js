@@ -31,7 +31,13 @@ class OpenProject extends Component {
               {project.longDescription}
             </pre>
           </div>
-          <div className="project-close-button" onClick={this.handleClick} role="button">Close</div>
+          <div className="close-button-container">
+            <div
+              className="project-close-button"
+              onClick={this.handleClick}
+              role="none"
+            >Close</div>
+          </div>
         </div>
       </div>
     );

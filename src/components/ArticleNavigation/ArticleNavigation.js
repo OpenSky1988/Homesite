@@ -20,6 +20,7 @@ class ArticleNavigation extends Component {
             ? 'view-button button-inactive'
             : 'view-button'
           }
+          role="none"
           onClick={this.handleClick}
         >← Back
         </div>
@@ -30,6 +31,7 @@ class ArticleNavigation extends Component {
             ? 'view-button button-inactive'
             : 'view-button'
           }
+          role="none"
           onClick={this.handleClick}
         >Next →
         </div>
