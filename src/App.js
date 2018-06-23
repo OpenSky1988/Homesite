@@ -1,7 +1,7 @@
 /* global document */
 /* global window */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
 import './App.css';
@@ -12,9 +12,26 @@ import Main from './components/Main/Main';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
 
-class App extends Component {
+const App = () => (
+  <div className="App">
+    <div>
+      <Header />
+      <Route
+        path="(/|/home)"
+        component={Main}
+      />
+      <Route
+        path="/blog"
+        component={Blog}
+      />
+    </div>
+    <Footer />
+  </div>
+);
 
-  /* -- Returns Error on String 93 --
+export default App;
+
+/* -- Returns Error on String 93 --
     setItemState = (e) => {
     const body = document.getElementById('body');
     const name = e.currentTarget.className;
@@ -38,25 +55,3 @@ class App extends Component {
       body.classList.add('body-overflow');
     }
   } */
-
-  render() {
-    return (
-      <div className="App">
-        <div>
-          <Header />
-          <Route
-            path="(/|/home)"
-            component={Main}
-          />
-          <Route
-            path="/blog"
-            component={Blog}
-          />
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-}
-
-export default App;
