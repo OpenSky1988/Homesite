@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import './BackArrow.css';
 
 class BackArrow extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) { // This doesn't happen for some reason
+  handleClick = (e) => {
     e.preventDefault();
     
     this.props.setArticleState();

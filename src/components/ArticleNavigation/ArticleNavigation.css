@@ -6,6 +6,10 @@
     padding: 20px 0
 }
 
+.article-navigation .view-button {
+    cursor: pointer;
+}
+
 .article-navigation #back {
     margin-left: 20px
 }
