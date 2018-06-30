@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Switch } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -13,9 +13,7 @@ import './index.css';
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      <Switch>
-        <App />
-      </Switch>
+      <App />
     </HashRouter>
   </Provider>,
   document.getElementById('root')

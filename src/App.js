@@ -4,6 +4,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import { Switch } from 'react-router-dom';
 import './App.css';
 
 /* Static Components */
@@ -17,17 +18,19 @@ const App = () => (
   <div className="App">
     <div>
       <Header />
-      <Route
-        exact path="/"
-        component={Main}
-      />
-      <Route
-        path="/blog"
-        component={Blog}
-      />
-      <Route
-        component={Hello404}
-      />
+      <Switch>
+        <Route
+          exact path="/"
+          component={Main}
+        />
+        <Route
+          path="/blog"
+          component={Blog}
+        />
+        <Route
+          component={Hello404}
+        />
+      </Switch>
     </div>
     <Footer />
   </div>
