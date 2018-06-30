@@ -13,7 +13,7 @@ const Banner = () => (
         </p>
       </header>
       <ViewGalleryButton />
-      <img id="my_img-1" src="/img/home/my_img.jpg" alt="Alex' smiling face with glasses" />
+      <img id="my_img-1" src="/img/home/my_img.jpg" alt="Hello there" />
     </div>
   </section>
 );
