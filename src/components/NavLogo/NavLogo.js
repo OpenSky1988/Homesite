@@ -15,7 +15,7 @@ class NavLogo extends Component {
   render() {
     return (
       <Link
-        to="/home#home"
+        to="/#home"
         className="logo-button logom"
         onClick={this.handleClick}
       />

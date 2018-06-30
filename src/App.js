@@ -11,18 +11,22 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
+import Hello404 from './components/Hello404/Hello404';
 
 const App = () => (
   <div className="App">
     <div>
       <Header />
       <Route
-        path="(/|/home)"
+        exact path="/"
         component={Main}
       />
       <Route
         path="/blog"
         component={Blog}
+      />
+      <Route
+        component={Hello404}
       />
     </div>
     <Footer />

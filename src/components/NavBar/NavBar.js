@@ -7,7 +7,7 @@ const NavBar = () => (
   <ul className="nav">
     <li>
       <Link
-        to="/home#home"
+        to="/#home"
         className="bt"
       >
         home
@@ -15,7 +15,7 @@ const NavBar = () => (
     </li>
     <li>
       <Link
-        to="/home#services"
+        to="/#services"
         className="bt"
       >
         services
@@ -23,7 +23,7 @@ const NavBar = () => (
     </li>
     <li>
       <Link
-        to="/home#projects"
+        to="/#projects"
         className="bt"
       >
         projects
@@ -31,7 +31,7 @@ const NavBar = () => (
     </li>
     <li>
       <Link
-        to="/home#contacts"
+        to="/#contacts"
         className="bt"
       >
         footer
