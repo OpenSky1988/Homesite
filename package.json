@@ -1,4 +1,5 @@
 {
+  "homepage": "http://alexprisazhny.ru",
   "name": "website-2.0",
   "version": "0.1.0",
   "private": true,
@@ -26,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dist": "surge --domain alexprisazhny.ru",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint src"
   },
   "devDependencies": {
@@ -35,6 +37,7 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.7.0",
+    "gh-pages": "^2.1.1",
     "image-webpack-loader": "^4.2.0"
   },
   "globals": {

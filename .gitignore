@@ -1,5 +1,5 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
-
+/old-version
 # dependencies
 /node_modules
 
@@ -10,6 +10,7 @@
 /build
 
 # misc
+package-lock.json
 .DS_Store
 .env.local
 .env.development.local
