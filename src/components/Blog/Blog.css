@@ -148,3 +148,29 @@
     outline: none;
     text-decoration: none
 }
+
+@media screen and (max-width: 600px) {
+    .blog .container .article {
+        padding: 0;
+    }
+
+    .blog .container .article .content {
+        padding: 0 30px 30px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .blog .container h3 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .blog .container .h1 letter {
+        font-size: 80px;
+    }
+
+    .blog .container h3 {
+        font-size: 20px;
+    }
+}

@@ -9,7 +9,7 @@ const NavMobileMenu = props => (
       <ul>
         <li>
           <Link
-            to="/home#home"
+            to="/#home"
             className="bt"
             onClick={props.toggleMobileMenu}
           >
@@ -18,7 +18,7 @@ const NavMobileMenu = props => (
         </li>
         <li>
           <Link
-            to="/home#services"
+            to="/#services"
             className="bt"
             onClick={props.toggleMobileMenu}
           >
@@ -27,7 +27,7 @@ const NavMobileMenu = props => (
         </li>
         <li>
           <Link
-            to="/home#projects"
+            to="/#projects"
             className="bt"
             onClick={props.toggleMobileMenu}
           >
@@ -36,7 +36,7 @@ const NavMobileMenu = props => (
         </li>
         <li>
           <Link
-            to="/home#contacts"
+            to="/#contacts"
             className="bt"
             onClick={props.toggleMobileMenu}
           >

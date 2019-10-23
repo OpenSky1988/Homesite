@@ -41,7 +41,7 @@ class Blog extends Component {
     return articles;
   }
 
-  cutArticleDescription = (fullDesciption) => {
+  cutArticleDescription = fullDesciption => {
     let shortDescription = fullDesciption.substr(0, 200);
     shortDescription = shortDescription
       .substr(0, Math.min(

@@ -14,14 +14,6 @@ import setProjectState from '../../actions/projectActions';
 import DataBase from '../DataBase';
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-
-    this.addServices = this.addServices.bind(this);
-    this.addLinks = this.addLinks.bind(this);
-    this.addProjects = this.addProjects.bind(this);
-  }
-
   addServices = () => {
     const servicesList = DataBase.skills.map(skill => (
       <div 

@@ -4,13 +4,7 @@ import PropTypes from 'prop-types';
 import './NavLogo.css';
 
 class NavLogo extends Component { 
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
+  handleClick = (e) => {
     this.props.toggleMobileMenu(e);
 
     /* For cases when Menu is closed but Article or Project are open */
@@ -21,7 +15,7 @@ class NavLogo extends Component {
   render() {
     return (
       <Link
-        to="/home#home"
+        to="/#home"
         className="logo-button logom"
         onClick={this.handleClick}
       />

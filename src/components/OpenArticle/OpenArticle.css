@@ -61,3 +61,26 @@
     white-space: -o-pre-wrap;
     word-wrap: break-word;
 }
+
+@media screen and (max-width: 991px) {
+    .page-wrap .popup-article {
+        margin-top: 51px !important;
+        max-width: calc(100vw - 20px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .page-wrap .popup-article {
+        padding: 0;
+    }
+
+    .page-wrap .popup-article .content {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .page-wrap .popup-article {
+        max-width: calc(100vw);
+    }
+}

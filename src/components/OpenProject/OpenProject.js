@@ -5,13 +5,7 @@ import DataBase from '../DataBase';
 import './OpenProject.css';
 
 class OpenProject extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
+  handleClick = (e) => {
     e.preventDefault();
     if (e.target === e.currentTarget) this.props.setProjectState();
   }
@@ -37,7 +31,13 @@ class OpenProject extends Component {
               {project.longDescription}
             </pre>
           </div>
-          <div className="project-close-button" onClick={this.handleClick} role="button">Close</div>
+          <div className="close-button-container">
+            <div
+              className="project-close-button"
+              onClick={this.handleClick}
+              role="none"
+            >Close</div>
+          </div>
         </div>
       </div>
     );

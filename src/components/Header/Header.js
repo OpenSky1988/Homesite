@@ -15,12 +15,6 @@ import setProjectState from '../../actions/projectActions';
 import { setArticleState } from '../../actions/articleActions';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-
-    this.displayBackArrow = this.displayBackArrow.bind(this);
-  }
-
   displayBackArrow = () => {
     const isSmallWindowSize = window.matchMedia('screen and (max-width: 1024px)').matches;
   

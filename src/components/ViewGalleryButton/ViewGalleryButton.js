@@ -1,14 +1,15 @@
 import React from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 import './ViewGalleryButton.css';
 
 const ViewGalleryButton = () => (
-  <a 
+  <Link 
     className="btn"
     id="view-gallery-btn"
-    href="#projects"
+    to="/#projects"
   >
     View gallery
-  </a>
+  </Link>
 );
 
 export default ViewGalleryButton;

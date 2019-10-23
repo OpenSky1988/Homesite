@@ -1,9 +1,10 @@
 /* global document */
 /* global window */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
+import { Switch } from 'react-router-dom';
 import './App.css';
 
 /* Static Components */
@@ -11,10 +12,33 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
+import Hello404 from './components/Hello404/Hello404';
 
-class App extends Component {
+const App = () => (
+  <div className="App">
+    <div>
+      <Header />
+      <Switch>
+        <Route
+          exact path="/"
+          component={Main}
+        />
+        <Route
+          path="/blog"
+          component={Blog}
+        />
+        <Route
+          component={Hello404}
+        />
+      </Switch>
+    </div>
+    <Footer />
+  </div>
+);
 
-  /* -- Returns Error on String 93 --
+export default App;
+
+/* -- Returns Error on String 93 --
     setItemState = (e) => {
     const body = document.getElementById('body');
     const name = e.currentTarget.className;
@@ -38,25 +62,3 @@ class App extends Component {
       body.classList.add('body-overflow');
     }
   } */
-
-  render() {
-    return (
-      <div className="App">
-        <div>
-          <Header />
-          <Route
-            path="(/|/home)"
-            component={Main}
-          />
-          <Route
-            path="/blog"
-            component={Blog}
-          />
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-}
-
-export default App;

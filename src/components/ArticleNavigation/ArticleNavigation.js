@@ -3,19 +3,14 @@ import PropTypes from 'prop-types';
 import './ArticleNavigation.css';
 
 class ArticleNavigation extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
+  handleClick = (e) => {
     this.props.navigateArticles(e);
   }
 
   render() {
     const currentArticle = parseInt(this.props.article, 10);
     const maxArticle = this.props.articleArray.length - 1;
+
     return (
       <div className="article-navigation">
         <div
@@ -25,6 +20,7 @@ class ArticleNavigation extends Component {
             ? 'view-button button-inactive'
             : 'view-button'
           }
+          role="none"
           onClick={this.handleClick}
         >← Back
         </div>
@@ -35,6 +31,7 @@ class ArticleNavigation extends Component {
             ? 'view-button button-inactive'
             : 'view-button'
           }
+          role="none"
           onClick={this.handleClick}
         >Next →
         </div>
