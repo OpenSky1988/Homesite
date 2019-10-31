@@ -2,6 +2,15 @@
   "name": "website-2.0",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts-rewired start",
+    "build": "react-scripts-rewired build",
+    "test": "react-scripts-rewired test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "lint": "eslint src"
+  },
   "dependencies": {
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
@@ -21,15 +30,6 @@
     "validator": "^10.2.0",
     "zenscroll": "^4.0.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "lint": "eslint src"
-  },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^15.0.1",
@@ -37,7 +37,8 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.7.0",
     "gh-pages": "^2.1.1",
-    "image-webpack-loader": "^4.2.0"
+    "image-webpack-loader": "^4.2.0",
+    "react-app-rewired": "^2.1.4"
   },
   "globals": {
     "document": true,
