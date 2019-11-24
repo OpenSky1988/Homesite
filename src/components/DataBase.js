@@ -1,4 +1,5 @@
 const DataBase = {
+  year: 2020,
   skills: [
     {
       id: '1',
