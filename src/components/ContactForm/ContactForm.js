@@ -8,6 +8,7 @@ import './ContactForm.css';
 import { updateContactForm, clearContactForm } from '../../actions/contactFormActions';
 import updateError from '../../actions/errorActions';
 import toggleMessageLoader from '../../actions/messageLoaderActions';
+import toggleMessageSuccessBlock from '../../actions/messageSuccessBlockActions';
 
 import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
 import privateConfig from '../../privateConfig';
@@ -54,6 +55,10 @@ class ContactForm extends Component {
     }
   }
 
+  showMessageSuccessBlock = () => {
+    this.props.toggleMessageSuccessBlock(true);
+  }
+
   sendEmail = async () => {
     const {
       contactForm: { email, name, phone, text },
@@ -79,6 +84,8 @@ class ContactForm extends Component {
     
     toggleMessageLoader(false);
     this.disableFormElements(false);
+    // Animate message success appearance
+    this.showMessageSuccessBlock();
   }
 
   switchClass = (element, targetClass, add) => {

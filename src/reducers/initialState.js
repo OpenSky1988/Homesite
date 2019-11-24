@@ -20,6 +20,7 @@ const initialState = {
   },
   error: "",
   isLoading: false,
+  isSuccessBlockShown: false,
 };
 
 export default initialState;

@@ -6,6 +6,7 @@ import article from './articleReducer';
 import articles from './articlesReducer';
 import contactForm from './contactFormReducer';
 import error from './errorReducer';
+import isSuccessBlockShown from './messageSuccessBlockReducer';
 
 export default combineReducers ({
   menu,
@@ -14,4 +15,5 @@ export default combineReducers ({
   articles,
   contactForm,
   error,
+  isSuccessBlockShown,
 });
