@@ -3,8 +3,22 @@ import PropTypes from 'prop-types';
 import './ArticleNavigation.css';
 
 class ArticleNavigation extends Component {
+  componentDidMount() {
+    document.onkeydown = this.checkKey;
+  }
+
+  checkKey = (e) => {
+      e = e || window.event;
+
+      if (e.keyCode === 37) {
+        this.props.navigateArticles('back');
+      } else if (e.keyCode === 39) {
+        this.props.navigateArticles('next');
+      }
+  }
+
   handleClick = (e) => {
-    this.props.navigateArticles(e);
+    this.props.navigateArticles(e.currentTarget.id);
   }
 
   render() {
