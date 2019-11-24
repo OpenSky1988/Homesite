@@ -34,7 +34,7 @@ const NavBar = () => (
         to="/#contacts"
         className="bt"
       >
-        footer
+        contacts
       </Link>
     </li>
     <li>
