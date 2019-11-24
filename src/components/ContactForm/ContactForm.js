@@ -1,9 +1,11 @@
+import emailjs from 'emailjs-com';
 import React, { Component } from 'react';
 import validator from 'validator';
 
 import './ContactForm.css';
 
 import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
+import privateConfig from '../../privateConfig';
 
 class ContactForm extends Component {
   constructor(props) {
@@ -19,6 +21,8 @@ class ContactForm extends Component {
       error: "",
       loading: false,
     };
+
+    emailjs.init(privateConfig.emailJS.userKey);
   }
 
   onChange = (e) => {
@@ -37,19 +41,62 @@ class ContactForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-
     const isError = this.validateForm();
+
     if (!isError) {
-      this.setState({
-        ...this.state,
-        data: {
-          email: "",
-          name: "",
-          phone: "",
-          text: "",
-        }
-      });
+      this.sendEmail();
+      this.clearEmailForm();
     }
+  }
+
+  sendEmail = async () => {
+    await emailjs.send(
+      'gmail',
+      privateConfig.emailJS.template,
+      {
+        message_html: this.state.text,
+        from_name: this.state.name, 
+        reply_to: this.state.email
+      }
+    ).then(_res => {
+      console.log('EmailJS: Email successfully sent!');
+    }).catch(err => {
+      console.log(`EmailJS: Error while sending email: ${JSON.stringify(err, null, '  ')}`);
+    })
+  }
+
+  switchClass = (element, targetClass, add) => {
+    if (add) {
+      const newClass = (element.className.length === 0)
+        ? targetClass
+        : ` ${targetClass}`;
+
+      element.className += newClass;
+    } else {
+      const oldClass = element.className.replace(
+        new RegExp('\\b' + targetClass + '\\b'),
+        ''
+      );
+      
+      element.className = oldClass;
+    }
+  }
+
+  disableFormElements = (value) => {
+    const formInputs = document.getElementsByTagName("input");
+    const formTextArea = document.getElementsByTagName("textarea")[0];
+    const submitBtn = document.getElementById("submit-btn");
+    
+    submitBtn.innerText = value ? "Sending..." : "Submit";
+    this.switchClass(submitBtn, "disabled-btn", value);
+
+    formTextArea.disabled = value;
+    this.switchClass(formTextArea, 'disabled-input', value);
+
+    Array.prototype.forEach.call(formInputs, input => {
+      input.disabled = value;
+      this.switchClass(input, 'disabled-input', value);
+    });
   }
 
   validateForm = () => {
