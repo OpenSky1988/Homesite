@@ -40,7 +40,7 @@ const NavMobileMenu = props => (
             className="bt"
             onClick={props.toggleMobileMenu}
           >
-            footer
+            contacts
           </Link>
         </li>
         <li id="mobile-blog-btn">
