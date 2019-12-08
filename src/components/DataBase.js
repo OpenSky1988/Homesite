@@ -1,22 +1,23 @@
 const DataBase = {
+  year: 2020,
   skills: [
     {
       id: '1',
       img: '/img/home/responsive.png',
       name: 'Web Design',
-      description: 'Structure, interface, functionality.',
+      description: 'Structure, interface, functionality',
     },
     {
       id: '2',
       img: '/img/home/ux_ui.svg',
       name: 'UX',
-      description: 'Semantic elements, ARIA, responsiveness.',
+      description: 'Semantic elements, ARIA, responsiveness',
     },
     {
       id: '3',
       img: '/img/home/code.svg',
       name: 'Code',
-      description: 'HTML, CSS, ES2017, AJAX, React.js, GIT, etc.',
+      description: 'HTML5, CSS3, JS, React, Redux, TypeScript, Jest',
     },
   ],
 
@@ -113,12 +114,6 @@ Thank you so much for your time and attention! I promise to update this article 
       href: 'https://www.linkedin.com/in/alexander-prisazhny-93b749b3/',
       img: '/img/flat-minimalistic-circles/32x32-PNG/linkedin.png',
       alt: 'Link to LinkedIn page',
-    },
-    {
-      id: 'behance',
-      href: 'https://www.behance.net/sasha_prisazhny',
-      img: '/img/flat-minimalistic-circles/32x32-PNG/behance.png',
-      alt: 'Link to Behance page',
     },
     {
       id: 'blogspot',

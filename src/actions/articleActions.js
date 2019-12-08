@@ -27,13 +27,12 @@ const setArticleState = (e) => (dispatch, getState) => {
   }
 }
 
-const navigateArticles = (e) => (dispatch, getState) => {
-    const button = e.currentTarget.id;
+const navigateArticles = (direction) => (dispatch, getState) => {
     const currentState = getState();
     const currentArticle = parseInt(currentState.article.key, 10);
     const maxArticle = currentState.articles.length - 1;
 
-    if (button === 'back' && currentArticle > 1) {
+    if (direction === 'back' && currentArticle > 1) {
       dispatch({
         type: NAVIGATE_ARTICLE,
         payload: {
@@ -41,7 +40,7 @@ const navigateArticles = (e) => (dispatch, getState) => {
           key: (currentArticle - 1).toString(),
         }
       });
-    } else if (button === 'next' && currentArticle <= maxArticle) {
+    } else if (direction === 'next' && currentArticle <= maxArticle) {
       dispatch({
         type: NAVIGATE_ARTICLE,
         payload: {

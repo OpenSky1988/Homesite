@@ -11,8 +11,16 @@ const initialState = {
     open: false,
     key: null,
   },
-  
   articles: [],
+  contactForm: {
+    email: '',
+    name: '',
+    phone: '',
+    text: ''
+  },
+  error: "",
+  isLoading: false,
+  isSuccessBlockShown: false,
 };
 
 export default initialState;
