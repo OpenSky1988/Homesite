@@ -1,14 +1,14 @@
 {
-  "name": "website-2.0",
-  "version": "0.1.0",
+  "name": "alexander-prisazhny-home",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts-rewired start",
-    "build": "react-scripts-rewired build",
-    "test": "react-scripts-rewired test --env=jsdom",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "surge",
     "lint": "eslint src"
   },
   "dependencies": {
@@ -38,15 +38,10 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.7.0",
     "gh-pages": "^2.1.1",
-    "image-webpack-loader": "^4.2.0",
-    "react-app-rewired": "^2.1.4"
+    "image-webpack-loader": "^4.2.0"
   },
   "globals": {
     "document": true,
     "window": true
-  },
-  "engines": {
-    "npm": "6.5.0-next.0",
-    "node": "v11.6.0"
   }
 }
