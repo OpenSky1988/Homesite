@@ -1,0 +1,164 @@
+/* ------------------------------------------- *\
+  ContactForm.css
+
+  Contents
+  - General 
+  - Forms
+  - Error Notification
+  - Text Field
+  - Submit Button
+
+\* ------------------------------------------- */
+
+/* ------------------------------------------- *\
+  General
+\* ------------------------------------------- */
+@import '../colors.less';
+
+form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 37px 1fr 32px 35px;
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+  grid-template-areas: 
+    "email name phone"
+    "text text text"
+    "error-notification error-notification submit-btn"
+    ". . .";
+
+  @media screen and (max-width: 991px) {
+    grid-template-rows: 37px 1fr 32px;
+    grid-template-areas: 
+      "email name phone"
+      "text text text"
+      "error-notification error-notification submit-btn";
+  }
+
+  @media screen and (max-width: 585px) {
+    grid-template: 2fr / auto !important;
+    grid-template-rows: 37px 1fr 32px 35px;
+    grid-template-areas: 
+      "email"
+      "name"
+      "phone"
+      "text"
+      "submit-btn"
+      "error-notification"
+      "." !important;
+  }
+}
+
+.email { grid-area: email }
+.name { grid-area: name }
+.phone { grid-area: phone }
+.text { grid-area: text }
+.error-notification { grid-area: error-notification }
+.submit-btn { grid-area: submit-btn }
+
+/* ------------------------------------------- *\
+  Forms
+\* ------------------------------------------- */
+
+.forms {
+  outline: none;
+  padding: 6px 12px;
+  background-color: @color-dark-gray;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: @color-dusty-gray;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 14px;
+  min-width: 0;
+  transition: all .3s;
+
+  &:active,
+  &:focus,
+  &:hover {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.03);
+    border-left: 2px solid rgba(255, 255, 255, 0.03);
+    border-right: 2px solid rgba(255, 255, 255, 0.03);
+    border-top: 2px solid rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:focus:-moz-placeholder,
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+}
+
+
+.disabled-input {
+  background-color: @color-cod-gray !important;
+  color: @color-dove-gray !important;
+}
+
+/* ------------------------------------------- *\
+  Text Field
+\* ------------------------------------------- */
+
+.text {
+  background-color: @color-dark-gray;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  color: @color-dusty-gray;
+  transition: all .3s;
+  line-height: 1.42857143;
+  padding: 6px 12px;
+  resize: none;
+  
+  &:active,
+  &:focus,
+  &:hover {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.03);
+    border-left: 2px solid rgba(255, 255, 255, 0.03);
+    border-right: 2px solid rgba(255, 255, 255, 0.03);
+    border-top: 2px solid rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  @media screen and (max-width: 585px) {
+    height: 140px;
+  }
+}
+
+
+/* ------------------------------------------- *\
+  Submit Button
+\* ------------------------------------------- */
+
+.submit-btn {
+  background-color: @color-seal-brown;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  color: @color-steel-grey;
+  cursor: pointer;
+  font-weight: 500;
+  outline: none;
+  padding: 6px 6px;
+  transition: all .3s;
+  
+  &:hover {
+    background-color: @color-azure-radiance;
+    border: 1px solid transparent;
+    color: @color-white;
+    outline: none;
+  }
+
+  @media screen and (max-width: 585px) {
+    margin-top: 20px;
+    padding: 12px 12px;
+  }
+}
+
+.disabled-btn {
+  background-color: @color-venice-blue !important;
+  border: 1px solid transparent !important;
+  color: @color-white !important;
+}

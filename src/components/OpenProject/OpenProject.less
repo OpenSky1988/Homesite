@@ -1,0 +1,120 @@
+/* ------------------------------------------- *\
+    Project Popup Description
+\* ------------------------------------------- */
+@import '../colors.less';
+
+.page-wrap {
+  background: rgba(0, 0, 0, 0.6);
+  background-size: fill;
+  bottom: 0;
+  content: "";
+  left: 0;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: calc(~'100% - 10px');
+  z-index: 1000;
+}
+
+.popup-project {
+  background: @color-white;
+  left: 50%;
+  margin: 90px 0 200px;
+  max-width: 700px;
+  padding: 30px 30px 30px;
+  position: relative;
+  text-align: left;
+  transform: translateX(-50%);
+  z-index: 800 !important;
+
+  .project-image {
+    background: no-repeat center center;
+    background-size: cover;
+    padding-top: 64%;
+
+    @media screen and (max-width:800px) {
+      max-width: 800px !important;
+    }
+  }
+
+  .project-header {
+    border-bottom: 1px solid @color-alto;
+    margin: 25px auto 25px;
+    padding-bottom: 20px;
+
+    .project-name {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 5px 0px 10px;
+      text-align: center;
+    }
+
+    .project-skills {
+      color: #7b7b7b;
+      display: block;
+      letter-spacing: 1px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+
+  .project-description {
+    margin: 0px 10px;
+    padding-bottom: 25px;
+    text-align: left;
+
+    pre {
+      font-family: 'Merriweather Sans', sans-serif;
+      padding-bottom: 25px;
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;
+      white-space: -o-pre-wrap;
+      word-wrap: break-word;
+    }
+  }
+
+  .close-button-container {
+    margin: auto;
+    padding-bottom: 25px;
+    text-align: center;
+
+    .project-close-button {
+      background-color: @color-azure-radiance;
+      border-radius: 3px;
+      bottom: 30px;
+      color: @color-white;
+      cursor: pointer;
+      display: inline-block;
+      padding: 10px 25px;
+      transition: all 0.3s;
+
+      &:hover {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+    }
+  }
+
+  @media screen and (max-width:800px) {
+    max-width: calc(~'100% - 20px') !important;
+    margin: 52px 0 0 !important;
+  }
+
+  @media screen and (max-width:660px) {
+    padding: 0 !important;
+  }
+  
+  @media screen and (max-width:450px) {
+    max-width: 100vw !important;
+  }
+}
+
+@media screen and (max-width:660px) {
+  .popup-project .project-description,
+  .popup-project .project-header {
+    margin-left: 25px !important;
+    margin-right: 25px !important;
+  }
+}

@@ -1,0 +1,128 @@
+@import '../colors.less';
+
+.nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  float: right;
+  height: 52px;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 2px;
+    outline: 0;
+    position: relative;
+
+    a {
+      background-color: transparent;
+      border: white;
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
+      bottom: 0 !important;
+      color: @color-cod-gray;
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      margin: 6px 15px 0 !important;
+      padding: 13px 0;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:focus, &:hover {
+        border-bottom: 3px solid @color-azure-radiance;
+        color: @color-cod-gray;
+        outline: 0;
+      }
+    }
+
+    &.active {
+      a {
+        background-color: transparent;
+        color: @color-cod-gray;
+
+        &:focus, &:hover {
+          background-color: transparent;
+          border-bottom: 3px solid @color-azure-radiance;
+          color: @color-cod-gray;
+        }
+      }
+    }
+  }
+
+  .blog-button {
+    border: 1px solid @color-cod-gray;
+    border-radius: 3px;
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    margin: 6px 10px !important;
+    padding: 10px 15px !important;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+
+    &:active, &:focus, &:hover {
+      background-color: @color-azure-radiance !important;
+      border: 1px solid @color-azure-radiance !important;
+      color: @color-white !important;
+    }
+  }
+
+  @media screen and (max-width:680px) {
+    display: none !important;
+  }
+}
+
+li {
+  display: inline-block;
+  list-style: none;
+  margin-left: 2px;
+  outline: 0;
+  position: relative;
+
+  link {
+    background-color: transparent;
+    border: white;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    bottom: 0 !important;
+    color: @color-cod-gray;
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    margin: 6px 15px 0 !important;
+    padding: 13px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:focus, &:hover {
+      border-bottom: 3px solid @color-azure-radiance;
+      color: @color-cod-gray;
+      outline: 0;
+    }
+  }
+
+  &.active {
+    link {
+      background-color: transparent;
+      color: @color-cod-gray;
+
+      &:focus, &:hover {
+        background-color: transparent;
+        border-bottom: 3px solid @color-azure-radiance;
+        color: @color-cod-gray;
+      }
+    }
+  }
+}

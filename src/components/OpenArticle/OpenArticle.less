@@ -1,0 +1,84 @@
+@import '../colors.less';
+
+.page-wrap {
+  background: rgba(0, 0, 0, 0.38);
+  background-size: fill;
+  bottom: 0;
+  content: "";
+  left: 0;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: calc(~'100% - 10px');
+  z-index: 900;
+
+  .popup-article {
+    background: @color-white;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    color: @color-night-rider;
+    font-family: 'Lusitana', serif;
+    margin: 90px auto 120px;
+    padding: 30px 30px 30px;
+    position: relative;
+    text-align: left;
+    max-width: 840px;
+
+    .content {
+      @media screen and (max-width: 600px) {
+        padding: 30px;
+      }
+    }
+
+    .article-image {
+      background: no-repeat center center;
+      background-size: cover;
+      max-width: 2000px;
+      padding-top: 60%;
+    }
+
+    .article-header {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 20px auto 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .article-date {
+      color: @color-gray;
+      font-size: 18px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .article-content {
+      font-size: 24px;
+      font-weight: 400;
+      text-align: left;
+
+      pre {
+        font-family: 'Lusitana', serif;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      margin-top: 51px !important;
+      max-width: calc(~'100vw - 20px');
+    }
+    
+    @media screen and (max-width: 600px) {
+      padding: 0;
+    }
+    
+    @media screen and (max-width: 450px) {
+      max-width: calc(100vw);
+    }
+  }
+}
