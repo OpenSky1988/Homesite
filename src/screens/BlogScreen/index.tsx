@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Blog.less';
 
-import OpenArticle from '../OpenArticle/OpenArticle';
+import OpenArticle from '../../components/OpenArticle/OpenArticle';
 
 import { setArticleState, navigateArticles } from '../../actions/articleActions';
 import getArticles from '../../actions/articlesAtions';
 import { IState } from '../../reducers/initialState';
-import { IArticle } from '../DataBase';
+import { IArticle } from '../../components/DataBase';
 
 interface ICurrentArticle {
   open: boolean;
@@ -23,7 +23,7 @@ interface IProps {
   setArticleState: () => void;
 }
 
-class Blog extends Component <IProps, {}> {
+class BlogScreen extends Component <IProps, {}> {
   componentDidMount = () => {
     this.props.getArticles();
   }
@@ -112,4 +112,4 @@ export default connect(mapStateToProps, {
   getArticles,
   setArticleState,
   navigateArticles,
-})(Blog);
+})(BlogScreen);

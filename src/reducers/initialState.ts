@@ -7,13 +7,13 @@ const initialState = {
   },
   project: {
     open: false,
-    key: null,
+    key: '',
   },
   article: {
     open: false,
-    key: null,
+    key: '',
   },
-  articles: [],
+  articles: [] as IArticle[],
   contactForm: {
     email: '',
     name: '',
@@ -21,6 +21,7 @@ const initialState = {
     text: '',
   },
   error: '',
+  isAuthorized: false,
   isLoading: false,
   isSuccessBlockShown: false,
 };
@@ -50,6 +51,7 @@ interface IState {
   article: IListItemState;
   articles: IArticle[];
   contactForm: IContactFormState;
+  isAuthorized: boolean;
   error: string;
   isLoading: boolean;
   isSuccessBlockShown: boolean;
