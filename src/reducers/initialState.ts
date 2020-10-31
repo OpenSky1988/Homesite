@@ -1,32 +1,39 @@
-import { IArticle } from '../components/DataBase';
-
 const initialState = {
   menu: {
     isOpen: false, // Mobile menu state
     fullHeight: 215, // Mobile menu height
   },
   project: {
-    open: false,
-    key: '',
+    error: '',
+    isLoading: false,
+    item: {
+      open: false,
+      key: '',
+    },
+    list: [] as IProject[],
   },
   article: {
-    open: false,
-    key: '',
+    error: '',
+    isLoading: false,
+    item: {
+      open: false,
+      key: '',
+    },
+    list: [] as IArticle[],
   },
-  articles: [] as IArticle[],
   contactForm: {
-    email: '',
-    name: '',
-    phone: '',
-    text: '',
+    error: '',
+    input: {
+      email: '',
+      name: '',
+      phone: '',
+      text: '',
+    },
+    isLoading: false,
+    isSuccessBlockShown: false,
   },
-  error: '',
   isAuthorized: false,
-  isLoading: false,
-  isSuccessBlockShown: false,
 };
-
-export default initialState;
 
 interface IMenuState {
   isOpen: boolean;
@@ -38,23 +45,42 @@ interface IListItemState {
   key: string;
 }
 
-interface IContactFormState {
+interface IContactFromInput {
   email: string;
   name: string;
   phone: string;
   text: string;
 }
 
-interface IState {
-  menu: IMenuState;
-  project: IListItemState;
-  article: IListItemState;
-  articles: IArticle[];
-  contactForm: IContactFormState;
-  isAuthorized: boolean;
+interface IContactFormState {
   error: string;
+  input: IContactFromInput;
   isLoading: boolean;
   isSuccessBlockShown: boolean;
 }
 
-export { IListItemState, IState };
+interface IState {
+  menu: IMenuState;
+  project: {
+    error: string;
+    isLoading: boolean;
+    item: IListItemState;
+    list: IProject[];
+  };
+  article: {
+    error: string;
+    isLoading: boolean;
+    item: IListItemState;
+    list: IArticle[];
+  };
+  contactForm: IContactFormState;
+  isAuthorized: boolean;
+}
+
+export default initialState;
+export {
+  IContactFormState,
+  IContactFromInput,
+  IListItemState,
+  IState,
+};

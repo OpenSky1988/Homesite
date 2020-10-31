@@ -1,11 +1,11 @@
 import React from 'react';
 import './Footer.less';
-import DataBase from '../DataBase';
+import StaticData from '../StaticData';
 
 const Footer = () => (
   <footer>
     <div className="copy container">
-    <p>Copyright Alexander Prisazhny {DataBase.year}</p>
+    <p>Copyright Alexander Prisazhny {StaticData.year}</p>
     </div>
   </footer>
 );

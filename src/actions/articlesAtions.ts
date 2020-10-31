@@ -1,18 +1,44 @@
+import { AxiosResponse } from 'axios';
 import { Dispatch } from 'redux';
-import { GET_ARTICLES } from './actionTypes';
-import DataBase, { IArticle } from '../components/DataBase';
+import { ARTICLE_LIST_LOADING, GET_ARTICLE_LIST } from './actionTypes';
+import Public from '../api/public';
 
 interface IArticlesAction {
   type: string;
   payload: IArticle[];
 }
 
-const getArticles = () => (dispatch: Dispatch<IArticlesAction>) => {
+interface IArticleLoadingAction {
+  type: string;
+  payload: boolean;
+}
+
+const getArticleList = () => async (dispatch: Dispatch<IArticlesAction>) => {
+  setArticleListLoading(true);
+
+  try {
+    const response: AxiosResponse<{ data: IArticle[] }> = await Public.getArticleList();
+    dispatch({
+      type: GET_ARTICLE_LIST,
+      payload: response?.data?.data,
+    });
+  } catch (err) {
+    throw err;
+  } finally {
+    setArticleListLoading(false);
+  }
+};
+
+const setArticleListLoading = (isLoading: boolean) => (dispatch: Dispatch<IArticleLoadingAction>) => {
   dispatch({
-    type: GET_ARTICLES,
-    payload: DataBase.articles,
+    type: ARTICLE_LIST_LOADING,
+    payload: isLoading,
   });
 };
 
-export default getArticles;
-export { IArticlesAction };
+export {
+  getArticleList,
+  setArticleListLoading,
+  IArticlesAction,
+  IArticleLoadingAction,
+};

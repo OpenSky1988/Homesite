@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { TOGGLE_MENU } from './actionTypes';
-import setProjectState from './projectActions';
+import { setProjectState } from './projectActions';
 import { setArticleState } from './articleActions';
 import { IState } from '../reducers/initialState';
 
@@ -14,17 +14,17 @@ const toggleMobileMenu = (event: React.MouseEvent) => (
   getState: () => IState,
 ) => {
   // Mobile Menu
-  const mobileNavMenu = document.getElementsByClassName('mobile-nav')[0] as HTMLElement;
+  const mobileNavMenu = document.querySelector('.mobile-nav') as HTMLElement;
   // tslint:disable-next-line:max-line-length
   // Shadow Overlay (Used when Menu is open. Closes Menu on click.)
-  const bodyShadow = document.getElementsByClassName('body-shadow')[0] as HTMLElement;
+  const bodyShadow = document.querySelector('.body-shadow') as HTMLElement;
   // Hamburger Menu button. Used to open Menu.
-  const navTrigger = document.getElementsByClassName('nav-trigger')[0] as HTMLElement;
+  const navTrigger = document.querySelector('.nav-trigger') as HTMLElement;
 
-  const currentState = getState();
+  const { menu } = getState();
   const targetLogoElementClass = (event.target as HTMLElement).className;
 
-  if (currentState.menu.isOpen) {
+  if (menu.isOpen) {
     // Animates Hamburger button to "closed" state (≡).
     navTrigger.classList.remove('is-open');
     dispatch({
@@ -54,7 +54,7 @@ const toggleMobileMenu = (event: React.MouseEvent) => (
     });
 
     // Opens Menu
-    mobileNavMenu.style.height = `${currentState.menu.fullHeight}px`;
+    mobileNavMenu.style.height = `${menu.fullHeight}px`;
     // Adds Shadow Overlay
     bodyShadow.style.display = 'block';
   }

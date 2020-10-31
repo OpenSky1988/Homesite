@@ -22,10 +22,10 @@ const setArticleState = (event?: MouseEvent) => (
   dispatch: Dispatch<IArticleStateAction>,
   getState: () => IState,
 ) => {
-  const body = document.getElementsByTagName('body')[0] as HTMLBodyElement;
-  const currentState = getState();
+  const body = document.querySelector('body') as HTMLBodyElement;
+  const { article } = getState();
 
-  if (currentState.article.open) {
+  if (article.item.open) {
     dispatch({
       type: TOGGLE_ARTICLE,
       payload: {
@@ -54,15 +54,15 @@ const navigateArticles = (direction: string) => (
   dispatch: Dispatch<INavigateArticlesAction>,
   getState: () => IState,
 ): void => {
-    const currentState = getState();
-    const currentArticle = parseInt(currentState.article.key, 10);
-    const maxArticle = currentState.articles.length - 1;
+    const { article } = getState();
+    const currentArticle = parseInt(article.item.key, 10);
+    const maxArticle = article.list.length - 1;
 
     if (direction === 'back' && currentArticle > 1) {
       dispatch({
         type: NAVIGATE_ARTICLE,
         payload: {
-          ...currentState.article,
+          ...article.item,
           key: (currentArticle - 1).toString(),
         },
       });
@@ -70,7 +70,7 @@ const navigateArticles = (direction: string) => (
       dispatch({
         type: NAVIGATE_ARTICLE,
         payload: {
-          ...currentState.article,
+          ...article.item,
           key: (currentArticle + 1).toString(),
         },
       });

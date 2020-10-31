@@ -5,18 +5,13 @@ import './Blog.less';
 import OpenArticle from '../../components/OpenArticle/OpenArticle';
 
 import { setArticleState, navigateArticles } from '../../actions/articleActions';
-import getArticles from '../../actions/articlesAtions';
+import { getArticleList } from '../../actions/articlesAtions';
 import { IState } from '../../reducers/initialState';
-import { IArticle } from '../../components/DataBase';
-
-interface ICurrentArticle {
-  open: boolean;
-  key: string;
-}
 
 interface IProps {
-  article: ICurrentArticle;
-  articles: IArticle[];
+  article: IListItemState;
+  articleList: IArticle[];
+  isArticleListLoading: boolean;
 
   getArticles: () => void;
   navigateArticles: () => void;
@@ -28,33 +23,29 @@ class BlogScreen extends Component <IProps, {}> {
     this.props.getArticles();
   }
 
-  addArticles = () => {
-    const articles = this.props.articles.map((article) => (
+  renderArticle = (article: IArticle) => (
+    <div
+      className="article"
+      key={(article.id as string)}
+      id={(article.id as string)}
+      onClick={this.props.setArticleState}
+      role="none"
+    >
       <div
-        className="article"
-        key={(article.id as string)}
-        id={(article.id as string)}
-        onClick={this.props.setArticleState}
-        role="none"
-      >
-        <div
-          className="ap-image"
-          id="img-1"
-          style={{ backgroundImage: `url("${article.img}")` }}
-        />
-        <div className="content">
-          <h2>{article.header}</h2>
-          <div className="post-date">
-            <h4>{article.date}</h4>
-          </div>
-          <p className="description">{this.cutArticleDescription(article.text)}</p>
-          <div className="view-button">View more</div>
+        className="ap-image"
+        id="img-1"
+        style={{ backgroundImage: `url("${article.img}")` }}
+      />
+      <div className="content">
+        <h2>{article.header}</h2>
+        <div className="post-date">
+          <h4>{article.date}</h4>
         </div>
+        <p className="description">{this.cutArticleDescription(article.text)}</p>
+        <div className="view-button">View more</div>
       </div>
-    ));
-
-    return articles;
-  }
+    </div>
+  )
 
   cutArticleDescription = (fullDesciption: string) => {
     let shortDescription = fullDesciption.substr(0, 200);
@@ -68,48 +59,59 @@ class BlogScreen extends Component <IProps, {}> {
     return (`${shortDescription}...`);
   }
 
+  renderTitle = () => (
+    <div className="h1">
+      <div className="letter b">B</div>
+      <div className="letter l">l</div>
+      <div className="letter o">o</div>
+      <div className="letter g">g</div>
+    </div>
+  )
+
   render() {
-    const articles = this.addArticles();
+    const blogContent = Array.isArray(this.props.articleList)
+      ? this.props.articleList.map(this.renderArticle)
+      : 'No articles yet';
 
     return (
       <main className="blog">
-        {
-          this.props.article.open && <OpenArticle
-            articleId={this.props.article.key}
-            articleArray={this.props.articles}
-            setArticleState={this.props.setArticleState}
-            navigateArticles={this.props.navigateArticles}
-          />
-        }
         <header id="blog-title">
           <div className="container">
-            <div className="h1">
-              <div className="letter b">B</div>
-              <div className="letter l">l</div>
-              <div className="letter o">o</div>
-              <div className="letter g">g</div>
-            </div>
+            {this.renderTitle()}
             <h3>Thoughts on work and life.</h3>
           </div>
         </header>
 
         <section id="blog">
           <div className="container" id="cont">
-            {articles}
+            { this.props.isArticleListLoading
+              ? 'Loading...'
+              : blogContent
+            }
           </div>
         </section>
+
+        {
+          this.props.article.open && <OpenArticle
+            articleId={this.props.article.key}
+            articleArray={this.props.articleList}
+            setArticleState={this.props.setArticleState}
+            navigateArticles={this.props.navigateArticles}
+          />
+        }
       </main>
     );
   }
 }
 
 const mapStateToProps = (state: IState) => ({
-  article: state.article,
-  articles: state.articles,
+  article: state.article.item,
+  articleList: state.article.list,
+  isArticleListLoading: state.article.isLoading,
 });
 
 export default connect(mapStateToProps, {
-  getArticles,
+  getArticles: getArticleList,
   setArticleState,
   navigateArticles,
 })(BlogScreen);
