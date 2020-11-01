@@ -1,5 +1,10 @@
 import { Dispatch } from 'redux';
-import { TOGGLE_PROJECT, GET_PROJECT_LIST } from './actionTypes';
+import {
+  GET_PROJECT_LIST,
+  SET_PROJECT_LIST_ERROR,
+  SET_PROJECT_LIST_LOADING,
+  TOGGLE_PROJECT,
+} from './actionTypes';
 import { IState } from '../reducers/initialState';
 import Public from '../api/public';
 
@@ -43,10 +48,32 @@ const setProjectState = (event?: MouseEvent) => (
 };
 
 const getProjectList = () => async (dispatch: Dispatch<ProjectListAction>) => {
-  const response = await Public.getProjectList();
+  setProjectListLoading(true);
+
+  try {
+    const response = await Public.getProjectList();
+    dispatch({
+      type: GET_PROJECT_LIST,
+      payload: response?.data?.data,
+    });
+  } catch (error) {
+    setProjectListError(error.message);
+  } finally {
+    setProjectListLoading(false);
+  }
+};
+
+const setProjectListLoading = (isLoading: boolean) => (dispatch: Dispatch<IAction<boolean>>) => {
   dispatch({
-    type: GET_PROJECT_LIST,
-    payload: response?.data?.data,
+    type: SET_PROJECT_LIST_LOADING,
+    payload: isLoading,
+  });
+};
+
+const setProjectListError = (error: string) => (dispatch: Dispatch<IAction<string>>) => {
+  dispatch({
+    type: SET_PROJECT_LIST_ERROR,
+    payload: error,
   });
 };
 

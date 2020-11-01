@@ -22,8 +22,8 @@ const getArticleList = () => async (dispatch: Dispatch<IArticlesAction>) => {
       type: GET_ARTICLE_LIST,
       payload: response?.data?.data,
     });
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   } finally {
     setArticleListLoading(false);
   }

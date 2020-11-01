@@ -13,8 +13,8 @@ const ProjectItem: React.FC<IProps> = ({
 }) => (
   <div
     className="project"
-    key={project.id}
-    id={project.id}
+    key={project._id}
+    id={project._id}
     onClick={setProjectState}
     role="none"
   >
