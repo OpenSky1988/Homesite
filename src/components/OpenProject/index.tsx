@@ -47,40 +47,34 @@ const OpenProject: React.FC<IProps> = ({
     }
   };
 
-  return (
-    <div className="page-wrap" onClick={handleClick} role="none">
-      <div className="popup-project">
-        {
-          isLoading
-            ? <h1>Loading...</h1>
-            : error
-              ? error
-              : <>
-                <div
-                  className="project-image"
-                  style={{ backgroundImage: `url("${project?.img}")` }}
-                />
-                <div className="project-header">
-                  <div className="project-name">{project?.name}</div>
-                  <div className="project-skills">{project?.skills}</div>
-                </div>
-                <div className="project-description">
-                  <pre>
-                    {project?.longDescription}
-                  </pre>
-                </div>
-                <div className="close-button-container">
-                  <div
-                    className="project-close-button"
-                    onClick={handleClick}
-                    role="none"
-                  >Close</div>
-                </div>
-              </>
-        }
-      </div>
-    </div>
-  );
+  return isLoading
+    ? <h1>Loading...</h1>
+    : error
+      ? <>{error}</>
+      : (
+        <>
+          <div
+            className="project-image"
+            style={{ backgroundImage: `url("${project?.img}")` }}
+          />
+          <div className="project-header">
+            <div className="project-name">{project?.name}</div>
+            <div className="project-skills">{project?.skills}</div>
+          </div>
+          <div className="project-description">
+            <pre>
+              {project?.longDescription}
+            </pre>
+          </div>
+          <div className="close-button-container">
+            <div
+              className="project-close-button"
+              onClick={handleClick}
+              role="none"
+            >Close</div>
+          </div>
+        </>
+      );
 };
 
 export default connect(() => ({}), {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 
 import './ArticleNavigation.less';
 
@@ -8,54 +8,53 @@ interface IProps {
   navigateArticles: (direction: string) => void;
 }
 
-class ArticleNavigation extends Component<IProps, {}> {
-  componentDidMount() {
-    document.onkeydown = this.checkKey;
-  }
+const ArticleNavigation: React.FC<IProps> = ({
+  articleId,
+  articleArray,
+  navigateArticles,
+}) => {
+  useEffect(() => {
+    document.onkeydown = checkKey;
+    return () => {
+      document.onkeydown = null;
+    };
+  }, []);
 
-  checkKey = (event: KeyboardEvent) => {
+  const checkKey = (event: KeyboardEvent) => {
     // event = event || window.event;
 
     if (event.keyCode === 37) {
-      this.props.navigateArticles('back');
+      navigateArticles('back');
     } else if (event.keyCode === 39) {
-      this.props.navigateArticles('next');
+      navigateArticles('next');
     }
-  }
+  };
 
-  handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    this.props.navigateArticles(event.currentTarget.classList[0]);
-  }
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    navigateArticles(event.currentTarget.classList[0]);
+  };
 
-  render() {
-    const currentArticle = parseInt(this.props.articleId, 10);
-    const maxArticle = this.props.articleArray.length - 1;
+  const currentArticle = parseInt(articleId, 10);
+  const maxArticle = articleArray.length - 1;
+  const isFirst = currentArticle === 1;
+  const isLast = currentArticle === parseInt(articleArray[maxArticle].id, 10);
 
-    return (
-      <div className="article-navigation">
-        <div
-          className={
-            currentArticle <= 1
-            ? 'back view-button button-inactive'
-            : 'back view-button'
-          }
-          role="none"
-          onClick={this.handleClick}
-        >← Back
-        </div>
-        <div
-          className={
-            currentArticle > maxArticle
-            ? 'next view-button button-inactive'
-            : 'next view-button'
-          }
-          role="none"
-          onClick={this.handleClick}
-        >Next →
-        </div>
+  return (
+    <div className="article-navigation">
+      <div
+        className={`back view-button${isFirst ? '' : ' _disabled'}`}
+        role="none"
+        onClick={handleClick}
+      >← Back
       </div>
-    );
-  }
-}
+      <div
+        className={`next view-button${isLast ? '' : ' _disabled'}`}
+        role="none"
+        onClick={handleClick}
+      >Next →
+      </div>
+    </div>
+  );
+};
 
 export default ArticleNavigation;

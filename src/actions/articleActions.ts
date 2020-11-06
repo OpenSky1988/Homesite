@@ -58,20 +58,25 @@ const navigateArticles = (direction: string) => (
     const currentArticle = parseInt(article.item.key, 10);
     const maxArticle = article.list.length - 1;
 
-    if (direction === 'back' && currentArticle > 1) {
+    const isFirst = currentArticle === 1;
+    const isLast = currentArticle === parseInt(article.list[maxArticle].id, 10);
+
+    if (direction === 'back' && !isFirst) {
+      const previous = (currentArticle - 1).toString();
       dispatch({
         type: NAVIGATE_ARTICLE,
         payload: {
           ...article.item,
-          key: (currentArticle - 1).toString(),
+          key: previous,
         },
       });
-    } else if (direction === 'next' && currentArticle <= maxArticle) {
+    } else if (direction === 'next' && !isLast) {
+      const next = (currentArticle + 1).toString();
       dispatch({
         type: NAVIGATE_ARTICLE,
         payload: {
           ...article.item,
-          key: (currentArticle + 1).toString(),
+          key: next,
         },
       });
     }

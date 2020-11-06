@@ -46,6 +46,7 @@ interface IProject {
 }
 
 interface IArticle {
+  _id: string;
   id: string | null;
   header: string;
   text: string;
