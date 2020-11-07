@@ -3,16 +3,18 @@ import React, { useEffect } from 'react';
 import './ArticleNavigation.less';
 
 interface IProps {
-  articleId: string;
-  articleArray: IArticle[];
-  navigateArticles: (direction: string) => void;
+  navigation: {
+    prevId: string;
+    nextId: string;
+  };
+  getArticle: (articleId: string) => void;
 }
 
 const ArticleNavigation: React.FC<IProps> = ({
-  articleId,
-  articleArray,
-  navigateArticles,
+  navigation,
+  getArticle,
 }) => {
+  const { prevId, nextId } = navigation;
   useEffect(() => {
     document.onkeydown = checkKey;
     return () => {
@@ -23,32 +25,29 @@ const ArticleNavigation: React.FC<IProps> = ({
   const checkKey = (event: KeyboardEvent) => {
     // event = event || window.event;
 
-    if (event.keyCode === 37) {
-      navigateArticles('back');
-    } else if (event.keyCode === 39) {
-      navigateArticles('next');
+    if (event.keyCode === 37 && prevId) {
+      getArticle(prevId);
+    } else if (event.keyCode === 39 && nextId) {
+      getArticle(nextId);
     }
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    navigateArticles(event.currentTarget.classList[0]);
+    getArticle(event.currentTarget.id);
   };
-
-  const currentArticle = parseInt(articleId, 10);
-  const maxArticle = articleArray.length - 1;
-  const isFirst = currentArticle === 1;
-  const isLast = currentArticle === parseInt(articleArray[maxArticle].id, 10);
 
   return (
     <div className="article-navigation">
       <div
-        className={`back view-button${isFirst ? '' : ' _disabled'}`}
+        className={`back view-button${prevId ? '' : ' _disabled'}`}
+        id={prevId}
         role="none"
         onClick={handleClick}
       >← Back
       </div>
       <div
-        className={`next view-button${isLast ? '' : ' _disabled'}`}
+        className={`next view-button${nextId ? '' : ' _disabled'}`}
+        id={nextId}
         role="none"
         onClick={handleClick}
       >Next →

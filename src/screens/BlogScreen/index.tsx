@@ -5,7 +5,7 @@ import './Blog.less';
 import Modal from '../../components/Modal';
 import OpenArticle from '../../components/OpenArticle';
 
-import { setArticleState, navigateArticles } from '../../actions/articleActions';
+import { setArticleState } from '../../actions/articleActions';
 import { getArticleList } from '../../actions/articlesAtions';
 import { IState } from '../../reducers/initialState';
 
@@ -13,9 +13,7 @@ interface IProps {
   article: IListItemState;
   articleList: IArticle[];
   isArticleListLoading: boolean;
-
-  getArticles: () => void;
-  navigateArticles: () => void;
+  getArticleList: () => void;
   setArticleState: () => void;
 }
 
@@ -23,12 +21,11 @@ const BlogScreen: React.FC<IProps> = ({
   article,
   articleList,
   isArticleListLoading,
-  getArticles,
-  navigateArticles,
+  getArticleList,
   setArticleState,
 }) => {
   useEffect(() => {
-    getArticles();
+    getArticleList();
   }, []);
 
   const renderArticle = (article: IArticle) => (
@@ -99,11 +96,7 @@ const BlogScreen: React.FC<IProps> = ({
         </div>
       </section>
       <Modal className="_article" open={article.open} handleClose={handleClose}>
-        <OpenArticle
-          articleId={article.key}
-          articleArray={articleList}
-          navigateArticles={navigateArticles}
-        />
+        <OpenArticle articleId={article.key} />
       </Modal>
     </main>
   );
@@ -116,7 +109,6 @@ const mapStateToProps = (state: IState) => ({
 });
 
 export default connect(mapStateToProps, {
-  getArticles: getArticleList,
+  getArticleList,
   setArticleState,
-  navigateArticles,
 })(BlogScreen);

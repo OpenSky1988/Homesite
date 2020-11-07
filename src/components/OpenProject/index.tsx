@@ -38,7 +38,7 @@ const OpenProject: React.FC<IProps> = ({
     setLoading(true);
     try {
       const response = await Public.getProject(projectId);
-      const currentProject = response?.data?.data;
+      const currentProject = response?.data?.payload;
       setProject(currentProject);
     } catch (error) {
       setError(error.message);
