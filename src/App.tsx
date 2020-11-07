@@ -56,15 +56,13 @@ const App: React.FC<IAppProps> = ({ isAuthorized }) => {
 
   return (
     <div className="App">
-      <MainLayout>
-        <Switch>
-          <MainRoute path="/" exact={true} component={MainScreen} />
-          <MainRoute path="/blog" component={BlogScreen} />
-          {/* <AuthRoute path="/admin_auth" exact={true} component={AuthScreen} />
-          <AuthRoute path="/admin" exact={true} component={checkAuth(AdminScreen)} /> */}
-          <MainRoute component={Hello404} />
-        </Switch>
-      </MainLayout>
+      <Switch>
+        <MainRoute path="/" exact={true} component={MainScreen} />
+        <MainRoute path="/blog" component={BlogScreen} />
+        {/* <AuthRoute path="/admin_auth" exact={true} component={AuthScreen} />
+        <AuthRoute path="/admin" exact={true} component={checkAuth(AdminScreen)} /> */}
+        <MainRoute component={Hello404} />
+      </Switch>
     </div>
   );
 };

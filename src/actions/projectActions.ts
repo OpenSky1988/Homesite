@@ -1,23 +1,23 @@
 import { Dispatch } from 'redux';
-import { TOGGLE_PROJECT } from './actionTypes';
+import { TOGGLE_PROJECT, GET_PROJECT_LIST } from './actionTypes';
 import { IState } from '../reducers/initialState';
+import Public from '../api/public';
 
-interface IProjectStateAction {
-  type: string;
-  payload: {
-    open: boolean;
-    key: string | null;
-  };
-}
+type ProjectStateAction = IAction<{
+  open: boolean;
+  key: string | null;
+}>;
+
+type ProjectListAction = IAction<IProject[]>;
 
 const setProjectState = (event?: MouseEvent) => (
-  dispatch: Dispatch<IProjectStateAction>,
+  dispatch: Dispatch<ProjectStateAction>,
   getState: () => IState,
 ) => {
-  const body = document.getElementsByTagName('body')[0] as HTMLBodyElement;
-  const currentState = getState();
+  const body = document.querySelector('body') as HTMLBodyElement;
+  const { project } = getState();
 
-  if (currentState.project.open) {
+  if (project.item.open) {
     dispatch({
       type: TOGGLE_PROJECT,
       payload: {
@@ -42,5 +42,16 @@ const setProjectState = (event?: MouseEvent) => (
   }
 };
 
-export default setProjectState;
-export { IProjectStateAction };
+const getProjectList = () => async (dispatch: Dispatch<ProjectListAction>) => {
+  const response = await Public.getProjectList();
+  dispatch({
+    type: GET_PROJECT_LIST,
+    payload: response?.data?.data,
+  });
+};
+
+export {
+  getProjectList,
+  setProjectState,
+  ProjectStateAction,
+};

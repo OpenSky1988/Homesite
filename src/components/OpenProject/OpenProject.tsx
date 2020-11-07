@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import DataBase, { IProject } from '../DataBase';
+import { connect } from 'react-redux';
+import {
+  setProjectState,
+} from '../../actions/projectActions';
+import StaticData from '../StaticData';
 
 import './OpenProject.less';
 
@@ -15,7 +19,7 @@ class OpenProject extends Component <IProps, {}> {
   }
 
   public render() {
-    const project: IProject | undefined = DataBase.projects.find((currentProject) => (
+    const project: IProject | undefined = StaticData.projects.find((currentProject) => (
       currentProject.id === this.props.project
     ));
 
@@ -48,4 +52,6 @@ class OpenProject extends Component <IProps, {}> {
   }
 }
 
-export default OpenProject;
+export default connect(() => ({}), {
+  setProjectState,
+})(OpenProject);

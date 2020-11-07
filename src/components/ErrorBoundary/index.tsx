@@ -18,9 +18,9 @@ class ErrorBoundary extends Component<{}, IState> {
   render() {
     if (this.state.errorInfo) {
       const title = this.state.error && this.state.error.toString();
-      const jsStack = this.state.error && this.state.error.stack;
-      const reactStack = this.state.errorInfo.componentStack;
-      const stack = `${reactStack}\n\n${jsStack}`;
+      const { stack } = this.state.error;
+      const { componentStack } = this.state.errorInfo;
+      const errorDescription = `${componentStack}\n\n${stack}`;
 
       return (
         <div className="error-boundary">
@@ -28,7 +28,7 @@ class ErrorBoundary extends Component<{}, IState> {
             <h1 style={{ lineHeight: 1.2 }}>
               {title}
             </h1>
-            {stack}
+            {errorDescription}
           </pre>
         </div>
       );

@@ -1,6 +1,6 @@
 import React, { Component, MouseEvent } from 'react';
 import ArticleNavigation from '../ArticleNavigation/ArticleNavigation';
-import DataBase, { IArticle } from '../DataBase';
+import StaticData from '../StaticData';
 import './OpenArticle.less';
 
 interface IProps {
@@ -17,7 +17,7 @@ class OpenArticle extends Component <IProps, {}> {
   }
 
   render() {
-    const article = DataBase.articles.find((curentArticle) => (
+    const article = StaticData.articles.find((curentArticle) => (
       curentArticle.id === this.props.articleId
     )) as IArticle;
 

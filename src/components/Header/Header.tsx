@@ -10,7 +10,7 @@ import NavTrigger from '../NavTrigger/NavTrigger';
 import NavMobileMenu from '../NavMobileMenu/NavMobileMenu';
 
 import toggleMobileMenu from '../../actions/menuActions';
-import setProjectState from '../../actions/projectActions';
+import { setProjectState } from '../../actions/projectActions';
 import { setArticleState } from '../../actions/articleActions';
 import { IState } from '../../reducers/initialState';
 
@@ -68,8 +68,8 @@ class Header extends Component<IProps, {}> {
 }
 
 const mapStateToProps = (state: IState) => ({
-  article: state.article,
-  project: state.project,
+  article: state.article.item,
+  project: state.project.item,
 });
 
 export default connect(mapStateToProps, {

@@ -122,9 +122,9 @@ class ContactForm extends Component <IProps, {}> {
   }
 
   disableFormElements = (value: boolean) => {
-    const formInputs = document.getElementsByTagName('input') as HTMLCollectionOf<HTMLInputElement>;
-    const formTextArea = document.getElementsByTagName('textarea')[0] as HTMLTextAreaElement;
-    const submitBtn = document.getElementsByClassName('submit-btn')[0] as HTMLElement;
+    const formInputs = document.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    const formTextArea = document.querySelector('textarea') as HTMLTextAreaElement;
+    const submitBtn = document.querySelector('.submit-btn') as HTMLElement;
 
     submitBtn.innerText = value ? 'Sending...' : 'Submit';
     this.switchClass(submitBtn, 'disabled-btn', value);
@@ -210,9 +210,9 @@ class ContactForm extends Component <IProps, {}> {
 }
 
 const mapStateToProps = (state: IState) => ({
-  contactForm: state.contactForm,
-  error: state.error,
-  isLoading: state.isLoading,
+  contactForm: state.contactForm.input,
+  error: state.contactForm.error,
+  isLoading: state.contactForm.isLoading,
 });
 
 const dispatchStateToProps = {

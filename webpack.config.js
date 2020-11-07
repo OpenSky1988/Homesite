@@ -1,12 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
 
 require('dotenv').config({ path: '.env' });
 
 const servers = {
-	local: `http://${require('ip').address()}:8090`,
+  local: `http://${require('ip').address()}:8090`,
+  // public: 'http://public.path.here',
 };
 
 const serverContext = '/api';
@@ -86,6 +88,7 @@ config.module = {
 		// TypeScript loader
 		{
 			test: /\.(ts|tsx)?$/,
+			exclude: /node_modules/,
 			loaders: [
 				'babel-loader',
 				'awesome-typescript-loader',
@@ -155,6 +158,9 @@ config.plugins = [
 		from: './src/img',
 		to: 'img',
 	}]),
+	new webpack.EnvironmentPlugin({
+		'API_PATH': serverContext,
+	}),
 ];
 
 config.output = {
@@ -231,14 +237,14 @@ if (NODE_ENV === 'development') {
 		},
 		https: true,
 	};
-  }
+}
   
-  if (NODE_ENV === 'production') {
-	// config.output = {
-	// 	path: path.join(__dirname, '/build/'),
-	// 	filename: '[name].[contenthash].js',
-	// 	publicPath: 'img/',
-	// };
+if (NODE_ENV === 'production') {
+	config.output = {
+	 	path: path.join(__dirname, '/build/'),
+	 	filename: '[name].[contenthash].js',
+	 	publicPath: 'img/',
+	};
   
 	config.devtool = 'source-map';
   

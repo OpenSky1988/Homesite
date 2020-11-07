@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { IArticle } from '../DataBase';
 import './ArticleNavigation.less';
 
 interface IProps {
