@@ -1,7 +1,6 @@
 import {
   ARTICLE_LIST_LOADING,
   GET_ARTICLE_LIST,
-  NAVIGATE_ARTICLE,
   TOGGLE_ARTICLE,
 } from '../actions/actionTypes';
 import { IArticlesAction } from '../actions/articlesAtions';
@@ -20,11 +19,6 @@ export default (state = initialState.article, action: IArticlesAction) => {
         isLoading: action.payload,
       };
     case TOGGLE_ARTICLE:
-      return {
-        ...state,
-        item: action.payload,
-      };
-    case NAVIGATE_ARTICLE:
       return {
         ...state,
         item: action.payload,

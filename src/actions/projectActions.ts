@@ -54,7 +54,7 @@ const getProjectList = () => async (dispatch: Dispatch<ProjectListAction>) => {
     const response = await Public.getProjectList();
     dispatch({
       type: GET_PROJECT_LIST,
-      payload: response?.data?.data,
+      payload: response?.data?.payload,
     });
   } catch (error) {
     setProjectListError(error.message);

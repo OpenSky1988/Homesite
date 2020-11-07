@@ -17,10 +17,10 @@ const getArticleList = () => async (dispatch: Dispatch<IArticlesAction>) => {
   setArticleListLoading(true);
 
   try {
-    const response: AxiosResponse<{ data: IArticle[] }> = await Public.getArticleList();
+    const response: AxiosResponse<{ payload: IArticle[] }> = await Public.getArticleList();
     dispatch({
       type: GET_ARTICLE_LIST,
-      payload: response?.data?.data,
+      payload: response?.data?.payload,
     });
   } catch (error) {
     throw error;
