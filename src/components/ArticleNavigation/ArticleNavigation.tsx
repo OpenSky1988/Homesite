@@ -15,7 +15,7 @@ class ArticleNavigation extends Component<IProps, {}> {
   }
 
   checkKey = (event: KeyboardEvent) => {
-    event = event || window.event;
+    // event = event || window.event;
 
     if (event.keyCode === 37) {
       this.props.navigateArticles('back');

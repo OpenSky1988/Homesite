@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Banner from '../Banner/Banner';
-import Greetings from '../Greetings/Greetings';
-import Services from '../Services/Services';
-import Projects from '../Projects/Projects';
-import Contacts from '../Contacts/Contacts';
-import OpenProject from '../OpenProject/OpenProject';
+import Banner from '../../components/Banner/Banner';
+import Greetings from '../../components/Greetings/Greetings';
+import Services from '../../components/Services/Services';
+import Projects from '../../components/Projects/Projects';
+import Contacts from '../../components/Contacts/Contacts';
+import OpenProject from '../../components/OpenProject/OpenProject';
 
-import DataBase from '../DataBase';
+import DataBase from '../../components/DataBase';
 import setProjectState from '../../actions/projectActions';
 import { IState } from '../../reducers/initialState';
 import './Main.less';
@@ -23,7 +23,7 @@ interface IProps {
   setProjectState: () => void;
 }
 
-class Main extends Component <IProps, {}> {
+class MainScreen extends Component <IProps, {}> {
   addServices = () => {
     const servicesList = DataBase.skills.map((skill) => (
       <div
@@ -118,4 +118,4 @@ const mapStateToProps = (state: IState) => ({
 
 export default connect(mapStateToProps, {
   setProjectState,
-})(Main);
+})(MainScreen);
