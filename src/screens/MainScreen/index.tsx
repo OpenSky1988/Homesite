@@ -1,15 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Banner from '../../components/Banner/Banner';
 import Greetings from '../../components/Greetings/Greetings';
 import Services from '../../components/Services/Services';
 import ProjectList from '../../components/Projects/ProjectList';
 import Contacts from '../../components/Contacts/Contacts';
-import OpenProject from '../../components/OpenProject/OpenProject';
 
 import StaticData from '../../components/StaticData';
-import { IState } from '../../reducers/initialState';
 import './Main.less';
 
 interface IProps {
@@ -62,16 +59,8 @@ const MainScreen: React.FC<IProps> = ({ project }) => {
       <Services addServices={renderServices} />
       <ProjectList />
       <Contacts addLinks={renderLinks} />
-      {
-        project.open
-          && <OpenProject projectId={project.key} />
-      }
     </main>
   );
 };
 
-const mapStateToProps = (state: IState) => ({
-  project: state.project.item,
-});
-
-export default connect(mapStateToProps, {})(MainScreen);
+export default MainScreen;

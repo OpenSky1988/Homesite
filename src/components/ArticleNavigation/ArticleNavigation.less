@@ -1,15 +1,29 @@
 @import '../colors.less';
 
 .article-navigation {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  padding: 20px 0;
+  justify-content: space-between;
+  padding: 20px 20px;
 
   .view-button {
     cursor: pointer;
     
+    &.back, &.next {
+      margin: 0;
+    }
+
+    &._disabled {
+      border: 1px solid @color-silver;
+      background-color: transparent;
+      color: @color-silver;
+    
+      &:hover {
+        background-color: transparent;
+        -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22)
+      }
+    }
+
     @media screen and (max-width: 500px) {
       padding: 10px 10px;
       width: 113px;
@@ -21,31 +35,8 @@
     }
   }
 
-  .back {
-    margin-left: 20px;
-    
-    @media screen and (max-width: 500px) {
-      margin-left: 0;
-    }
-  }
-
-  .next {
-    margin-right: 20px;
-    
-    @media screen and (max-width: 500px) {
-      margin-right: 0;
-    }
+  @media screen and (max-width: 500px) {
+    padding: 0;
   }
 }
 
-.button-inactive {
-  border: 1px solid @color-silver;
-  background-color: transparent;
-  color: @color-silver;
-
-  &:hover {
-    background-color: transparent;
-    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22)
-  }
-}
