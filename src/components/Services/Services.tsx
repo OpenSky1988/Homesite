@@ -1,5 +1,4 @@
 import React from 'react';
-import { ISkill } from '../DataBase';
 import './Services.less';
 
 interface IProps {

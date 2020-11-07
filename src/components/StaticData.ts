@@ -1,4 +1,4 @@
-const DataBase = {
+const StaticData = {
   year: 2020,
   skills: [
     {
@@ -137,37 +137,4 @@ Thank you so much for your time and attention! I promise to update this article 
   ],
 };
 
-export default DataBase;
-
-interface ISkill {
-  id: string;
-  img: string;
-  name: string;
-  description: string;
-}
-
-interface IProject {
-  id: string;
-  name: string;
-  shortDescription: string;
-  longDescription: string;
-  img: string;
-  skills: string;
-}
-
-interface IArticle {
-  id: string | null;
-  header: string;
-  text: string;
-  img: string;
-  date: string;
-}
-
-interface ILink {
-  id: string;
-  href: string;
-  img: string;
-  alt: string;
-}
-
-export { ISkill, IProject, IArticle, ILink };
+export default StaticData;

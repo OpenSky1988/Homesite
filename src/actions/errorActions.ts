@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { UPDATE_ERROR } from './actionTypes';
+import { UPDATE_MESSAGE_ERROR } from './actionTypes';
 
 interface IErrorAction {
   type: string;
@@ -8,7 +8,7 @@ interface IErrorAction {
 
 const updateError = (errorMessage: string) => (dispatch: Dispatch<IErrorAction>) => {
   dispatch({
-    type: UPDATE_ERROR,
+    type: UPDATE_MESSAGE_ERROR,
     payload: errorMessage,
   });
 };

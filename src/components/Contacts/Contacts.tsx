@@ -30,7 +30,7 @@ const Contacts: React.FC<IProps> = (props) => (
 );
 
 const mapStateToProps = (state: IState) => ({
-  isSuccessBlockShown: state.isSuccessBlockShown,
+  isSuccessBlockShown: state.contactForm.isSuccessBlockShown,
 });
 
 export default connect(mapStateToProps, {})(Contacts);

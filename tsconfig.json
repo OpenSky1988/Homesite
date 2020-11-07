@@ -11,12 +11,16 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "outDir": "./dist/",
+    "removeComments": true,
     "sourceMap": true,
-    "strictNullChecks": true,
     "target": "es6",
   },
   "include": [
     "./src/**/*"
+  ],
+  "types": [
+    "./src/types",
+    "jest"
   ],
   "exclude": [
     "acceptance-tests",
