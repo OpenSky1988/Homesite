@@ -8,11 +8,15 @@ import { getProjectList } from '../../actions/projectActions';
 import { IState } from '../../reducers/initialState';
 
 interface IProps {
+  isLoading: boolean;
+  error: string;
   projectList: IProject[];
   getProjectList: () => void;
 }
 
-const Projects: React.FC<IProps> = ({
+const ProjectList: React.FC<IProps> = ({
+  isLoading,
+  error,
   projectList,
   getProjectList,
 }) => {
@@ -21,14 +25,20 @@ const Projects: React.FC<IProps> = ({
   }, []);
 
   const renderProjects = () => projectList
-    .map((project) => <ProjectItem key={project.id} project={project} />);
+    .map((project) => <ProjectItem key={project._id} project={project} />);
 
   return (
     <section id="projects">
       <div className="container">
         <h2>Projects</h2>
         <div className="projects-container">
-          {renderProjects()}
+          {
+            isLoading
+              ? <h1>Loading...</h1>
+              : error
+                ? error
+                : renderProjects()
+          }
         </div>
       </div>
     </section>
@@ -36,9 +46,11 @@ const Projects: React.FC<IProps> = ({
 };
 
 const mapStateToProps = (state: IState) => ({
+  error: state.project.error,
+  isLoading: state.project.isLoading,
   projectList: state.project.list,
 });
 
 export default connect(mapStateToProps, {
   getProjectList,
-})(Projects);
+})(ProjectList);

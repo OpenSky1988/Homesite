@@ -36,6 +36,7 @@ interface ISkill {
 }
 
 interface IProject {
+  _id: string;
   id: string;
   name: string;
   shortDescription: string;

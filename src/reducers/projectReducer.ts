@@ -1,6 +1,7 @@
 import {
   GET_PROJECT_LIST,
-  PROJECT_LIST_LOADING,
+  SET_PROJECT_LIST_ERROR,
+  SET_PROJECT_LIST_LOADING,
   TOGGLE_PROJECT,
 } from '../actions/actionTypes';
 import { ProjectStateAction } from '../actions/projectActions';
@@ -13,10 +14,15 @@ export default (state = initialState.project, action: ProjectStateAction) => {
         ...state,
         list: action.payload,
       };
-    case PROJECT_LIST_LOADING:
+    case SET_PROJECT_LIST_LOADING:
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case SET_PROJECT_LIST_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     case TOGGLE_PROJECT:
       return {

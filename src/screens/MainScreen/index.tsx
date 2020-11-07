@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Banner from '../../components/Banner/Banner';
 import Greetings from '../../components/Greetings/Greetings';
 import Services from '../../components/Services/Services';
-import Projects from '../../components/Projects/Projects';
+import ProjectList from '../../components/Projects/ProjectList';
 import Contacts from '../../components/Contacts/Contacts';
 import OpenProject from '../../components/OpenProject/OpenProject';
 
@@ -60,11 +60,11 @@ const MainScreen: React.FC<IProps> = ({ project }) => {
       <Banner />
       <Greetings />
       <Services addServices={renderServices} />
-      <Projects />
+      <ProjectList />
       <Contacts addLinks={renderLinks} />
       {
         project.open
-          && <OpenProject project={project.key} />
+          && <OpenProject projectId={project.key} />
       }
     </main>
   );
