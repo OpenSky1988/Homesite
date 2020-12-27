@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import './Blog.less';
 
 import Modal from '../../components/Modal';
@@ -24,6 +25,8 @@ const BlogScreen: React.FC<IProps> = ({
   getArticleList,
   setArticleState,
 }) => {
+  const {t} = useTranslation();
+
   useEffect(() => {
     getArticleList();
   }, []);
@@ -62,16 +65,16 @@ const BlogScreen: React.FC<IProps> = ({
 
   const renderTitle = () => (
     <div className="h1">
-      <div className="letter b">B</div>
-      <div className="letter l">l</div>
-      <div className="letter o">o</div>
-      <div className="letter g">g</div>
+      <div className="letter b">{t('BlogScreen.Title.B')}</div>
+      <div className="letter l">{t('BlogScreen.Title.L')}</div>
+      <div className="letter o">{t('BlogScreen.Title.O')}</div>
+      <div className="letter g">{t('BlogScreen.Title.G')}</div>
     </div>
   );
 
   const blogContent = Array.isArray(articleList)
     ? articleList.map(renderArticle)
-    : 'No articles yet';
+    : t('BlogScreen.NoArticles');
 
   const handleClose = (event: MouseEvent) => {
     event.preventDefault();
@@ -83,7 +86,7 @@ const BlogScreen: React.FC<IProps> = ({
       <header id="blog-title">
         <div className="container">
           {renderTitle()}
-          <h3>Thoughts on work and life.</h3>
+          <h3>{t('BlogScreen.Subtitle')}</h3>
         </div>
       </header>
 

@@ -1,26 +1,5 @@
 const StaticData = {
   year: 2020,
-  skills: [
-    {
-      id: '1',
-      img: '/img/home/responsive.png',
-      name: 'Web Design',
-      description: 'Structure, interface, functionality',
-    },
-    {
-      id: '2',
-      img: '/img/home/ux_ui.svg',
-      name: 'UX',
-      description: 'Semantic elements, ARIA, responsiveness',
-    },
-    {
-      id: '3',
-      img: '/img/home/code.svg',
-      name: 'Code',
-      description: 'HTML5, CSS3, JS, React, Redux, TypeScript, Jest',
-    },
-  ],
-
   projects: [
     {
       id: '1',

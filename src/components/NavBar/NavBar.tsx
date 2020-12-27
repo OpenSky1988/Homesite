@@ -1,51 +1,37 @@
 import React from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
+import { useTranslation } from 'react-i18next';
+import NavLink from '../NavLink';
 
 import './NavBar.less';
 
-const NavBar: React.FC<{}> = () => (
-  <ul className="nav">
-    <li>
-      <Link
+const NavBar: React.FC<{}> = () => {
+  const {t} = useTranslation();
+
+  return (
+    <ul className="nav">
+      <NavLink
+        label={t('Navigation.Home')}
         to="/#home"
-        className="bt"
-      >
-        home
-      </Link>
-    </li>
-    <li>
-      <Link
+      />
+      <NavLink
+        label={t('Navigation.Services')}
         to="/#services"
-        className="bt"
-      >
-        services
-      </Link>
-    </li>
-    <li>
-      <Link
+      />
+      <NavLink
+        label={t('Navigation.Projects')}
         to="/#projects"
-        className="bt"
-      >
-        projects
-      </Link>
-    </li>
-    <li>
-      <Link
+      />
+      <NavLink
+        label={t('Navigation.Contacts')}
         to="/#contacts"
-        className="bt"
-      >
-        contacts
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="/blog#blog-title"
+      />
+      <NavLink
         className="blog-button"
-      >
-        blog
-      </Link>
-    </li>
-  </ul>
-);
+        label={t('Navigation.Blog')}
+        to="/blog#blog-title"
+      />
+    </ul>
+  );
+};
 
 export default NavBar;

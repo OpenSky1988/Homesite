@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import './Projects.less';
@@ -26,6 +27,8 @@ const ProjectList: React.FC<IProps> = ({
   getProjectList,
   setProjectState,
 }) => {
+  const {t} = useTranslation();
+
   useEffect(() => {
     getProjectList();
   }, []);
@@ -42,7 +45,7 @@ const ProjectList: React.FC<IProps> = ({
     <>
       <section id="projects">
         <div className="container">
-          <h2>Projects</h2>
+          <h2>{t('MainScreen.Projects.Title')}</h2>
           <div className="projects-container">
             {
               isLoading

@@ -1,5 +1,6 @@
 import emailjs from 'emailjs-com';
 import React, { Component, MouseEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import validator from 'validator';
 
@@ -30,34 +31,38 @@ interface IProps {
   updateError: (errorMessage: string) => void;
 }
 
-class ContactForm extends Component <IProps, {}> {
-  constructor(props: IProps) {
-    super(props);
+const ContactForm: React.FC<IProps> = ({
+  contactForm: {
+    email,
+    name,
+    phone,
+    text,
+  },
+  error,
+  isLoading,
+  clearContactForm,
+  toggleMessageLoader,
+  toggleMessageSuccessBlock,
+  updateContactForm,
+  updateError,
+}) => {
+  emailjs.init(privateConfig.emailJS.userKey);
+  const {t} = useTranslation();
 
-    emailjs.init(privateConfig.emailJS.userKey);
-  }
-
-  onChange = (event: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>) => {
+  const onChange = (event: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>) => {
     const { name, value } = event.target as HTMLInputElement;
-    const { isLoading, updateContactForm } = this.props;
 
     if (!isLoading) {
       new Promise((resolve, reject) => {
         resolve(updateContactForm(name, value));
       }).then(() => {
-        this.validateForm();
+        validateForm();
       });
     }
-  }
+  };
 
-  onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    const {
-      contactForm: { email, name, text },
-      isLoading,
-      error,
-      toggleMessageLoader,
-    } = this.props;
 
     const isFormEmpty = (
       validator.isEmpty(email) ||
@@ -67,21 +72,14 @@ class ContactForm extends Component <IProps, {}> {
 
     if (!isLoading && !isFormEmpty && !error) {
       toggleMessageLoader(true);
-      // this.disableFormElements(true);
-      this.sendEmail();
+      // disableFormElements(true);
+      sendEmail();
     }
-  }
+  };
 
-  showMessageSuccessBlock = () => {
-    this.props.toggleMessageSuccessBlock(true);
-  }
+  const showMessageSuccessBlock = () => toggleMessageSuccessBlock(true);
 
-  sendEmail = async () => {
-    const {
-      contactForm: { email, name, phone, text },
-      clearContactForm,
-      toggleMessageLoader,
-    } = this.props;
+  const sendEmail = async () => {
     await emailjs.send(
       'gmail',
       privateConfig.emailJS.template,
@@ -99,12 +97,12 @@ class ContactForm extends Component <IProps, {}> {
     });
 
     toggleMessageLoader(false);
-    // this.disableFormElements(false);
+    // disableFormElements(false);
     // Animate message success appearance
-    this.showMessageSuccessBlock();
-  }
+    showMessageSuccessBlock();
+  };
 
-  switchClass = (element: Element, targetClass: string, add: boolean) => {
+  const switchClass = (element: Element, targetClass: string, add: boolean) => {
     if (add) {
       const newClass = (element.className.length === 0)
         ? targetClass
@@ -119,95 +117,89 @@ class ContactForm extends Component <IProps, {}> {
 
       element.className = oldClass;
     }
-  }
+  };
 
-  disableFormElements = (value: boolean) => {
+  const disableFormElements = (value: boolean) => {
     const formInputs = document.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     const formTextArea = document.querySelector('textarea') as HTMLTextAreaElement;
     const submitBtn = document.querySelector('.submit-btn') as HTMLElement;
 
-    submitBtn.innerText = value ? 'Sending...' : 'Submit';
-    this.switchClass(submitBtn, 'disabled-btn', value);
+    submitBtn.innerText = value ? t('MainScreen.Contact.Form.Button.Sending') : t('MainScreen.Contact.Form.Button.Submit');
+    switchClass(submitBtn, 'disabled-btn', value);
 
     formTextArea.disabled = value;
-    this.switchClass(formTextArea, 'disabled-input', value);
+    switchClass(formTextArea, 'disabled-input', value);
 
     Array.prototype.forEach.call(formInputs, (input: HTMLInputElement) => {
       input.disabled = value;
-      this.switchClass(input, 'disabled-input', value);
+      switchClass(input, 'disabled-input', value);
     });
-  }
+  };
 
-  validateForm = () => {
-    const { contactForm: {email, name, phone, text}, updateError } = this.props;
-
+  const validateForm = () => {
     if (email && validator.isEmpty(email)) {
-      updateError('Email is required');
+      updateError(t('MainScreen.Contact.Form.Error.NoEmail'));
     } else if (email && !validator.isEmail(email)) {
-      updateError('Proper email format: username@example.com');
+      updateError(t('MainScreen.Contact.Form.Error.WrongEmailFormat'));
     } else if (name && validator.isEmpty(name)) {
-      updateError('Please enter your name');
+      updateError(t('MainScreen.Contact.Form.Error.NoName'));
     } else if (phone && !validator.isMobilePhone(phone, 'any')) {
-      updateError('Please enter correct phone number');
+      updateError(t('MainScreen.Contact.Form.Error.WrongPhoneFormat'));
     } else if (text && validator.isEmpty(text)) {
-      updateError('Please enter your text');
+      updateError(t('MainScreen.Contact.Form.Error.NoText'));
     } else if (email && email.length > 500) {
-      updateError('Message is too long (max: 500 sym)');
+      updateError(t('MainScreen.Contact.Form.Error.TextExceedsLimit'));
     } else { updateError(''); }
-  }
+  };
 
-  render() {
-    const { contactForm: {email, name, phone, text}, error } = this.props;
-
-    return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          onChange={this.onChange}
-          value={email}
-          className="forms email"
-          id="email"
-          name="email"
-          type="email"
-          placeholder="Email"
-        />
-        <input
-          onChange={this.onChange}
-          value={name}
-          className="forms name"
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Name"
-        />
-        <input
-          onChange={this.onChange}
-          value={phone}
-          className="forms phone"
-          id="phone"
-          name="phone"
-          type="phone"
-          placeholder="Phone (global format)"
-        />
-        <textarea
-          onChange={this.onChange}
-          value={text}
-          className="forms text"
-          name="text"
-          placeholder="Your message here"
-        />
-        {error && <ErrorDisplay error={error} />}
-        <button
-          className="btn submit-btn"
-          id="submit-btn"
-          type="submit"
-          name="submit"
-        >
-          Submit
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        onChange={onChange}
+        value={email}
+        className="forms email"
+        id="email"
+        name="email"
+        type="email"
+        placeholder={t('MainScreen.Contact.Form.Field.Email')}
+      />
+      <input
+        onChange={onChange}
+        value={name}
+        className="forms name"
+        id="name"
+        name="name"
+        type="text"
+        placeholder={t('MainScreen.Contact.Form.Field.Name')}
+      />
+      <input
+        onChange={onChange}
+        value={phone}
+        className="forms phone"
+        id="phone"
+        name="phone"
+        type="phone"
+        placeholder={t('MainScreen.Contact.Form.Field.Phone')}
+      />
+      <textarea
+        onChange={onChange}
+        value={text}
+        className="forms text"
+        name="text"
+        placeholder={t('MainScreen.Contact.Form.Field.Text')}
+      />
+      {error && <ErrorDisplay error={error} />}
+      <button
+        className="btn submit-btn"
+        id="submit-btn"
+        type="submit"
+        name="submit"
+      >
+        {t('MainScreen.Contact.Form.Button.Submit')}
+      </button>
+    </form>
+  );
+};
 
 const mapStateToProps = (state: IState) => ({
   contactForm: state.contactForm.input,

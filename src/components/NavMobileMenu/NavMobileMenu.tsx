@@ -1,62 +1,50 @@
 import React from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
+import { useTranslation } from 'react-i18next';
+import NavLink from '../NavLink';
+
 import './NavMobileMenu.less';
 
 interface IProps {
   toggleMobileMenu: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
-const NavMobileMenu = (props: IProps) => (
-  <div className="mobile-nav">
-    <div className="container">
-      <ul>
-        <li>
-          <Link
+const NavMobileMenu: React.FC<IProps> = ({ toggleMobileMenu }) => {
+  const {t} = useTranslation();
+
+  return (
+    <div className="mobile-nav">
+      <div className="container">
+        <ul>
+          <NavLink
+            label={t('Navigation.Home')}
+            onClick={toggleMobileMenu}
             to="/#home"
-            className="bt"
-            onClick={props.toggleMobileMenu}
-          >
-            home
-          </Link>
-        </li>
-        <li>
-          <Link
+          />
+          <NavLink
+            label={t('Navigation.Services')}
+            onClick={toggleMobileMenu}
             to="/#services"
-            className="bt"
-            onClick={props.toggleMobileMenu}
-          >
-            services
-          </Link>
-        </li>
-        <li>
-          <Link
+          />
+          <NavLink
+            label={t('Navigation.Projects')}
+            onClick={toggleMobileMenu}
             to="/#projects"
-            className="bt"
-            onClick={props.toggleMobileMenu}
-          >
-            projects
-          </Link>
-        </li>
-        <li>
-          <Link
+          />
+          <NavLink
+            label={t('Navigation.Contacts')}
+            onClick={toggleMobileMenu}
             to="/#contacts"
-            className="bt"
-            onClick={props.toggleMobileMenu}
-          >
-            contacts
-          </Link>
-        </li>
-        <li id="mobile-blog-btn">
-          <Link
+          />
+          <NavLink
+            className="blog-button"
+            label={t('Navigation.Blog')}
+            onClick={toggleMobileMenu}
             to="/blog#blog-title"
-            onClick={props.toggleMobileMenu}
-          >
-            blog
-          </Link>
-        </li>
-      </ul>
+          />
+        </ul>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default NavMobileMenu;
