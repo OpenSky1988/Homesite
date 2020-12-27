@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import './Contacts.less';
 
@@ -13,21 +14,25 @@ interface IProps {
   addLinks: () => JSX.Element[];
 }
 
-const Contacts: React.FC<IProps> = (props) => (
-  <section id="contacts">
-    <div className="container">
-      <h3 className="contacts-header">Want to make something together?</h3>
-      <div className="contacts-row">
+const Contacts: React.FC<IProps> = (props) => {
+  const {t} = useTranslation();
 
-        { props.isSuccessBlockShown ?
-          <MailSentOverlay /> :
-          <ContactForm />
-        }
-        <ContactLinks addLinks={props.addLinks} />
+  return (
+    <section id="contacts">
+      <div className="container">
+        <h3 className="contacts-header">{t('MainScreen.Contact.Title')}</h3>
+        <div className="contacts-row">
+
+          { props.isSuccessBlockShown ?
+            <MailSentOverlay /> :
+            <ContactForm />
+          }
+          <ContactLinks addLinks={props.addLinks} />
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const mapStateToProps = (state: IState) => ({
   isSuccessBlockShown: state.contactForm.isSuccessBlockShown,

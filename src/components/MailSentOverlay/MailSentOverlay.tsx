@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import './MailSentOverlay.less';
@@ -9,27 +10,27 @@ interface IProps {
   toggleMessageSuccessBlock: (isSuccessBlockShown: boolean) => void;
 }
 
-class MailSentOverlay extends Component <IProps, {}> {
-  hideMessageSuccessBlock = (): void => {
-    // Animate success block unmount
-    this.props.toggleMessageSuccessBlock(false);
-  }
+const MailSentOverlay: React.FC<IProps> = ({ toggleMessageSuccessBlock }) => {
+  const {t} = useTranslation();
 
-  render() {
-    return(
-      <div className="mail-sent-overlay">
-        <div className="check-icon">
-          <span className="icon-line line-tip" />
-          <span className="icon-line line-long" />
-          <div className="icon-circle" />
-          <div className="icon-fix" />
-        </div>
-        <p>Email is successfully sent.</p>
-        <button className="btn" onClick={this.hideMessageSuccessBlock}>Send more?</button>
+  const hideMessageSuccessBlock = (): void => {
+    // Animate success block unmount
+    toggleMessageSuccessBlock(false);
+  };
+
+  return(
+    <div className="mail-sent-overlay">
+      <div className="check-icon">
+        <span className="icon-line line-tip" />
+        <span className="icon-line line-long" />
+        <div className="icon-circle" />
+        <div className="icon-fix" />
       </div>
-    );
-  }
-}
+      <p>{t('MainScreen.Contact.Form.Success')}</p>
+      <button className="btn" onClick={hideMessageSuccessBlock}>Send more?</button>
+    </div>
+  );
+};
 
 const mapDispatchToProps = {
   toggleMessageSuccessBlock,

@@ -1,0 +1,60 @@
+{
+  "Navigation": {
+    "Home": "Home",
+    "Services": "Services",
+    "Projects": "Projects",
+    "Contacts": "Contacts",
+    "Blog": "Blog"
+  },
+  "MainScreen": {
+    "Banner": {
+      "Title": "Hi! I'm Alex",
+      "Description": "I'm passionate about Web Development, UX, and UI and use it to change the world for the better!",
+      "Button": "View gallery"
+    },
+    "Greetings": {
+      "Text": "Hi! My name is Alexander and I am happy to see you in my home on the Web. This app represents my professional ablities. My craft and passion is Front-end Development and UI/UX building. I strive to make every page intuitive and beautiful. I know my strengths and I am result-oriented. If you are seeking for a web-presence or looking for a staff web-developer, you can contact me ",
+      "Here": "here"
+    },
+    "Services": {
+      "Title": "Services"
+    },
+    "Projects": {
+      "Title": "Projects"
+    },
+    "Contact": {
+      "Title": "Want to make something together?",
+      "Form": {
+        "Field": {
+          "Email": "Email",
+          "Name": "Name",
+          "Phone": "Phone (global format)",
+          "Text": "Your message here"
+        },
+        "Error": {
+          "NoEmail": "Email is required",
+          "WrongEmailFormat": "Proper email format: username@example.com",
+          "NoName": "Please enter your name",
+          "WrongPhoneFormat": "Please enter correct phone number",
+          "NoText": "Please enter your text",
+          "TextExceedsLimit": "Message is too long (max: 500 sym)"
+        },
+        "Success": "Email is successfully sent.",
+        "Button": {
+          "Submit": "Submit",
+          "Sending": "Sending..."
+        }
+      }
+    }
+  },
+  "BlogScreen": {
+    "Title": {
+      "B": "B",
+      "L": "l",
+      "O": "o",
+      "G": "g"
+    },
+    "Subtitle": "Thoughts on work and life.",
+    "NoArticles": "No articles yet"
+  }
+}

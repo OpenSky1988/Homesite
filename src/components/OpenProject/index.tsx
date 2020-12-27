@@ -24,7 +24,7 @@ const OpenProject: React.FC<IProps> = ({
   });
 
   useEffect(() => {
-    (async function openProjectDidMountIIFE() {
+    (async () => {
       await getProject();
     })();
   }, []);

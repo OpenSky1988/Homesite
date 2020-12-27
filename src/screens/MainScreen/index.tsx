@@ -9,24 +9,6 @@ import Contacts from '../../components/Contacts/Contacts';
 import StaticData from '../../components/StaticData';
 import './Main.less';
 
-interface IProps {
-  project: IListItemState;
-}
-
-const SkillItem: React.FC<{ skill: ISkill }> = ({ skill }) => (
-  <div
-    className="skill"
-    key={skill.id}
-  >
-    <div
-      className="skill-icon"
-      style={{ backgroundImage: `url("${skill.img}")` }}
-    />
-    <h3>{skill.name}</h3>
-    <h4>{skill.description}</h4>
-  </div>
-);
-
 const LinkItem: React.FC<{ link: ILink }> = ({ link }) => (
   <li
     id={link.id}
@@ -45,10 +27,7 @@ const LinkItem: React.FC<{ link: ILink }> = ({ link }) => (
   </li>
 );
 
-const MainScreen: React.FC<IProps> = ({ project }) => {
-  const renderServices = () => StaticData.skills
-    .map((skill) => <SkillItem key={skill.id} skill={skill} />);
-
+const MainScreen: React.FC<{}> = () => {
   const renderLinks = () => StaticData.links
     .map((link) => <LinkItem key={link.id} link={link} />);
 
@@ -56,7 +35,7 @@ const MainScreen: React.FC<IProps> = ({ project }) => {
     <main>
       <Banner />
       <Greetings />
-      <Services addServices={renderServices} />
+      <Services />
       <ProjectList />
       <Contacts addLinks={renderLinks} />
     </main>

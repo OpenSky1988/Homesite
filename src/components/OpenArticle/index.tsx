@@ -25,7 +25,7 @@ const OpenArticle: React.FC<IProps> = ({
   });
 
   useEffect(() => {
-    (async function openProjectDidMountIIFE() {
+    (async () => {
       await getArticle(articleId);
     })();
   }, []);

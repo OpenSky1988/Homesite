@@ -31,6 +31,11 @@ interface IContactFormState {
 interface ISkill {
   id: string;
   img: string;
+  en: ISkillText;
+  ru: ISkillText;
+}
+
+interface ISkillText {
   name: string;
   description: string;
 }
