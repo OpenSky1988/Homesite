@@ -30,3 +30,6 @@ jobs:
 
       - name: Run linters
         run: npm run tslint
+
+      - name: Run auto-tests
+        run: npm run test
