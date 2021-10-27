@@ -7,7 +7,7 @@
     "predeploy": "npm run build",
     "start": "cross-env NODE_ENV=development API_ENV=local webpack-dev-server",
     "start:env": "webpack-dev-server",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "tslint": "tslint 'src/**/*.ts' 'src/**/*.tsx' --format stylish"
   },
   "globals": {
@@ -16,7 +16,6 @@
   },
   "version": "0.6.0",
   "dependencies": {
-    "@babel/preset-env": "^7.7.7",
     "@babel/runtime": "^7.7.7",
     "@types/jest": "^24.0.23",
     "@types/react": "^16.9.13",
@@ -57,8 +56,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
     "awesome-typescript-loader": "^5.2.1",
     "babel-cli": "^6.26.0",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-react": "^1.0.0",
@@ -74,9 +76,11 @@
     "imagemin-pngquant": "^8.0.0",
     "imagemin-svgo": "^7.0.0",
     "img-loader": "^3.0.1",
+    "jest": "^20.0.4",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "react-hot-loader": "^3.0.0",
+    "react-test-renderer": "^16.2.0",
     "source-map-loader": "^0.2.2",
     "style-loader": "^0.18.2",
     "tslint": "^5.7.0",

@@ -1,7 +1,6 @@
-name: Lint
+name: Checks
 
 on:
-  # Trigger the workflow on push or pull request
   push:
     branches:
       - develop
@@ -12,11 +11,12 @@ on:
       - master
 
 jobs:
-  run-linters:
-    name: Run linters
+  run-checks:
+    name: Run checks
     runs-on: ubuntu-latest
 
     steps:
+      #This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
       - name: Check out Git repository
         uses: actions/checkout@v2
 
