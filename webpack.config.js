@@ -243,7 +243,7 @@ if (NODE_ENV === 'production') {
 	config.output = {
 	 	path: path.join(__dirname, '/build/'),
 	 	filename: '[name].[contenthash].js',
-	 	publicPath: 'img/',
+	 	publicPath: '/',
 	};
   
 	config.devtool = 'source-map';
