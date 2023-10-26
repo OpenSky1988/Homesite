@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "lib": ["es6", "dom"],
-    "module": "es6",
+    "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": false,
     "noImplicitAny": true,

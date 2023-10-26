@@ -1,7 +1,7 @@
 /* global document */
 /* global window */
 
-import React, { ComponentClass } from 'react';
+import React, { Suspense, ComponentClass } from 'react';
 import { connect } from 'react-redux';
 import { Route, RouteComponentProps, RouteProps, Switch } from 'react-router-dom';
 
@@ -10,11 +10,11 @@ import './App.less';
 /* Static Components */
 import AuthLayout from './layouts/AuthLayout';
 import ErrorBoundary from './components/ErrorBoundary';
-import BlogScreen from './screens/BlogScreen';
+// import BlogScreen from './screens/BlogScreen';
 import MainLayout from './layouts/MainLayout';
-import MainScreen from './screens/MainScreen';
+// import MainScreen from './screens/MainScreen';
 import RedirectToLoginScreen from './screens/ReidrectToLoginScreen';
-import Hello404 from './components/Hello404/Hello404';
+// import Hello404 from './components/Hello404/Hello404';
 import { IState } from './reducers/initialState';
 
 interface IAppProps {
@@ -54,15 +54,21 @@ const App: React.FC<IAppProps> = ({ isAuthorized }) => {
     return component;
   };
 
+  const MainScreen = React.lazy(() => import('./screens/MainScreen'));
+  const BlogScreen = React.lazy(() => import('./screens/BlogScreen'));
+  const Hello404 = React.lazy(() => import('./components/Hello404/Hello404'));
+
   return (
     <div className="App">
-      <Switch>
-        <MainRoute path="/" exact={true} component={MainScreen} />
-        <MainRoute path="/blog" component={BlogScreen} />
-        {/* <AuthRoute path="/admin_auth" exact={true} component={AuthScreen} />
-        <AuthRoute path="/admin" exact={true} component={checkAuth(AdminScreen)} /> */}
-        <MainRoute component={Hello404} />
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <MainRoute path="/" exact={true} component={MainScreen} />
+          <MainRoute path="/blog" component={BlogScreen} />
+          {/* <AuthRoute path="/admin_auth" exact={true} component={AuthScreen} />
+          <AuthRoute path="/admin" exact={true} component={checkAuth(AdminScreen)} /> */}
+          <MainRoute component={Hello404} />
+        </Switch>
+      </Suspense>
     </div>
   );
 };

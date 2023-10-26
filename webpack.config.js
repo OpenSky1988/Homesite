@@ -1,7 +1,9 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const path = require('path');
 const webpack = require('webpack');
 
 require('dotenv').config({ path: '.env' });
@@ -34,33 +36,50 @@ config.resolve = {
 };
 
 config.optimization = {
-	namedChunks: true,
+	chunkIds: 'named', // !!!
 	removeAvailableModules: true,
 	splitChunks: {
-		chunks: 'all',
+		minSize: 17000,
+		minRemainingSize: 0,
+		minChunks: 1,
+		maxAsyncRequests: 30,
+		maxInitialRequests: 30,
+		automaticNameDelimiter: "_",
+		enforceSizeThreshold: 30000,
 		cacheGroups: {
-			vendors: {
-				name: 'vendors',
+			common: {
 				test: /[\\/]node_modules[\\/]/,
-				priority: -10,
+				priority: -5,
+				reuseExistingChunk: true,
+				chunks: "initial",
+				name: "common_app",
+				minSize: 0,
 			},
 			default: {
-				name: 'app',
 				minChunks: 2,
 				priority: -20,
 				reuseExistingChunk: true,
 			},
+			// we are opting out of defaultVendors, so rest of the node modules will be part of default cacheGroup
+			defaultVendors: false,
+			reactPackage: {
+				test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
+				name: 'vendor_react',
+				chunks: "all",
+				priority: 10,
+			},
 		},
 	},
+	usedExports: true,
 };
 
 config.module = {
-    rules: [
-      	// 'source-map-loader' extracts existing source maps from all JavaScript entries.
+	rules: [
+		// 'source-map-loader' extracts existing source maps from all JavaScript entries.
 		{
 			test: /\.js$/,
 			enforce: 'pre',
-			loaders: ['source-map-loader'],
+			use: ['source-map-loader'],
 		}, 
 
 		// TypeScript linter
@@ -68,7 +87,7 @@ config.module = {
 			test: /\.ts(x?)$/,
 			enforce: 'pre',
 			exclude: /node_modules/,
-			loaders: [
+			use: [
 				{
 					loader: 'tslint-loader',
 					options: {
@@ -82,26 +101,25 @@ config.module = {
 		{
 			test: /\.(js|jsx)$/,
 			exclude: /node_modules/,
-			loaders: ['babel-loader'],
+			use: ['babel-loader'],
 		},
 
 		// TypeScript loader
 		{
 			test: /\.(ts|tsx)?$/,
 			exclude: /node_modules/,
-			loaders: [
+			use: [
 				'babel-loader',
-				'awesome-typescript-loader',
+				'ts-loader',
 			],
 		}, 
 
 		// CSS and LESS loaders
 		{
 			test: /\.css$/,
-			loaders: [
+			use: [
+				'style-loader',
 				{
-					loader: 'style-loader'
-				}, {
 					loader: 'css-loader',
 					options: {
 						sourceMap: true,
@@ -112,15 +130,15 @@ config.module = {
 		
 		{
 			test: /\.less$/,
-			loaders: [
+			use: [
+				'style-loader',
 				{
-					loader: 'style-loader'
-				}, {
 					loader: 'css-loader',
 					options: {
 						sourceMap: true,
 					}
-				}, {
+				},
+				{
 					loader: 'less-loader',
 					options: {
 						sourceMap: true,
@@ -133,34 +151,45 @@ config.module = {
 		// Images
 		{
 			test: /\.(png|svg|jpg|jpeg|gif|tiff)$/,
-			loader: 'file-loader?name=img/[name].[ext]',
+			loader: 'file-loader',
 			options: {
 				// To refer to 'img' directory with '/img' instead of 'src/img' in JS/TS-related files.
-				publicPath: 'src'
+				publicPath: 'src',
+				name: '[name].[ext]',
+				outputPath: 'img',
 			}
 		},
 
 		// Fonts
 		{
 			test: /\.(woff|woff2|eot|ttf|otf)$/,
-			loader: 'file-loader?name=fonts/[name].[ext]',
-		}
-    ]
+			loader: 'file-loader',
+			options: {
+				name: '[name].[ext]',
+				outputPath: 'imfontsg',
+			}
+		},
+	],
 };
 
 config.plugins = [
 	new HtmlWebpackPlugin({
+		modern: true,
 		template: path.join(__dirname, 'public', 'index.html'),
 		filename: './index.html',
 	}),
+
 	// To refer to 'img' directory with '/img' instead of '../../img' in CSS files.
 	new CopyWebpackPlugin([{
 		from: './src/img',
 		to: 'img',
 	}]),
+
 	new webpack.EnvironmentPlugin({
 		'API_PATH': serverContext,
 	}),
+
+	new BundleAnalyzerPlugin(),
 ];
 
 config.output = {
@@ -243,7 +272,7 @@ if (NODE_ENV === 'production') {
 	config.output = {
 	 	path: path.join(__dirname, '/build/'),
 	 	filename: '[name].[contenthash].js',
-	 	publicPath: 'img/',
+	 	publicPath: 'img',
 	};
   
 	config.devtool = 'source-map';
@@ -251,7 +280,9 @@ if (NODE_ENV === 'production') {
 	config.optimization.minimizer = [
 		new TerserPlugin({
 			parallel: true,
-			sourceMap: true,
+			terserOptions: {
+				sourceMap: true,
+			},
 		}),
 	];
   
